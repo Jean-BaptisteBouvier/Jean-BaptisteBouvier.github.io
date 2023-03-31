@@ -3,6 +3,8 @@ layout: page
 title: Publications
 ---
 
+\\
+
 ## Journal papers
 
 J.-B. Bouvier, K. Xu, M. Ornik. Quantitative resilience of generalized integrators. [IEEE Transactions on Automatic Control](), 2023, [ArXiv](https://arxiv.org/abs/2111.04163).
@@ -18,6 +20,7 @@ TM. Silva, J.-B. Bouvier, K. Xu, M. Hirabayashi, K. Ho. Spacecraft trajectory tr
 BB. Jagannatha, J.-B. Bouvier, K. Ho. Preliminary design of low-energy, low-thrust transfers to halo orbits using feedback control. [Journal of Guidance, Control and Dynamics](https://arc.aiaa.org/doi/full/10.2514/1.G003759), vol. 42 (2), pp. 260--271, 2019.
 
 
+\\
 
 
 ## Peer-reviewed conference papers
@@ -33,6 +36,7 @@ J.-B. Bouvier, K. Xu, M. Ornik. Quantitative resilience of linear driftless syst
 J.-B. Bouvier, M. Ornik. Resilient reachability for linear systems. [21st IFAC World Congress](https://www.sciencedirect.com/science/article/pii/S240589632030656X), pp. 4409--4414, 2020.
 
 
+\\
 
 
 ## Other conference papers
@@ -42,6 +46,8 @@ J.-B. Bouvier, H. Panag, R. Woollands, M. Ornik. Resilience of orbital inspectio
 J.-B. Bouvier, W. Zanga, B. Le Bihan, S. Lizy-Destrez. Strategies for space rendezvous on Lunar Distant Retrograde Orbits. [ISAE Supaéro](assets/final_PIR_paper.pdf), 2017.
 
 
+
+\\
 
 
 ## Theses and other supervised papers
