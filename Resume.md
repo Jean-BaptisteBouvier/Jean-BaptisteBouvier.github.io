@@ -23,15 +23,16 @@ Department of Aerospace Engineering at the University of Illinois Urbana-Champai
 
 
 ### PhD Intern | 2021
-PNNL (Pacific Northwest National Laboratory)
+PNNL (Pacific Northwest National Laboratory) <br>
 Optimization & Control group, Optimization of resilient grid 
 
 ### Intern in Flight Dynamics | 2019
-CNES (French space agency)
+CNES (French space agency) <br>
 Mission design of a satellite constellation
 
 ### Research Assistant | 2017 -- 2018
-Department of Aerospace Engineering at the University of Illinois Urbana-Champaign
+Department of Aerospace Engineering at the University of Illinois Urbana-Champaign <br>
+Astrodynamics and trajectory optimization
 
 
 ---
@@ -39,11 +40,11 @@ Department of Aerospace Engineering at the University of Illinois Urbana-Champai
 ## Education
 
 ### University of Illinois Urbana-Champaign, USA
-- Ph.D., Aerospace Engineering, 2019 -- 2023
+- Ph.D., Aerospace Engineering, 2019 -- 2023 <br>
   Thesis: *Guaranteed Resilience of Autonomous Systems to Partial Loss of Control Authority over their Actuators* <br>
   Advisor: [Prof. Melkior Ornik](https://mornik.web.illinois.edu/)
 
-- M.Sc., Aerospace Engineering, 2017 -- 2018
+- M.Sc., Aerospace Engineering, 2017 -- 2018 <br>
   Thesis: *Orbit Control for a Spacecraft around a Splitting Contact Binary Asteroid* <br>
   Advisor: [Prof. Koki Ho](https://ae.gatech.edu/directory/person/koki-ho)
 
