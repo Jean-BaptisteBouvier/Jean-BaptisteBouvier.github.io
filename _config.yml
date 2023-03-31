@@ -1,8 +1,8 @@
 # Built with Jekyll 3.6.0
 
 # Setup
-title:               Jean-Baptiste Bouvier.
-tagline:             Smart and Hardworking
+title:               Jean-Baptiste Bouvier
+#tagline:             Smart and Hardworking
 description:         Jean-Baptiste Bouvier's Personal Website
 url:                 'http://Jean-BaptisteBouvier.github.io'
 baseurl:             ''
