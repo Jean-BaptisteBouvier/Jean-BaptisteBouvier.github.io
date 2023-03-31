@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Projects
+title: Research
 ---
 (Click on the project summary to know more!)
 
@@ -258,16 +258,3 @@ budget of 10,000 units</figcaption>
 
 A navigation strategy devised for a high dimensional path problem using Pontryagin’s maximum principle
 
----
-
-## Positions of Responsibility
-
-### [Underwater Remotely Operated Vehicle]() | Project Lead
-
-A joint effort by IIT Bombay (Incharge: Prof. L. Vachhani) and Larsen & Toubro Defence under IMPRINT IIC scheme by Gov. of India through Ministry of Education and Dept. of Science and Technology.
-
-### [Student Mentor](https://smp.gymkhana.iitb.ac.in/) | IIT Bombay
-Mentor of 18 students, selected based on extensive interview and peer reviews, that provide necessary support, academic and otherwise freshmen and sophomore students.
-
-### [Convener](https://www.facebook.com/tinkererIITB/) | Tinkerers’ Laboratory, IIT Bombay
-A 24*7 'Makerspace' for innovators that is open to all the students to promote hands on learning experience.
