@@ -22,15 +22,15 @@ BB. Jagannatha, J.-B. Bouvier, K. Ho. Preliminary design of low-energy, low-thru
 
 ## Peer-reviewed conference papers
 
-M. Ornik, J.-B. Bouvier. Assured system-level resilience for guaranteed disaster response. [8^th^ IEEE International Smart Cities Conference](https://ieeexplore.ieee.org/document/9922438), 2022.
+M. Ornik, J.-B. Bouvier. Assured system-level resilience for guaranteed disaster response. [8th IEEE International Smart Cities Conference](https://ieeexplore.ieee.org/document/9922438), 2022.
 
-J.-B. Bouvier, M. Ornik. Quantitative resilience of linear systems. [20^th^ European Control Conference](https://ieeexplore.ieee.org/document/9838147), pp. 485--490, 2022, [ArXiv](https://arxiv.org/abs/2201.12278).
+J.-B. Bouvier, M. Ornik. Quantitative resilience of linear systems. [20th European Control Conference](https://ieeexplore.ieee.org/document/9838147), pp. 485--490, 2022, [ArXiv](https://arxiv.org/abs/2201.12278).
     
 J.-B. Bouvier, SP. Nandanoori, M. Ornik, S. Kundu. Distributed transient safety verification via robust control invariant sets: a microgrid application. [2022 American Control Conference](https://ieeexplore.ieee.org/document/9867323), pp. 2202--2207, 2022, [ArXiv](https://arxiv.org/abs/2202.09320).
 
 J.-B. Bouvier, K. Xu, M. Ornik. Quantitative resilience of linear driftless systems. [SIAM Conference on Control and its Applications](https://epubs.siam.org/doi/abs/10.1137/1.9781611976847.5), pp. 32--39, 2021, [ArXiv](https://arxiv.org/abs/2101.12063).
  
-J.-B. Bouvier, M. Ornik. Resilient reachability for linear systems. [21^st^ IFAC World Congress](https://www.sciencedirect.com/science/article/pii/S240589632030656X), pp. 4409--4414, 2020.
+J.-B. Bouvier, M. Ornik. Resilient reachability for linear systems. [21st IFAC World Congress](https://www.sciencedirect.com/science/article/pii/S240589632030656X), pp. 4409--4414, 2020.
 
 
 
