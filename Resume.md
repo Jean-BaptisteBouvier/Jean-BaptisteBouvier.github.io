@@ -83,14 +83,14 @@ Preparatory Classes in Mathematics, Physics and Engineering, 2013 -- 2015
 .bTop {
     width: 1200px;
     height: 514px;
-    background-image: url('../assets/PNNL.png');
+    background-image: url('https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io/tree/main/assets/PNNL.png');
 }
 
 .left_sup
 {
     width: 640px;
     height: 388px;
-    background-image: url('../assets/SUPAERO.png');    
+    background-image: url('https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io/tree/main/assets/SUPAERO.png');    
 
 }
 
@@ -101,7 +101,7 @@ Preparatory Classes in Mathematics, Physics and Engineering, 2013 -- 2015
 {
     width: 316px;
     height: 316px;
-    background-image: url('../assets/CNES.png');    
+    background-image: url('https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io/tree/main/assets/CNES.png');    
 
 }
 
