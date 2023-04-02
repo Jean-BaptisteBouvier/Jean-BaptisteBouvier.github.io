@@ -2,20 +2,17 @@
 layout: page
 title: Research
 ---
-(Click on the project summary to know more!)
 
-### [Multi-Agent Optimal Planning](https://mornik.web.illinois.edu/research/group/)
+
+### [The Maximax Minimax Quotient Theorem](https://github.com/Jean-BaptisteBouvier/Maximax-Minimax)
 
 <details>
-  <summary>Welfare Maximization Algorithm for Solving Budget-Constrained Multi-Component POMDPs</summary>
+  <summary>Nonlinear optimization theorem used to quantify the resilience of driftless systems.</summary>
   
   <ul>
-    <li>An algorithm for optimal policy synthesis for very large state space multi-component POMDPs within a budget.</li>
-    <li>Motivated by the problem of finding optimal maintenance and inspection policies for a group of infrastructure components.</li>
-    <li>Developed a simulator in Julia for simulating the component-POMDP and solving it using the POMCP algorithm.</li>
-    <li>Devised an optimal budget distribution algorithm and increased computational feasibility and efficiency of the optimal policy synthesis.</li>
-    <li>Outperformed current policies used in practice by a huge margin.</li>
-    <li>This work has been jointly submitted to IEEE LCSS and CDC.</li>
+    <li>Motivated by the problem of quantifying the resilience of driftless linear systems, we obtained a nonlinear optimization problem consisting of four nested optimizations.</li>
+    <li>Developed a geometrical proof.</li>
+    <li>This work has been published in the [Journal of Optimization Theory and Applications](https://link.springer.com/article/10.1007/s10957-022-02008-z).</li>
   </ul>
 
   <style>
