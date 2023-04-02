@@ -4,7 +4,7 @@ title: Resume
 ---
 
 
-[CV](/assets/CV.pdf)
+pdf version of my [CV](/assets/CV.pdf)
 
 ---
 
@@ -55,3 +55,55 @@ M.Sc., Aerospace Engineering, 2015 -- 2017
 
 ### Lycée du Parc, Lyon, France 
 Preparatory Classes in Mathematics, Physics and Engineering, 2013 -- 2015
+
+
+
+
+
+<table>
+    <tr>
+        <td class="bTop" colspan="2">
+        </td>
+    </tr>
+    <tr>
+        <td class="left_sup">
+        </td>
+        <td class="right_sup">
+        </td>
+    </tr>
+    <tr>
+        <td class="left_CNES">
+        </td>
+        <td class="right_CNES">
+        </td>
+    </tr>                                            
+</table>
+
+
+.bTop {
+    width: 1200px;
+    height: 514px;
+    background-image: url('../assets/PNNL.png');
+}
+
+.left_sup
+{
+    width: 640px;
+    height: 388px;
+    background-image: url('../assets/SUPAERO.png');    
+
+}
+
+.right_sup {    ISAE Supaero, Toulouse, France <br>
+                M.Sc., Aerospace Engineering }
+
+.left_CNES
+{
+    width: 316px;
+    height: 316px;
+    background-image: url('../assets/CNES.png');    
+
+}
+
+.right_sup {    CNES (French space agency), Toulouse;
+            Mission design for satellite constellations}
