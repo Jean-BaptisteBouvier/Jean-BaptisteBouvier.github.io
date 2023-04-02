@@ -3,7 +3,7 @@ layout: page
 title: About
 ---
 
-My name is Jean-Baptiste Bouvier and I am a postdoctoral researcher with interests spanning robotics, astrodynamics, autonomy, control theory, machine learning and optimization among others.
+My name is Jean-Baptiste Bouvier and I am a French postdoctoral researcher with interests spanning robotics, astrodynamics, autonomy, control theory, machine learning and optimization among others.
 
 I completed my PhD in Aerospace Engineering at the University of Illinois Urbana-Champaign (UIUC) in May 2023. I was working with [Prof. Melkior Ornik](https://mornik.web.illinois.edu), in the Learning, Decision, Control and Autonomy research group. My PhD work focused on the resilience of autonomous systems in the face of actuator malfunctions.
 My PhD thesis is entitled ["Guaranteed Resilience of Autonomous Systems to Loss of Control Authority over their Actuators"](). During my PhD I also collaborated with [Prof. Robyn Woollands](https://woollands.web.illinois.edu/index.html) to study the resilience of orbital missions and with [Prof. Negar Mehr](http://negar.web.illinois.edu) to establish guarantees on dynamics learning.
