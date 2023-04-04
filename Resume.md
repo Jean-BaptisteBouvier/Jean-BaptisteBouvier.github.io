@@ -10,42 +10,61 @@ pdf version of my [CV](/assets/CV.pdf)
 
 ## Current Position
 
-### Postdoctoral Researcher | 2023
-Department of Aerospace Engineering at the University of Illinois Urbana-Champaign
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/UIUC.png" alt="logo UIUC" width="200" />
+</div>
+<div style="display:inline-block;">
+  <div><strong>UIUC</strong> (University of Illinois Urbana-Champaign)</div>
+  <div>Postdoctoral Researcher, 2023</div>
+  <div>Department of Aerospace Engineering</div>
+</div>
+
 
 ---
 
 ## Previous Positions
 
-### Research Assistant | 2019 -- 2023
-
-Department of Aerospace Engineering at the University of Illinois Urbana-Champaign
-
-
-### PhD Intern | 2021
 <div style="display:inline-block;vertical-align:top;">
-    <img src="{{ site.baseurl }}/assets/PNNL.png" alt="logo PNNL" width="100" height="43" />
+    <img src="{{ site.baseurl }}/assets/UIUC.png" alt="logo UIUC" width="200" />
 </div>
 <div style="display:inline-block;">
-  <div>PNNL (Pacific Northwest National Laboratory)</div>
+  <div><strong>UIUC</strong> (University of Illinois Urbana-Champaign)</div>
+  <div>Research Assistant, 2019 -- 2023</div>
+  <div>Department of Aerospace Engineering</div>
+</div>
+
+
+
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/PNNL.png" alt="logo PNNL" width="200" />
+</div>
+<div style="display:inline-block;">
+  <div><strong>PNNL</strong> (Pacific Northwest National Laboratory)</div>
+  <div> PhD Intern, 2021</div>
   <div>Optimization & Control group, Optimization of resilient grid</div>
 </div>
- <br>
 
 
-### Intern in Flight Dynamics | 2019
 <div style="display:inline-block;vertical-align:top;">
-    <img src="{{ site.baseurl }}/assets/CNES.png" alt="logo CNES" width="100" height="100" />
+    <img src="{{ site.baseurl }}/assets/CNES.png" alt="logo CNES" width="200" />
 </div>
 <div style="display:inline-block;">
-  <div>CNES (French space agency)</div>
+  <div><strong>CNES</strong> (French space agency)</div>
+  <div>Intern in Flight Dynamics, 2019</div>
   <div>Mission design of a satellite constellation</div>
 </div>
 
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/UIUC.png" alt="logo UIUC" width="200" />
+</div>
+<div style="display:inline-block;">
+  <div><strong>UIUC</strong> (University of Illinois Urbana-Champaign)</div>
+  <div>Research Assistant, 2017 -- 2018</div>
+  <div>Department of Aerospace Engineering, Astrodynamics and trajectory optimization</div>
+</div>
 
-### Research Assistant | 2017 -- 2018
-Department of Aerospace Engineering at the University of Illinois Urbana-Champaign <br>
-Astrodynamics and trajectory optimization
+
+
 
 
 ---
@@ -64,10 +83,10 @@ Astrodynamics and trajectory optimization
 
 
 <div style="display:inline-block;vertical-align:top;">
-    <img src="{{ site.baseurl }}/assets/SUPAERO.png" alt="logo Supaero" width="160" height="97" />
+    <img src="{{ site.baseurl }}/assets/SUPAERO.png" alt="logo Supaero" width="200" />
 </div>
 <div style="display:inline-block;">
-    <div>### ISAE Supaéro, Toulouse, France </div>
+    <div><strong>ISAE Supaéro</strong>, Toulouse, France </div>
     <div>M.Sc., Aerospace Engineering, 2015 -- 2017</div>
 </div>
 
@@ -77,9 +96,3 @@ Astrodynamics and trajectory optimization
 Preparatory Classes in Mathematics, Physics and Engineering, 2013 -- 2015
 
 
-
-
-{    width: 1200px;
-    height: 514px;
-    background-image: url('https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io/tree/main/assets/PNNL.png');
-}
