@@ -50,6 +50,16 @@ Astrodynamics and trajectory optimization
 
 
 ### ISAE Supaéro, Toulouse, France 
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/SUPAERO.png" alt="logo Supaero" width="320" height="194" />
+</div>
+<div style="display:inline-block;">
+    <div>M.Sc., Aerospace Engineering</div>
+    <div>Toulouse, 2015 -- 2017</div>
+    <div>France </div>
+</div>
+
+
 <img style="float: left;" src="{{ site.baseurl }}/assets/SUPAERO.png">
 M.Sc., Aerospace Engineering, 2015 -- 2017
 
@@ -59,51 +69,16 @@ Preparatory Classes in Mathematics, Physics and Engineering, 2013 -- 2015
 
 
 
-
-<table>
-    <tr>
-        <td class="bTop" colspan="2">
-        </td>
-    </tr>
-    <tr>
-        <td class="left_sup">
-        </td>
-        <td class="right_sup">
-        </td>
-    </tr>
-    <tr>
-        <td class="left_CNES">
-        </td>
-        <td class="right_CNES">
-        </td>
-    </tr>                                            
-</table>
-
-
-.bTop {
-    width: 1200px;
+{    width: 1200px;
     height: 514px;
     background-image: url('https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io/tree/main/assets/PNNL.png');
 }
 
-.left_sup
-{
-    width: 640px;
-    height: 388px;
-    background-image: url('https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io/tree/main/assets/SUPAERO.png');    
 
-}
-
-.right_sup {    ISAE Supaero, Toulouse, France <br>
-                M.Sc., Aerospace Engineering }
-
-.left_CNES
-{
-    width: 316px;
+{    width: 316px;
     height: 316px;
     background-image: url('https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io/tree/main/assets/CNES.png');    
-
 }
 
-.right_sup {    CNES (French space agency), Toulouse;
+{    CNES (French space agency), Toulouse;
             Mission design for satellite constellations}
