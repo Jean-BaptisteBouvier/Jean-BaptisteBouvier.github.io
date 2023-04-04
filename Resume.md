@@ -28,7 +28,7 @@ pdf version of my [CV](/assets/CV.pdf)
     <img src="{{ site.baseurl }}/assets/UIUC.png" alt="logo UIUC" width="200" />
 </div>
 <div style="display:inline-block;">
-  <div><strong>UIUC</strong> (University of Illinois Urbana-Champaign)</div>
+  <div><strong>UIUC</strong></div>
   <div>Research Assistant, 2019 -- 2023</div>
   <div>Department of Aerospace Engineering</div>
 </div>
@@ -41,12 +41,13 @@ pdf version of my [CV](/assets/CV.pdf)
 <div style="display:inline-block;">
   <div><strong>PNNL</strong> (Pacific Northwest National Laboratory)</div>
   <div> PhD Intern, 2021</div>
-  <div>Optimization & Control group, Optimization of resilient grid</div>
+  <div>Optimization & Control group</div>
+  <div>Optimization of resilient grid</div>
 </div>
 
 
 <div style="display:inline-block;vertical-align:top;">
-    <img src="{{ site.baseurl }}/assets/CNES.png" alt="logo CNES" width="200" />
+    <img src="{{ site.baseurl }}/assets/CNES_logo.jpg" alt="logo CNES" width="200" />
 </div>
 <div style="display:inline-block;">
   <div><strong>CNES</strong> (French space agency)</div>
@@ -58,9 +59,10 @@ pdf version of my [CV](/assets/CV.pdf)
     <img src="{{ site.baseurl }}/assets/UIUC.png" alt="logo UIUC" width="200" />
 </div>
 <div style="display:inline-block;">
-  <div><strong>UIUC</strong> (University of Illinois Urbana-Champaign)</div>
+  <div><strong>UIUC</strong></div>
   <div>Research Assistant, 2017 -- 2018</div>
-  <div>Department of Aerospace Engineering, Astrodynamics and trajectory optimization</div>
+  <div>Department of Aerospace Engineering</div>
+  <div>Astrodynamics and trajectory optimization</div>
 </div>
 
 
@@ -82,15 +84,8 @@ pdf version of my [CV](/assets/CV.pdf)
 
 
 
-<div style="display:inline-block;vertical-align:top;">
-    <img src="{{ site.baseurl }}/assets/SUPAERO.png" alt="logo Supaero" width="200" />
-</div>
-<div style="display:inline-block;">
-    <div><strong>ISAE Supaéro</strong>, Toulouse, France </div>
-    <div>M.Sc., Aerospace Engineering, 2015 -- 2017</div>
-</div>
-
-
+### ISAE Supaéro, Toulouse, France
+M.Sc., Aerospace Engineering, 2015 -- 2017
 
 ### Lycée du Parc, Lyon, France 
 Preparatory Classes in Mathematics, Physics and Engineering, 2013 -- 2015
