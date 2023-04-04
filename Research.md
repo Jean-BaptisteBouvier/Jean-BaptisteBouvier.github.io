@@ -3,6 +3,28 @@ layout: page
 title: Research
 ---
 
+### [Quantitative Resilience of Driftless Systems](https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience)
+
+<details>
+  <summary>Quantifying the resilience of linear driftless systems enduring a partial loss of control authority over their actuators.</summary>
+  
+  <ul>
+    <li>The nominal dynamics of interest are $\dot{x}(t) = \bar{B} \bar{u}(t)$, with $x(0) = x_0 \in \mathbb{R}^n$, and $\bar{u}(t) \in \bar{\mathcal{U}}$.</li>
+    <li>After a <em>partial loss of control authority over actuators</em>, the malfunctioning dynamics become $\dot{x}(t) = Bu(t) + Cw(t)$, $x(0) = x_0 \in \mathbb{R}^n$, with control $u(t) \in \mathcal{U}$ and undesirable input $w(t) \in \mathcal{W}$.</li>
+    <li>To quantify how much longer the malfunctioning system needs to reach a target $x_g \in \mathbb{R}^n$ compared to the nominal dynamics, we introduce the <em>nominal reach time</em> 
+      $$T_N^*(x_g) := \underset{\bar{u}(t) \, \in \, \bar{\mathcal{U}} }{\inf} \left\{ T : x_g - x_0 = \int_0^T \bar{B} \bar{u}(t) dt \right\},$$
+    the <em>malfunctioning reach time</em>
+      $$T_M^*(x_g) := \underset{w(t) \, \in \, \mathcal{W} }{\sup} \left\{ \underset{u(t) \, \in \, \mathcal{U} }{\inf} \left\{ T : x_g - x_0 = \int_0^T Bu(t) + Cw(t) dt \right\} \right\},$$
+    and the <em>quantitative resilience</em> of the system
+      $$r_q := \underset{x_g \, \in \, \mathbb{R}^n}{\inf} \frac{T_N^*(x_g)}{T_M^*(x_g)}.$$
+    </li>
+    <li>Relying on time-optimal control theory we simplified the expressions of the reach times $T_N^*$ and $T_M^*$. Then, we established the Maximax Minimax Quotient Theorem to solve the nonlinear optimization over $x_g$ in $r_q$.</li>
+    <li>This work has not been published yet in the <a href="">IEEE Transactions of Automatic Control</a>.</li>
+  </ul>
+  
+</details>
+
+
 
 ### [The Maximax Minimax Quotient Theorem](https://github.com/Jean-BaptisteBouvier/Maximax-Minimax)
 
