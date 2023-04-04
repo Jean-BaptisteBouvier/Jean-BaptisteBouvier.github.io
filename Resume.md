@@ -23,12 +23,25 @@ Department of Aerospace Engineering at the University of Illinois Urbana-Champai
 
 
 ### PhD Intern | 2021
-PNNL (Pacific Northwest National Laboratory) <br>
-Optimization & Control group, Optimization of resilient grid 
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/PNNL.png" alt="logo PNNL" width="100" height="43" />
+</div>
+<div style="display:inline-block;">
+  <div>PNNL (Pacific Northwest National Laboratory)</div>
+  <div>Optimization & Control group, Optimization of resilient grid</div>
+</div>
+ <br>
+
 
 ### Intern in Flight Dynamics | 2019
-CNES (French space agency) <br>
-Mission design of a satellite constellation
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/CNES.png" alt="logo CNES" width="100" height="100" />
+</div>
+<div style="display:inline-block;">
+  <div>CNES (French space agency)</div>
+  <div>Mission design of a satellite constellation</div>
+</div>
+
 
 ### Research Assistant | 2017 -- 2018
 Department of Aerospace Engineering at the University of Illinois Urbana-Champaign <br>
@@ -49,19 +62,16 @@ Astrodynamics and trajectory optimization
   Advisor: [Prof. Koki Ho](https://ae.gatech.edu/directory/person/koki-ho)
 
 
-### ISAE Supaéro, Toulouse, France 
+
 <div style="display:inline-block;vertical-align:top;">
-    <img src="{{ site.baseurl }}/assets/SUPAERO.png" alt="logo Supaero" width="320" height="194" />
+    <img src="{{ site.baseurl }}/assets/SUPAERO.png" alt="logo Supaero" width="160" height="97" />
 </div>
 <div style="display:inline-block;">
-    <div>M.Sc., Aerospace Engineering</div>
-    <div>Toulouse, 2015 -- 2017</div>
-    <div>France </div>
+    <div>### ISAE Supaéro, Toulouse, France </div>
+    <div>M.Sc., Aerospace Engineering, 2015 -- 2017</div>
 </div>
 
 
-<img style="float: left;" src="{{ site.baseurl }}/assets/SUPAERO.png">
-M.Sc., Aerospace Engineering, 2015 -- 2017
 
 ### Lycée du Parc, Lyon, France 
 Preparatory Classes in Mathematics, Physics and Engineering, 2013 -- 2015
@@ -73,12 +83,3 @@ Preparatory Classes in Mathematics, Physics and Engineering, 2013 -- 2015
     height: 514px;
     background-image: url('https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io/tree/main/assets/PNNL.png');
 }
-
-
-{    width: 316px;
-    height: 316px;
-    background-image: url('https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io/tree/main/assets/CNES.png');    
-}
-
-{    CNES (French space agency), Toulouse;
-            Mission design for satellite constellations}
