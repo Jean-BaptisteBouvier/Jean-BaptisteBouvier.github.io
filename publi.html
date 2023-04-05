@@ -4,20 +4,40 @@ title: publi
 ---
 
 <head>
-  <style type="text/css">
-    #e1 {display:inline-block;margin-right:10px;} 
-    #e2 {display:inline-block;}
+  <title>Publications</title>
+  <style>
+    .abstract, .bibtex {
+      display: none;
+    }
   </style>
+  <script>
+    function toggleDisplay(id) {
+      var element = document.getElementById(id);
+      if (element.style.display === "none") {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+  </script>
 </head>
 <body>
-  <details id="e1"> 
-    <summary>Abstract</summary>
-    Stuff.  
-  </details> / 
-  <details id="e2">
-    <summary>Bibtex</summary>
-    Other stuff
-  </details>
+  <h1>Publications</h1>
+  
+  <h2>Paper 1</h2>
+  <button onclick="toggleDisplay('paper1-abstract')">Abstract</button>
+  <button onclick="toggleDisplay('paper1-bibtex')">Bibtex</button>
+  <div id="paper1-abstract" class="abstract">
+    <p>Description of the abstract for Paper 1.</p>
+  </div>
+  <div id="paper1-bibtex" class="bibtex">
+    <p>Bibtex for Paper 1.</p>
+  </div>
+
+  <!-- Add more papers here -->
+  
+
+
 
 <!--
 ## Journal papers
