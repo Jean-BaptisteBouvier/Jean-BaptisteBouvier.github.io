@@ -7,9 +7,54 @@ title: Publications
 
 ## Journal papers
 
-J.-B. Bouvier, K. Xu, M. Ornik. Quantitative resilience of generalized integrators. [IEEE Transactions on Automatic Control](), 2023, [ArXiv](https://arxiv.org/abs/2111.04163).
-    
-J.-B. Bouvier, M. Ornik. Resilience of linear systems to partial loss of control authority. [Automatica](https://www.sciencedirect.com/science/article/pii/S0005109823001383), vol. 152, pp. 110985, 2023, [ArXiv](https://arxiv.org/abs/2209.08034).
+[Quantitative resilience of generalized integrators](PDFs/Quantitative_Resilience_of_Generalized_Integrators__ArXiv_.pdf) <br>
+<strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Melkior Ornik <br>
+[IEEE Transactions on Automatic Control (TAC)](), 2023. <br>
+<details>
+  <summary>Abstract</summary>
+  When failure is not an option, systems are designed to be resistant to various malfunctions, like a loss of control authority over actuators. This malfunction consists in some actuators producing uncontrolled and thus possibly undesirable inputs with their full actuation range. After such a malfunction, a system is deemed resilient if its target is still reachable despite these undesirable inputs. However, the malfunctioning system might be significantly slower to reach its target compared to its initial capabilities. To quantify this loss of performance we introduce the notion of quantitative resilience as the maximal ratio over all targets of the minimal reach times for the initial and malfunctioning systems. Since quantitative resilience is then defined as four nested nonlinear optimization problems, we establish an efficient computation method for control systems with multiple integrators and nonsymmetric input sets. Relying on control theory and on two specific geometric results we reduce the computation of quantitative resilience to a linear optimization problem. We illustrate our method on an octocopter.  
+</details> / 
+<details>
+    <summary>Bibtex</summary>
+    ```
+    @article{bouvier2023quantitative,  
+      title = {Quantitative Resilience of Generalized Integrators},   
+      author = {Jean-Baptiste Bouvier and Kathleen Xu and Melkior Ornik},    
+      journal = {IEEE Transactions on Automatic Control},    
+      year = {2023},   
+      volume = {},
+      pages = {},
+      doi = {}
+    }
+    ```
+</details> / [ArXiv](https://arxiv.org/abs/2111.04163) / [GitHub](https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience) <br>
+
+
+
+
+[Resilience of linear systems to partial loss of control authority](PDFs/Resilience_of_Linear_Systems__ECC_extended_.pdf)
+<strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik.
+[Automatica](https://www.sciencedirect.com/science/article/pii/S0005109823001383), 2023.
+<details>
+  <summary>Abstract</summary>
+  After a loss of control authority over thrusters of the Nauka module, the International Space Station lost attitude control for 45 minutes with potentially disastrous consequences. Motivated by this scenario, we investigate the continued capability of control systems to perform their task despite partial loss of authority over their actuators. We say that a system is resilient to such a malfunction if for any undesirable inputs and any target state there exists an admissible control driving the state to the target. Building on controllability conditions and differential games theory, we establish a necessary and sufficient condition for the resilience of linear systems. As their task might be time-constrained, ensuring completion alone is not sufficient. We also want to estimate how much slower the malfunctioning system is compared to its nominal performance. Relying on Lyapunov theory we derive analytical bounds on the reach times of the nominal and malfunctioning systems in order to quantify their resilience. We illustrate our work on the ADMIRE fighter jet model and on a temperature control system.
+</details> / 
+<details>
+    <summary>Bibtex</summary>
+    ```
+    @article{bouvier2023resilience,  
+      title = {Resilience of Linear Systems to Partial Loss of Control Authority},   
+      author = {Jean-Baptiste Bouvier and Melkior Ornik},    
+      journal = {Automatica},    
+      year = {2023},   
+      volume = {152},
+      pages = {110985},
+      doi = {10.1016/j.automatica.2023.110985}
+    }
+    ```
+</details> [ArXiv](https://arxiv.org/abs/2209.08034) / [GitHub](https://github.com/Jean-BaptisteBouvier/Resilience-of-Linear-Systems) <br>
+
+
 
 J.-B. Bouvier, M. Ornik. Designing resilient linear systems, 2022. [IEEE Transactions on Automatic Control](https://ieeexplore.ieee.org/document/9744569), vol. 67 (9), pp. 4832--4837, [ArXiv](https://arxiv.org/abs/2006.13820).
   
