@@ -1,6 +1,6 @@
 ---
 layout: page
-title: publi
+title: Publications
 ---
 
 <head>
@@ -8,6 +8,11 @@ title: publi
   <style>
     .abstract, .bibtex {
       display: none;
+    }
+    a { 
+      color: #0000EE;
+      text-decoration: underline;
+      cursor: pointer;
     }
   </style>
   <script>
@@ -22,11 +27,11 @@ title: publi
   </script>
 </head>
 <body>
-  <h1>Publications</h1>
   
   <h2>Paper 1</h2>
-  <button onclick="toggleDisplay('paper1-abstract')">Abstract</button>
-  <button onclick="toggleDisplay('paper1-bibtex')">Bibtex</button>
+  <p>
+    <a onclick="toggleDisplay('paper1-abstract')">Abstract</a> | <a onclick="toggleDisplay('paper1-bibtex')">Bibtex</a>
+  </p>
   <div id="paper1-abstract" class="abstract">
     <p>Description of the abstract for Paper 1.</p>
   </div>
@@ -138,5 +143,20 @@ J.-B. Bouvier. Doctoral thesis: Guaranteed resilience of autonomous systems to l
 
 J.-B. Bouvier. Master thesis: Orbit control for a spacecraft around a splitting contact binary asteroid. [University of Illinois Urbana-Champaign](https://www.ideals.illinois.edu/items/109882), 2018.
 -->
+  
+  <!-- COmmented MODEL
+  <h2>Paper 1</h2>
+  <p>
+    <a onclick="toggleDisplay('paper1-abstract')">Abstract</a> | <a onclick="toggleDisplay('paper1-bibtex')">Bibtex</a>
+  </p>
+  <div id="paper1-abstract" class="abstract">
+    <p>Description of the abstract for Paper 1.</p>
+  </div>
+  <div id="paper1-bibtex" class="bibtex">
+    <p>Bibtex for Paper 1.</p>
+  </div>
+  -->
+  
+  
   
 </body>
