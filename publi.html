@@ -27,16 +27,40 @@ title: Publications
   </script>
 </head>
 <body>
+  <h1> Journal papers </h1>
   
-  <h2>Paper 1</h2>
+  <h2><a href="PDFs/Quantitative_Resilience_of_Generalized_Integrators__ArXiv_.pdf">Quantitative resilience of generalized integrators</a></h2>
   <p>
-    <a onclick="toggleDisplay('paper1-abstract')">Abstract</a> | <a onclick="toggleDisplay('paper1-bibtex')">Bibtex</a>
+    <strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Melkior Ornik <br>
+    <a href="">IEEE Transactions on Automatic Control (TAC)</a>, 2023. <br>
+    <a onclick="toggleDisplay('paper1-abstract')">Abstract</a> | 
+    <a onclick="toggleDisplay('paper1-bibtex')">Bibtex</a> |
+    <a href="https://arxiv.org/abs/2111.04163">ArXiv</a> |
+    <a href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience">GitHub</a>
   </p>
   <div id="paper1-abstract" class="abstract">
-    <p>Description of the abstract for Paper 1.</p>
+    <p>When failure is not an option, systems are designed to be resistant to various malfunctions, like a loss of control authority over actuators.
+      This malfunction consists in some actuators producing uncontrolled and thus possibly undesirable inputs with their full actuation range. 
+      After such a malfunction, a system is deemed resilient if its target is still reachable despite these undesirable inputs. 
+      However, the malfunctioning system might be significantly slower to reach its target compared to its initial capabilities. 
+      To quantify this loss of performance we introduce the notion of quantitative resilience as the maximal ratio over all targets of the minimal reach times for the initial and malfunctioning systems.
+      Since quantitative resilience is then defined as four nested nonlinear optimization problems, we establish an efficient computation method for control systems with multiple integrators and nonsymmetric input sets.
+      Relying on control theory and on two specific geometric results we reduce the computation of quantitative resilience to a linear optimization problem. 
+      We illustrate our method on an octocopter.  </p>
   </div>
   <div id="paper1-bibtex" class="bibtex">
-    <p>Bibtex for Paper 1.</p>
+    <p> ```
+      @article{bouvier2023quantitative,  
+        title = {Quantitative Resilience of Generalized Integrators},   
+        author = {Jean-Baptiste Bouvier and Kathleen Xu and Melkior Ornik},    
+        journal = {IEEE Transactions on Automatic Control},    
+        year = {2023},   
+        volume = {},
+        pages = {},
+        doi = {}
+      }
+    ```
+    </p>
   </div>
 
   <!-- Add more papers here -->
@@ -45,32 +69,7 @@ title: Publications
 
 
 <!--
-## Journal papers
-
-[Quantitative resilience of generalized integrators](PDFs/Quantitative_Resilience_of_Generalized_Integrators__ArXiv_.pdf) <br>
-<strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Melkior Ornik <br>
-[IEEE Transactions on Automatic Control (TAC)](), 2023. <br>
-<a href="https://arxiv.org/abs/2111.04163">ArXiv</a> / <a href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience">GitHub</a> 
-<details id="element1"> 
-  <summary>Abstract</summary>
-  When failure is not an option, systems are designed to be resistant to various malfunctions, like a loss of control authority over actuators. This malfunction consists in some actuators producing uncontrolled and thus possibly undesirable inputs with their full actuation range. After such a malfunction, a system is deemed resilient if its target is still reachable despite these undesirable inputs. However, the malfunctioning system might be significantly slower to reach its target compared to its initial capabilities. To quantify this loss of performance we introduce the notion of quantitative resilience as the maximal ratio over all targets of the minimal reach times for the initial and malfunctioning systems. Since quantitative resilience is then defined as four nested nonlinear optimization problems, we establish an efficient computation method for control systems with multiple integrators and nonsymmetric input sets. Relying on control theory and on two specific geometric results we reduce the computation of quantitative resilience to a linear optimization problem. We illustrate our method on an octocopter.  
-</details>
-<details id="element2">
-    <summary>Bibtex</summary>
-    ```
-    @article{bouvier2023quantitative,  
-      title = {Quantitative Resilience of Generalized Integrators},   
-      author = {Jean-Baptiste Bouvier and Kathleen Xu and Melkior Ornik},    
-      journal = {IEEE Transactions on Automatic Control},    
-      year = {2023},   
-      volume = {},
-      pages = {},
-      doi = {}
-    }
-    ```
-</details>  <br>
-
-
+## 
 
 
 
