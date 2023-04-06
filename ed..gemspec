@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
     "documentation_uri" => "https://minicomp.github.io/ed/documentation/",
     "wiki_uri" => "https://github.com/minicomp/ed/wiki",
     "homepage_uri"    => "https://minicomp.github.io/ed/",
-    "source_code_uri" => "https://github.com/minicomp/ed"
+    "source_code_uri" => "https://github.com/Jean-BaptisteBouvier/Jean-BaptisteBouvier.github.io"
   }
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(404|assets|optional|_layouts|_includes|_sass|_texts|index|search|about|credits|documentation|atom|Gemfile|LICENSE|README)}i) }
