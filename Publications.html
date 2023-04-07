@@ -8,18 +8,15 @@ title: Publications
   <style>
     .abstract, .bibtex {
       display: none;
-      font-size: 14px;
+      font-size: 12px;
+    }
+    .paper {
+      font-size: 16px;
     }
     a { 
       color: #0000EE;
       text-decoration: underline;
       cursor: pointer;
-    }
-    p {
-      font-size: 16px;
-    }
-    div {
-      font-size: 16px;
     }
   </style>
   <script>
@@ -43,7 +40,7 @@ title: Publications
 <div style="display:inline-block;vertical-align:top;">
     <img src="{{ site.baseurl }}/assets/Integrators_pic.JPG" alt="pic from paper" width="150" />
 </div>
-<div style="display:inline-block;">
+<div style="display:inline-block;" class="paper">
   <em>Quantitative Resilience of Generalized Integrators</em> <br>
   <strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Melkior Ornik <br>
   <a href="">IEEE Transactions on Automatic Control (TAC)</a>, 2023 <br>
@@ -55,14 +52,14 @@ title: Publications
 </div>
 </p>
 <div id="integrators-abstract" class="abstract">
-  <p>When failure is not an option, systems are designed to be resistant to various malfunctions, like a loss of control authority over actuators.
-    This malfunction consists in some actuators producing uncontrolled and thus possibly undesirable inputs with their full actuation range. 
-    After such a malfunction, a system is deemed resilient if its target is still reachable despite these undesirable inputs. 
-    However, the malfunctioning system might be significantly slower to reach its target compared to its initial capabilities. 
-    To quantify this loss of performance we introduce the notion of quantitative resilience as the maximal ratio over all targets of the minimal reach times for the initial and malfunctioning systems.
-    Since quantitative resilience is then defined as four nested nonlinear optimization problems, we establish an efficient computation method for control systems with multiple integrators and nonsymmetric input sets.
-    Relying on control theory and on two specific geometric results we reduce the computation of quantitative resilience to a linear optimization problem. 
-    We illustrate our method on an octocopter.  </p>
+  When failure is not an option, systems are designed to be resistant to various malfunctions, like a loss of control authority over actuators.
+  This malfunction consists in some actuators producing uncontrolled and thus possibly undesirable inputs with their full actuation range. 
+  After such a malfunction, a system is deemed resilient if its target is still reachable despite these undesirable inputs. 
+  However, the malfunctioning system might be significantly slower to reach its target compared to its initial capabilities. 
+  To quantify this loss of performance we introduce the notion of quantitative resilience as the maximal ratio over all targets of the minimal reach times for the initial and malfunctioning systems.
+  Since quantitative resilience is then defined as four nested nonlinear optimization problems, we establish an efficient computation method for control systems with multiple integrators and nonsymmetric input sets.
+  Relying on control theory and on two specific geometric results we reduce the computation of quantitative resilience to a linear optimization problem. 
+  We illustrate our method on an octocopter.
 </div>
 <div id="integrators-bibtex" class="bibtex">
 <pre><code>
@@ -84,7 +81,7 @@ title: Publications
 <div style="display:inline-block;vertical-align:top;">
     <img src="{{ site.baseurl }}/assets/Automatica_pic.jpg" alt="pic from paper" width="150" />
 </div>
-<div style="display:inline-block;"><p>
+<div style="display:inline-block;" class="paper">
   <em>Resilience of Linear Systems to Partial Loss of Control Authority</em> <br>
   <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
   <a href="https://www.sciencedirect.com/science/article/pii/S0005109823001383">Automatica</a>, 2023 <br>
@@ -93,17 +90,17 @@ title: Publications
   <a href="{{site.baseurl}}/PDFs/Resilience_of_Linear_Systems__ECC_extended_.pdf">Pdf</a> |
   <a href="https://arxiv.org/abs/2209.08034">ArXiv</a> |
   <a href="https://github.com/Jean-BaptisteBouvier/Resilience-of-Linear-Systems">GitHub</a>
-</p></div>
+</div>
 </p>
 <div id="ECC_ext-abstract" class="abstract">
-  <p>After a loss of control authority over thrusters of the Nauka module, the International Space Station lost attitude control for 45 minutes with potentially disastrous consequences.
+  After a loss of control authority over thrusters of the Nauka module, the International Space Station lost attitude control for 45 minutes with potentially disastrous consequences.
   Motivated by this scenario, we investigate the continued capability of control systems to perform their task despite partial loss of authority over their actuators.
   We say that a system is resilient to such a malfunction if for any undesirable inputs and any target state there exists an admissible control driving the state to the target.
   Building on controllability conditions and differential games theory, we establish a necessary and sufficient condition for the resilience of linear systems.
   As their task might be time-constrained, ensuring completion alone is not sufficient.
   We also want to estimate how much slower the malfunctioning system is compared to its nominal performance. 
   Relying on Lyapunov theory we derive analytical bounds on the reach times of the nominal and malfunctioning systems in order to quantify their resilience.
-  We illustrate our work on the ADMIRE fighter jet model and on a temperature control system. </p>
+  We illustrate our work on the ADMIRE fighter jet model and on a temperature control system.
 </div> 
 <div id="ECC_ext-bibtex" class="bibtex">
 <pre><code>
@@ -123,6 +120,10 @@ title: Publications
         
       
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/Design_pic.png" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Designing Resilient Linear Systems</em><br>
   <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
   <a href="https://ieeexplore.ieee.org/document/9744569">IEEE Transactions on Automatic Control</a>, 2022 <br>
@@ -131,16 +132,17 @@ title: Publications
   <a href="{{site.baseurl}}/PDFs/Designing_Resilient_Linear_Driftless_Systems__arXiv_.pdf">Pdf</a> |
   <a href="https://arxiv.org/abs/2006.13820">ArXiv</a> |
   <a href="https://github.com/Jean-BaptisteBouvier/Designing-Resilient-Linear-Systems">GitHub</a>
+</div>
 </p>
 <div id="design-abstract" class="abstract">
-  <p>Critical systems must be designed resilient to malfunctions and especially to a loss of control authority over actuators.
+  Critical systems must be designed resilient to malfunctions and especially to a loss of control authority over actuators.
   This malfunction considers actuators producing uncontrolled and possibly undesirable outputs.
   We investigate the design of resilient linear systems capable of reaching their target even after such a malfunction.
   In contrast with the settings considered by robust control and fault-tolerant control, we consider undesirable but observable inputs of the same magnitude as controls since they are produced by a faulty actuator belonging to the system.
   The control inputs can then depend on these undesirable inputs.
   Building on our previous work, we focus on designing resilient systems able to withstand the loss of one or multiple actuators.
   Since resilience refers to the existence of a control law driving the state to the target, we naturally continue with the synthesis of such a control law.
-  We conclude with the application of our theory to the ADMIRE fighter jet model.</p>
+  We conclude with the application of our theory to the ADMIRE fighter jet model.
 </div>
 <div id="design-bibtex" class="bibtex">
 <pre><code>
@@ -159,6 +161,10 @@ title: Publications
         
       
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/JOTA_pic.PNG" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>The Maximax Minimax Quotient Theorem</em><br>
   <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
   <a href="https://doi.org/10.1007/s10957-022-02008-z">Journal of Optimization Theory and Applications</a>, 2022 <br>
@@ -167,12 +173,13 @@ title: Publications
   <a href="{{site.baseurl}}/PDFs/Designing_Resilient_Linear_Driftless_Systems__arXiv_.pdf">Pdf</a> |
   <a href="https://arxiv.org/abs/2104.15025">ArXiv</a> |
   <a href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax">GitHub</a>
+</div>
 </p>
 <div id="maximax-abstract" class="abstract">
-  <p>We present an optimization problem emerging from optimal control theory and situated at the intersection of fractional programming and linear max-min programming on polytopes.
-    A naive solution would require solving four nested, possibly nonlinear, optimization problems.
-    Instead, relying on numerous geometric arguments we determine an analytical solution to this problem.
-    In the course of proving our main theorem we also establish another optimization result stating that the minimum of a specific minimax optimization is located at a vertex of the constraint set.</p>
+  We present an optimization problem emerging from optimal control theory and situated at the intersection of fractional programming and linear max-min programming on polytopes.
+  A naive solution would require solving four nested, possibly nonlinear, optimization problems.
+  Instead, relying on numerous geometric arguments we determine an analytical solution to this problem.
+  In the course of proving our main theorem we also establish another optimization result stating that the minimum of a specific minimax optimization is located at a vertex of the constraint set.
 </div>
 <div id="maximax-bibtex" class="bibtex">
 <pre><code>
@@ -192,19 +199,24 @@ title: Publications
   
 
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/Tiago_pic.PNG" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Spacecraft Trajectory Tracking and Parameter Estimation around a Splitting Contact Binary Asteroid</em><br>
   Tiago Silva, <strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Masatoshi Hirabayashi, Koki Ho <br>
   <a href="https://www.sciencedirect.com/science/article/pii/S0094576520301259">Acta Astronautica</a>, 2022 <br>
   <a onclick="toggleDisplay('asteroid-abstract')">Abstract</a> | 
   <a onclick="toggleDisplay('asteroid-bibtex')">Bibtex</a>
+</div>
 </p>
 <div id="asteroid-abstract" class="abstract">
-  <p>Increasing interest in asteroid mining and in-situ resource utilization will lead to an increase in asteroid surface operations.
+  Increasing interest in asteroid mining and in-situ resource utilization will lead to an increase in asteroid surface operations.
   The geophysical properties of asteroids are often unknown and play a significant role in the resulting gravitational fields.
   Surface operations such as mining may significantly alter the asteroid's structure or, in the case of contact binary asteroids, cause the asteroid to split depending on the rotational condition.
   The coupled problem of estimating unknown parameters of a splitting contact-binary system and controlling a spacecraft's trajectory in the system's vicinity is investigated.
   An indirect adaptive control scheme is utilized to simultaneously meet both objectives. 
-  The results are compared with the traditional 2-body controller and the improvement enabled by the proposed scheme is demonstrated.</p>
+  The results are compared with the traditional 2-body controller and the improvement enabled by the proposed scheme is demonstrated.
 </div>
 <div id="asteroid-bibtex" class="bibtex">
 <pre><code>
@@ -224,20 +236,25 @@ title: Publications
 
 
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/Bindu_pic.png" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Preliminary Design of Low-Energy, Low-Thrust Transfers to Halo Orbits using Feedback Control</em><br>
   Bindu Jagannatha, <strong>Jean-Baptiste Bouvier</strong>, Koki Ho <br>
   <a href="https://arc.aiaa.org/doi/full/10.2514/1.G003759">Journal of Guidance, Control and Dynamics</a>, 2019 <br>
   <a onclick="toggleDisplay('halo-abstract')">Abstract</a> | 
   <a onclick="toggleDisplay('halo-bibtex')">Bibtex</a> |
   <a href="{{site.baseurl}}/PDFs/Preliminary_Design_of_Low_Energy_Low_Thrust_Transfers_to_Halo_Orbits_using_Feedback_Control__13350576qwkhqypqjjvj_.pdf">Pdf</a>
+</div>
 </p>
 <div id="halo-abstract" class="abstract">
-  <p>Calculating low-thrust trajectories that connect geocentric orbits to Earth-moon halo orbits involves designing the many-revolution thrust arc required to depart Earth vicinity.
+  Calculating low-thrust trajectories that connect geocentric orbits to Earth-moon halo orbits involves designing the many-revolution thrust arc required to depart Earth vicinity.
   Existing methods are based on solving the corresponding optimal control problem and hence are computationally expensive, involve providing hard-to-obtain initial guesses, and do not lend themselves well to quick parametric trade studies.
   In this paper, a stochastic optimization algorithm is coupled with a Lyapunov feedback control law to explore the solution space for designing Earth-to-halo low-energy low-thrust trajectories.
   While the objective is to minimize the fuel consumed for the transfer, the time of flight is constrained so as to optimally distribute the coast time between the low-thrust escape spiral and the low-energy arc.
   Engines are assumed to have a constant specific impulse and provide constant thrust throughout the transfer. The results obtained from this method are then compared with other available reference solutions in order to quantify its effectiveness in designing such transfers.
-  Favorable comparisons thus obtained demonstrate the utility of the proposed method in calculating almost-optimal solutions, combined with a large improvement in computation time.</p>
+  Favorable comparisons thus obtained demonstrate the utility of the proposed method in calculating almost-optimal solutions, combined with a large improvement in computation time.
 </div>
 <div id="halo-bibtex" class="bibtex">
 <pre><code>
@@ -269,21 +286,26 @@ title: Publications
 
 
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/ISC_pic.PNG" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Assured System-Level Resilience for Guaranteed Disaster Response</em><br>
   Melkior Ornik, <strong>Jean-Baptiste Bouvier</strong> <br>
   <a href="https://ieeexplore.ieee.org/document/9922438">8th IEEE International Smart Cities Conference</a>, 2022 <br>
   <a onclick="toggleDisplay('disaster-abstract')">Abstract</a> | 
   <a onclick="toggleDisplay('disaster-bibtex')">Bibtex</a> |
   <a href="{{site.baseurl}}/PDFs/ISC2_Resilience.pdf">Pdf</a>
+</div>
 </p>
 <div id="disaster-abstract" class="abstract">
-  <p>Resilience of urban infrastructure to sudden, system-wide, potentially catastrophic events is a critical need across domains.
+  Resilience of urban infrastructure to sudden, system-wide, potentially catastrophic events is a critical need across domains.
   The growing connectivity of infrastructure, including its cyber-physical components which can be controlled in real time, offers an attractive path towards rapid adaptation to adverse events and adjustment of system objectives.
   However, existing work in the field often offers piecemeal approaches to particular scenarios.
   On the other hand, abstract work on controlled complex systems focuses on attempting to adapt to the changes in the system dynamics or environment, but without understanding that the system may simply not be able to perform its original task after an adverse event.
   To address this challenge, this programmatic paper proposes a vision for a new paradigm of infrastructure resilience. Such a framework treats infrastructure across domains through a unified theory of controlled dynamical systems, but remains cognizant of the lack of knowledge about the system following a widespread adverse event and aims to identify the system's fundamental limits.
   As a result, it will enable the infrastructure operator to assess and assure system performance following an adverse event, even if the exact nature of the event is not yet known.
-  Motivated by ongoing work on some facets of the broader problem of assured resilience, in this paper we identify promising early results, challenges that motivate the development of new theory, and possible paths forward for the proposed effort.</p>
+  Motivated by ongoing work on some facets of the broader problem of assured resilience, in this paper we identify promising early results, challenges that motivate the development of new theory, and possible paths forward for the proposed effort.
 </div>
 <div id="disaster-bibtex" class="bibtex">
 <pre><code>
@@ -301,6 +323,10 @@ title: Publications
   
   
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/ECC_pic.jpg" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Quantitative Resilience of Linear Systems</em><br>
   <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
   <a href="https://ieeexplore.ieee.org/document/9838147">20th European Control Conference</a>, 2022 <br>
@@ -308,16 +334,17 @@ title: Publications
   <a onclick="toggleDisplay('ECC-bibtex')">Bibtex</a> |
   <a href="{{site.baseurl}}/PDFs/Quantitative_Resilience_of_Linear_Systems__ECC_.pdf">Pdf</a> |
   <a href="https://arxiv.org/abs/2201.12278">ArXiv</a>
+</div>
 </p>
 <div id="ECC-abstract" class="abstract">
-  <p>Actuator malfunctions may have disastrous consequences for systems not designed to mitigate them. 
+  Actuator malfunctions may have disastrous consequences for systems not designed to mitigate them. 
   We focus on the loss of control authority over actuators, where some actuators are uncontrolled but remain fully capable. 
   To counteract the undesirable outputs of these malfunctioning actuators, we use real-time measurements and redundant actuators. 
   In this setting, a system that can still reach its target is deemed resilient. 
   To quantify the resilience of a system, we compare the shortest time for the undamaged system to reach the target with the worst-case shortest time for the malfunctioning system to reach the same target, i.e., when the malfunction makes that time the longest.
   Contrary to prior work on driftless linear systems, the absence of analytical expression for time-optimal controls of general linear systems prevents an exact calculation of quantitative resilience.
   Instead, relying on Lyapunov theory we derive analytical bounds on the nominal and malfunctioning reach times in order to bound quantitative resilience. 
-  We illustrate our work on a temperature control system.</p>
+  We illustrate our work on a temperature control system.
 </div>
 <div id="ECC-bibtex" class="bibtex">
 <pre><code>
@@ -335,6 +362,10 @@ title: Publications
       
  
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/ACC_pic.JPG" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Distributed Transient Safety Verification via Robust Control Invariant Sets: A Microgrid Application</em><br>
   <strong>Jean-Baptiste Bouvier</strong>, Sai Pushpak Nandanoori, Melkior Ornik, Soumya Kundu <br>
   <a href="https://ieeexplore.ieee.org/document/9867323">2022 American Control Conference</a>, 2022 <br>
@@ -343,13 +374,14 @@ title: Publications
   <a href="{{site.baseurl}}/PDFs/ACC long.pdf">Pdf</a> |
   <a href="https://arxiv.org/abs/2202.09320">ArXiv</a> |
   <a href="https://github.com/Jean-BaptisteBouvier/Microgrid-transient-safety">GitHub</a>
+</div>
 </p>
 <div id="ACC-abstract" class="abstract">
-  <p>Modern safety-critical energy infrastructures are operated in a hierarchical and modular control framework allowing only limited data exchange between modules.
+  Modern safety-critical energy infrastructures are operated in a hierarchical and modular control framework allowing only limited data exchange between modules.
   In this context, to assure system-wide safety each module must synthesize and communicate constraints on the values of exchanged data.
   To ensure transient safety in inverter-based microgrids, we develop a set invariance-based distributed safety verification algorithm for each inverter module.
   Applying Nagumo's invariance condition, we construct a robust polynomial optimization problem to jointly search for safety-admissible set of control set-points and design parameters, under allowable disturbances from neighbors. 
-  We solve the verification problem with sum-of-squares programming and we perform numerical simulations using grid-forming inverters to illustrate our method.</p>
+  We solve the verification problem with sum-of-squares programming and we perform numerical simulations using grid-forming inverters to illustrate our method.
 </div>
 <div id="ACC-bibtex" class="bibtex">
 <pre><code>
@@ -367,6 +399,10 @@ title: Publications
 
 
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/SIAM_pic.PNG" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Quantitative Resilience of Linear Driftless Systems</em><br>
   <strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Melkior Ornik <br>
   <a href="https://epubs.siam.org/doi/abs/10.1137/1.9781611976847.5">SIAM Conference on Control and its Applications</a>, 2021 <br>
@@ -375,9 +411,10 @@ title: Publications
   <a href="{{site.baseurl}}/PDFs/Quantitative_Resilience_of_Linear_Driftless_Systems__SIAM_CT_.pdf">Pdf</a> |
   <a href="https://arxiv.org/abs/2101.12063">ArXiv</a> |
   <a href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience">GitHub</a>
+</div>
 </p>
 <div id="SIAM-abstract" class="abstract">
-  <p>This paper introduces the notion of quantitative resilience of a control system.
+  This paper introduces the notion of quantitative resilience of a control system.
   Following prior work, we study linear driftless systems enduring a loss of control authority over some of their actuators.
   Such a malfunction results in actuators producing possibly undesirable inputs over which the controller has real-time readings but no control.
   By definition, a system is resilient if it can still reach a target after a partial loss of control authority.
@@ -387,7 +424,7 @@ title: Publications
   Naive computation of quantitative resilience directly from the definition is a complex task as it requires solving four nested, possibly nonlinear, optimization problems.
   The main technical contribution of this work is to provide an efficient method to compute quantitative resilience.
   Relying on control theory and on two novel geometric results we reduce the computation of quantitative resilience to a single linear optimization problem.
-  We demonstrate our method on an opinion dynamics scenario.</p>
+  We demonstrate our method on an opinion dynamics scenario.
 </div>
 <div id="SIAM-bibtex" class="bibtex">
 <pre><code>
@@ -405,20 +442,25 @@ title: Publications
 
 
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/IFAC_pic.PNG" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Resilient Reachability for Linear Systems</em><br>
   <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
   <a href="https://www.sciencedirect.com/science/article/pii/S240589632030656X">21st IFAC World Congress</a>, 2020 <br>
   <a onclick="toggleDisplay('IFAC-abstract')">Abstract</a> | 
   <a onclick="toggleDisplay('IFAC-bibtex')">Bibtex</a> |
   <a href="{{site.baseurl}}/PDFs/Resilient_Reachability_for_Linear_Systems__IFAC_.pdf">Pdf</a>
+</div>
 </p>
 <div id="IFAC-abstract" class="abstract">
-  <p>A fault-tolerant system is able to reach its goal even when some of its components are malfunctioning. 
+  A fault-tolerant system is able to reach its goal even when some of its components are malfunctioning. 
   This paper examines tolerance to a specific type of malfunction: the loss of control authority over actuators.
   Namely, we investigate whether the desired target set for a linear system remains reachable even after such a loss of authority. 
   We frame this problem as the verification of whether a set is reachable from a certain initial state under any undesirable input, without prior knowledge of future undesirable inputs.
   Building on previous work on reachability with undesirable inputs, this paper develops a reachability condition for linear systems, and obtains a formula that describes reachability of the goal set for driftless linear systems by computing minimum of a concave-convex objective function.
-  From this formulation we establish two novel sufficient conditions for reachability of the goal set.</p>
+  From this formulation we establish two novel sufficient conditions for reachability of the goal set.
 </div>
 <div id="IFAC-bibtex" class="bibtex">
 <pre><code>
@@ -443,15 +485,20 @@ title: Publications
 
 
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/AAS_pic.jpg" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Resilience of Orbital Inspections to Partial Loss of Control Authority of the Chaser Satellite</em><br>
   <strong>Jean-Baptiste Bouvier</strong>, Himmat Panag, Robyn Woollands, Melkior Ornik <br>
   <a href="">2022 AAS/AIAA Astrodynamics Specialist Conference</a>, 2022 <br>
   <a onclick="toggleDisplay('AAS-abstract')">Abstract</a> | 
   <a onclick="toggleDisplay('AAS-bibtex')">Bibtex</a> |
   <a href="{{site.baseurl}}/PDFs/Resilience_of_Orbital_Inspections_to_Partial_Loss_of_Control_Authority_of_the_Chaser_Satellite.pdf">Pdf</a>
+</div>
 </p>
 <div id="AAS-abstract" class="abstract">
-  <p>The growing demand for orbital inspections can only be met if these missions guarantee not to endanger the target satellite. 
+  The growing demand for orbital inspections can only be met if these missions guarantee not to endanger the target satellite. 
   To address this issue we study how to make the chaser satellite resistant to a partial loss of control authority over its thrusters. 
   This malfunction is characterized by some thrusters of the spacecraft firing in an uncontrolled and thus possibly undesirable manner. 
   Because of actuation delays, these undesirable thrust inputs cannot be canceled in real-time. 
@@ -459,7 +506,7 @@ title: Publications
   We then calculate the safety distance ensuring that the malfunctioning chaser satellite will not breach the keep-out sphere around the target satellite.
   We employ a convex solver to generate a safe minimal-fuel reference trajectory to perform the inspection mission.
   Relying on state prediction, adaptive trajectory tracking and PID control the malfunctioning spacecraft is then able to follow the reference trajectory. 
-  We thus demonstrate that an orbital inspection mission can be carried out safely by a spacecraft enduring actuation delay and a loss of control authority over one of its thrusters.</p>
+  We thus demonstrate that an orbital inspection mission can be carried out safely by a spacecraft enduring actuation delay and a loss of control authority over one of its thrusters.
 </div>
 <div id="AAS-bibtex" class="bibtex">
 <pre><code>
@@ -474,17 +521,22 @@ title: Publications
 
 
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/DRO_pic.png" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Strategies for Space Rendezvous on Lunar Distant Retrograde Orbits</em><br>
   <strong>Jean-Baptiste Bouvier</strong>, Williams Zanga, Bastien Le Bihan, Stephanie Lizy-Destrez <br>
   ISAE Supaero, 2017 <br>
   <a onclick="toggleDisplay('ISAE-abstract')">Abstract</a> | 
   <a href="{{site.baseurl}}/PDFs/final_PIR_paper.pdf">Pdf</a>
+</div>
 </p>
 <div id="ISAE-abstract" class="abstract">
-  <p>This research is motivated by a possible deployment of an inhabited space station on a cislunar orbit.
+  This research is motivated by a possible deployment of an inhabited space station on a cislunar orbit.
   This paper describes space rendezvous on Lunar Distant Retrograde Orbits (DRO).
   More precisely, the core study of this research tackles the construction of a DRO, and the rendezvous itself.
-  Then further work has been conducted including safety analysis during the rendezvous operations and optimization of DRO computation.</p>
+  Then further work has been conducted including safety analysis during the rendezvous operations and optimization of DRO computation.
 </div>
 
 
@@ -495,15 +547,20 @@ title: Publications
 
   
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/PhD_pic.png" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Guaranteed Resilience of Autonomous Systems to Loss of Control Authority over Actuators</em><br>
   <strong>Jean-Baptiste Bouvier</strong> &nbsp;&nbsp;&nbsp; Advisor: Melkior Ornik <br>
   Doctoral thesis. <a href="">University of Illinois Urbana-Champaign</a>, 2023 <br>
   <a onclick="toggleDisplay('PhD-abstract')">Abstract</a> | 
   <a onclick="toggleDisplay('PhD-bibtex')">Bibtex</a> |
   <a href="{{site.baseurl}}/PDFs/PhD_Thesis.pdf">Pdf</a>
+</div>
 </p>
 <div id="PhD-abstract" class="abstract">
-  <p>After docking to the International Space Station (ISS), the Nauka module suffered a software error causing its thrusters to misfire.
+  After docking to the International Space Station (ISS), the Nauka module suffered a software error causing its thrusters to misfire.
   In turn, these uncontrolled thrusters rotated the whole space station by 540° before being counteracted by other thrusters of the ISS.
   Motivated by such a scenario, this thesis investigates the guaranteed resilience of autonomous systems to a similar class of malfunctions called partial loss of control authority over actuators.
   These malfunctions are characterized by actuators producing uncontrolled and undesirable outputs instead of following the controller’s commands.
@@ -511,7 +568,7 @@ title: Publications
   In this setting, we investigate the malfunctioning system's remaining capabilities to complete its mission in terms of resilient reachability and resilient trajectory tracking.
   We also quantify the resilience of linear systems by comparing the reachability performance of the nominal dynamics with that of the worst-case malfunctioning dynamics.
   We extend our resilience investigation to systems further inflicted with actuation delays preventing an immediate cancellation of the undesirable outputs.
-  We illustrate our theory on a wide range of applications including an octocopter, a fighter jet model, and an orbital inspection mission.</p>
+  We illustrate our theory on a wide range of applications including an octocopter, a fighter jet model, and an orbital inspection mission.
 </div>
 <div id="PhD-bibtex" class="bibtex">
 <pre><code>
@@ -526,21 +583,26 @@ title: Publications
 
 
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/MSc_pic.PNG" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Orbit Control for a Spacecraft around a Splitting Contact Binary Asteroid</em><br>
   <strong>Jean-Baptiste Bouvier</strong> &nbsp;&nbsp;&nbsp; Advisor: Koki Ho <br>
   Master thesis. <a href="https://www.ideals.illinois.edu/items/109882">University of Illinois Urbana-Champaign</a>, 2018 <br>
   <a onclick="toggleDisplay('MSc-abstract')">Abstract</a> | 
   <a onclick="toggleDisplay('MSc-bibtex')">Bibtex</a> |
   <a href="{{site.baseurl}}/PDFs/Master_Thesis.pdf">Pdf</a>
+</div>
 </p>
 <div id="MSc-abstract" class="abstract">
-  <p>This thesis examines an orbit control problem for a spacecraft around a contact binary asteroid considering the dynamics of both the spacecraft and the asteroid itself.
+  This thesis examines an orbit control problem for a spacecraft around a contact binary asteroid considering the dynamics of both the spacecraft and the asteroid itself.
   It is known that approximately 15\% of the near-Earth asteroids are binary, and among these the fraction of contact binaries is between 6 and 10\%.
   Most contact binary asteroids are constituted of an agglomeration of smaller boulders maintained together due to their internal gravity, which is a relatively unstable configuration.
   Therefore, even a minor change in their mass distribution, like would be caused by the landing of mining machines, can result in a modification of the asteroid's structure including a landslide or a splitting.
   Particularly, separation of the asteroid into two parts is problematic in terms of orbit control, because of the consequences on the gravitational field of the asteroid.
   Traditional two-body orbital control methods cannot be applied to the missions to those asteroids because they do not consider the dynamic activities of the asteroids themselves.
-  This thesis proposes and evaluates a control method to follow a predefined path under unknown states of the splitting binary asteroid.</p>
+  This thesis proposes and evaluates a control method to follow a predefined path under unknown states of the splitting binary asteroid.
 </div>
 <div id="MSc-bibtex" class="bibtex">
 <pre><code>
@@ -561,16 +623,21 @@ title: Publications
 <!-- Commented model
 
 <p style="margin-bottom:1cm;">
+<div style="display:inline-block;vertical-align:top;">
+    <img src="{{ site.baseurl }}/assets/paper_pic.png" alt="pic from paper" width="150" />
+</div>
+<div style="display:inline-block;" class="paper">
   <em>Title</em><br>
   <strong>Jean-Baptiste Bouvier</strong>,  <br>
   <a href="">Journal Name</a>, year <br>
   <a onclick="toggleDisplay('paper1-abstract')">Abstract</a> |
   <a onclick="toggleDisplay('paper1-bibtex')">Bibtex</a> |
   <a href="{{site.baseurl}}/PDFs/___.pdf">Pdf</a>
+</div>
 </p>
 
 <div id="paper1-abstract" class="abstract">
-  <p>abstract</p>
+  abstract
 </div>
 <div id="paper1-bibtex" class="bibtex">
 <pre><code>
