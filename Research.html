@@ -17,7 +17,18 @@ title: Research
   </script>
   
   <style>
-    .container {
+	p, details {
+	  font-size: 18px;
+	}
+	.project-title {
+	  font-size: 20px;
+	  display:inline-block;vertical-align:top;
+	}
+	.github-link {
+	  display:inline-block;
+	}
+	
+    <!--.container {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -30,7 +41,7 @@ title: Research
       text-align: center;
       font-size: 10px;
       margin-top: 8px;
-    }
+    } -->
   </style>
   
 </head>
@@ -45,15 +56,20 @@ title: Research
   <hr style="margin-top:1cm;">
   <h2>Resilience of Autonomous Systems</h2>
   
+  <p>
   We consider a system of nominal dynamics 
   $$\dot{x}(t) = f\big(t, x(t)\big) + g\big(t, x(t)\big) \bar{B} \bar{u}(t), \qquad x(0) = x_0 \in \mathbb{R}^n,$$
-  with constant matrix $\bar{B} \in \mathbb{R}^{n \times (m+p)}$ and control signal $\bar{u}(t) \in \bar{\mathcal{U}}$.</li>
+  with constant matrix $\bar{B} \in \mathbb{R}^{n \times (m+p)}$ and control signal $\bar{u}(t) \in \bar{\mathcal{U}}$.
+  </p>
   
+  <p>
   After a <em>partial loss of control authority</em>, $p$ of the initial $m+p$ actuators of the system are producing uncontrolled and possibly undesirable outputs within their full actuation range.
   We split $\bar{B}$ into the controlled actuators $B$ and the malfunctioning ones $C$. Similarly, signal $\bar{u}$ is split into the controls $u(t) \in \mathcal{U}$ and the undesirable inputs $w(t) \in \mathcal{W}$.
   The malfunctioning dynamics become 
   $$\dot{x}(t) = f\big(t, x(t)\big) + g\big(t, x(t)\big) \big(Bu(t) + Cw(t) \big), \qquad x(0) = x_0 \in \mathbb{R}^n.$$
+  </p>
 
+  <p>
   This malfunction leads to several problems of interest:
   <ul>
     <li>can the malfunctioning system <em>resiliently reach</em> a given target?</li>
@@ -61,11 +77,12 @@ title: Research
     <li>how to design a system <em>resilient</em> to the loss of control over any one of its actuators?</li>
     <li>how to quantify the <em>resilience</em> of a system?</li>
   </ul>
-  I answered to all these questions during my PhD.
+  I answered all of these questions during my PhD.
+  </p>
 
   <details>
     <summary>
-      Resilient Reachability of Linear Driftless Systems
+      <div class="project-title">Resilient Reachability of Linear Driftless Systems</div>
     </summary>
     <ul>
       <li>We started with linear driftless nominal dynamics $\dot{x}(t) = \bar{B} \bar{u}(t)$, with $x(0) = x_0 \in \mathbb{R}^n$, and $\bar{u}(t) \in \bar{\mathcal{U}}$.</li>
@@ -79,9 +96,11 @@ title: Research
 
   <details>
     <summary>
-      Designing Resilient Linear Systems
-      <a href="https://github.com/Jean-BaptisteBouvier/Designing-Resilient-Linear-Systems"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="20"></a>
-    </summary>
+      <div class="project-title">Designing Resilient Linear Systems</div>
+	  <div class="github-link">
+        <a href="https://github.com/Jean-BaptisteBouvier/Designing-Resilient-Linear-Systems"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="25"></a>
+	  </div>
+	</summary>
     <ul>
       <li>With the same linear driftless dynamics as above, we showed that a system in dimension $n$ needs at least $2n+1$ actuators to be resilient to the loss of control over any one of them.</li>
       <li></li>
@@ -92,8 +111,10 @@ title: Research
 
 <details>
   <summary>
-    Quantitative Resilience of Linear Driftless Systems 
-    <a href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="20"></a>
+  <div class="project-title">Quantitative Resilience of Linear Driftless Systems</div>
+	<div class="github-link">
+      <a href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="25"></a>
+	</div>
   </summary>
   
   <ul>
@@ -115,8 +136,10 @@ title: Research
 
 <details>
   <summary>
-    The Maximax Minimax Quotient Theorem
-    <a href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="20"></a>
+  <div class="project-title">The Maximax Minimax Quotient Theorem</div>
+  <div class="github-link">
+    <a href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="25"></a>
+  </div>		
   </summary>
   
   <ul>
@@ -137,8 +160,10 @@ title: Research
   
   <details>
     <summary>
-      Resilience of Linear Systems
-      <a href="https://github.com/Jean-BaptisteBouvier/Resilience-of-Linear-Systems"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="20"></a>
+	<div class="project-title">Resilience of Linear Systems</div>
+	<div class="github-link">
+	  <a href="https://github.com/Jean-BaptisteBouvier/Resilience-of-Linear-Systems"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="25"></a>
+	</div>
     </summary>
     <ul>
       <li>The nominal dynamics of interest are $\dot{x}(t) = Ax(t) + \bar{B} \bar{u}(t)$, with $x(0) = x_0 \in \mathbb{R}^n$, and $\bar{u}(t) \in \bar{\mathcal{U}}$.</li>
@@ -161,9 +186,11 @@ title: Research
   
   <details>
     <summary>
-      Resilience of an Orbital Inspection Mission
-      <a href="https://github.com/Jean-BaptisteBouvier/Spacecraft-Resilience"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="20"></a>
-    </summary>
+      <div class="project-title">Resilience of an Orbital Inspection Mission</div>
+	  <div class="github-link">
+        <a href="https://github.com/Jean-BaptisteBouvier/Spacecraft-Resilience"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="25"></a>
+      </div>
+	</summary>
     <ul>
       <li>We demonstrate the resilience of a spacecraft to perform an orbital inspection mission depsite the loss of control authority over one of its thrusters and with a controller further plagued by actuation delay.</li>
       <li></li>
@@ -190,9 +217,11 @@ title: Research
   
   <details>
     <summary>
-      Transient Safety of Microgrids
-      <a href="https://github.com/Jean-BaptisteBouvier/Microgrid-transient-safety"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="20"></a>
-    </summary>
+      <div class="project-title">Transient Safety of Microgrids</div>
+	  <div class="github-link">
+        <a href="https://github.com/Jean-BaptisteBouvier/Microgrid-transient-safety"><img src="{{site.baseurl}}/assets/GitHub_logo.png" width="25"></a>
+      </div>
+	</summary>
     <ul>
       <li></li>
       <li></li>
@@ -282,5 +311,4 @@ budget of 10,000 units</figcaption>
 -->
   
 </body>  
-
 
