@@ -43,19 +43,10 @@ kramdown:
 # Exclusions from the final site
 exclude:
   - optional
-  - vendor
-  - ed..gemspec
-  - Gemfile
-  - Gemfile.lock
   - backstop_data
   - backstop.json
-  - documentation.md
+  - README.md
 
-# Theme
-# (Used for local or custom-server deployments)
-# Uncomment the `theme` line if using the Ed. theme gem on your own computer or server.
-# See https://jekyllrb.com/docs/themes/
-# theme: "ed."
 
 # Remote Theme
 # (Used only for GitHub deployments)
