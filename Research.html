@@ -28,16 +28,28 @@ title: Research
 	  display:inline-block;
 	}
 	
+	.videowrapper {
+		float: none;
+		clear: both;
+		width: 100%;
+		position: relative;
+		padding-bottom: 51%;
+		padding-top: 0px;
+		height: 0;
+		margin-bottom: 5mm;
+	}
+	.videowrapper iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
 
   </style>
   
 </head>
 <body>
-  
-  
-  
-  
-  
   
   
   <hr style="margin-top:1cm;">
@@ -52,17 +64,26 @@ title: Research
   </p>
   <p>  
 	In this setting, I investigated the malfunctioning system's remaining capabilities to complete its mission in terms of resilient reachability and resilient trajectory tracking.
-	I also quantified the resilience of linear systems by comparing the reachability performance of the nominal dynamics with that of the worst-case malfunctioning dynamics.
+	I quantified the resilience of linear systems by comparing the reachability performance of the nominal dynamics with that of the worst-case malfunctioning dynamics.
+	The resilience of driftless systems is quantified by the Maximax Minimax Quotient Theorem whose geometrical proof is illustrated on the video below.
+  </p>	
+	 
+   <div class="videowrapper">
+     <iframe src="https://www.youtube.com/embed/rjKzHyDJX40">
+     </iframe>
+   </div>
+	
+  <p>	
 	I extended my resilience investigation to systems further inflicted with actuation delays preventing an immediate cancellation of the undesirable outputs.
 	I illustrated my theory on a wide range of applications including an octocopter, a fighter jet model, and an orbital inspection mission illustrated by the following video.
   </p>
+
+  <div class="videowrapper">
+    <iframe src="https://www.youtube.com/embed/DQy8iNHyt7M">
+	</iframe>
+  </div>
   
-  <!--video width="685" height="348" controls>
-	<source src="{{site.baseurl}}/assets/Lip_1_min.mp4" type="video/mp4">
-  </video-->
-  
-  <p align="center"> <img src="{{site.baseurl}}/assets/spacecraft_gif.gif" alt="animated" /> </p> 
-  
+ 
 <details>
 <summary>
 	Mathematical details for resilience theory
@@ -115,7 +136,7 @@ title: Research
 	</summary>
     <ul>
       <li>With the same linear driftless dynamics as above, we showed that a system in dimension $n$ needs at least $2n+1$ actuators to be resilient to the loss of control over any one of them.</li>
-      <li>We derived a resilient controller $u(t) = B^\top \big( BB^\top \big)^{-1} \big( -Cw(t) + \alpha (x(t) - x_g) \big)$ with $\alpha > 0$.</li>
+      <li>We derived a resilient controller $u(t) = B^\top \big( BB^\top \big)^{-1} \big( -Cw(t) + \alpha (x(t) - x_g) \big)$ with $\alpha > 0$ driving asymptotically the state to the target $x_g$.</li>
       <li>This work has been published in the <a href="https://ieeexplore.ieee.org/document/9744569">IEEE Transactions of Automatic Control</a>.</li>
     </ul>
   </details>
