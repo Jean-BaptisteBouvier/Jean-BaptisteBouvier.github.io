@@ -35,6 +35,9 @@ title: Publications
 	  display: table;
 	  clear: both;
 	}
+	table, tr, td {
+	  border: none;
+	}
   </style>
   <script>
     function toggleDisplay(id) {
@@ -46,10 +49,35 @@ title: Publications
       }
     }
   </script>
+	
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
   
+
+<div class="row">
+  <div class="column" width="40%">
+    <a href="https://scholar.google.com/citations?user=Ovf-u14AAAAJ&hl=en">Google Scholar</a> <br>
+	<a href="https://orcid.org/0000-0003-3116-7252">ORCID 0000-0003-3116-7252</a> <br>
+	
+	<table id="citations_table" style="margin-top: 5mm;">
+	  <tr> <td>Citations: </td> <td></td> </tr>
+	  <tr> <td>h-index: </td> <td></td> </tr>
+	  <tr> <td>i10-index: </td> <td></td> </tr>
+	</table>
+	<div id="last_update" style="font-size: 12px;"></div>	
+  </div>
+  <div class="column" width="20%" style="margin-right:2cm;"></div>
+  <div class="column" width="40%">
+		<canvas id="histogram" height="200"></canvas>
+  </div>
+</div>
+  
+<script src='../JavaScript/chart.js'></script>
+  
+	
+	
 <hr style="margin-top:1cm;"> 
 <h2> Journal papers </h2>
   
@@ -62,7 +90,7 @@ title: Publications
   <div class="column right">
 	<em>Quantitative Resilience of Generalized Integrators</em> <br>
 	<strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Melkior Ornik <br>
-	<a href="">IEEE Transactions on Automatic Control (TAC)</a>, 2023 <br>
+	<a href="">IEEE Transactions on Automatic Control</a>, 2023 <br>
 	<a onclick="toggleDisplay('integrators-abstract')">Abstract</a> | 
 	<a onclick="toggleDisplay('integrators-bibtex')">Bibtex</a> |
 	<a href="{{ site.baseurl }}/PDFs/Quantitative_Resilience_of_Generalized_Integrators__ArXiv_.pdf">Pdf</a> |
