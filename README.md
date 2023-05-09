@@ -2,7 +2,7 @@
 
 This repository contains all the code and content necessary for my website. 
 The original code for the website relies on the [Ed](http://minicomp.github.io/ed) theme and is available [here](https://github.com/minicomp/ed).
-The code was modified mostly to remove the sidebar.
+The code was modified mostly to remove the sidebar and instead place the links at the top of the page.
 
 
 
@@ -16,6 +16,7 @@ The code was modified mostly to remove the sidebar.
 
 ## Folders structure
 
+- `JavaScript` contains file `chart.js` that creates the citations histogram in the *Publications* page based on data scraped from Google Scholar with the Python code `Google_scholar_metrics.py`.
 - `PDFs` contains my CV and the PDFs versions of all my papers.
 - `Slides` contains all the presentations.
 - `assets` contains all the pictures and gifs.
@@ -32,6 +33,7 @@ The code was modified mostly to remove the sidebar.
 - `Publications.html` is the code to generate the *Publications* page of the website.
 - `Research.html` is the code to generate the *Research* page of the website.
 - `Resume.html` is the code to generate the *Resume* page of the website.
+- `Teaching.html` is the code to generate the *Teaching* page of the website.
 - `_config.yml` gathers some high level information for the website.
 
 
