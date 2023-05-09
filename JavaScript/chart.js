@@ -1,16 +1,17 @@
 /*
 Javascript code to build the citations histogram
-using data scraped from Google Scholar.
+using data scraped from Google Scholar using the Python script
+`Google_scholar_metrics.py`
 
 */
 
-/* Data scraped from Google Scholar*/
+/* Data scraped from Google Scholar with Python script*/
 var total_citations = 60;
 var h_index = 4;
 var i10_index = 2;
-var last_update = "May 6th 2023";
-
-
+var last_update = "May 8th 2023";
+var years_cited = [2018, 2019, 2020, 2021, 2022, 2023];
+var citations_by_year = [2, 3, 4, 9, 24, 12];
 	
 	
   
@@ -42,9 +43,9 @@ const ctx = document.getElementById('histogram');
 const hist = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: [2018, 2019, 2020, 2021, 2022, 2023],
+    labels: years_cited,
     datasets: [{
-      data: [2, 3, 4, 9, 24, 12],
+      data: citations_by_year,
       borderWidth: 0,
 	  backgroundColor: 'rgba(50, 50, 50, 0.8)',
 	  barThickness: 20,
