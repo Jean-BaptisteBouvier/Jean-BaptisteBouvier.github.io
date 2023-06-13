@@ -16,10 +16,15 @@ The code was modified mostly to remove the sidebar and instead place the links a
 
 ## Folders structure
 
-- `JavaScript` contains file `chart.js` that creates the citations histogram in the *Publications* page based on data scraped from Google Scholar with the Python code `Google_scholar_metrics.py`.
-- `PDFs` contains my CV and the PDFs versions of all my papers.
-- `Slides` contains all the presentations.
-- `assets` contains all the pictures and gifs.
+
+- `assets` contains several folders
+    - `PDFs` contains my CV and the PDFs versions of all my papers.
+    - `Slides` contains all the presentations associated with conference papers.
+    - `blog_posts` contains the blog posts written for this website.
+    - `paper_pics` contains all the pictures used to illustrate my papers.
+    - `gifs` contains all the gifs displayed in the website.
+    - `logos` contains logos of universities, companies and conferences I attended.
+    - `js` contains file `chart.js` that creates the citations histogram in the *Publications* page based on data scraped from Google Scholar with the Python code `Google_scholar_metrics.py`.
 - `_includes` contains file `head.html` gathering settings for the metadata.
 - `_layouts` contains files `page.html` and `default.html` describing the page layouts.
 - `_sass` contains files `_ed.scss` and `_syntax.scss` controlling the style of the website.
