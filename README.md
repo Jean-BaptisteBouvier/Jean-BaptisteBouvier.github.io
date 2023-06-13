@@ -33,6 +33,7 @@ The code was modified mostly to remove the sidebar and instead place the links a
 ## Files structure
 
 - `404.md` is the code to generate the error 404 message when a page is not found.
+- `Blog.html` is the code to generate the *Blog* page of the website.
 - `index.html` is the code to generate the *About* page of the website. 
 - `LICENSE.md` is the license of the [original GitHub repository](https://github.com/minicomp/ed).
 - `Publications.html` is the code to generate the *Publications* page of the website.
