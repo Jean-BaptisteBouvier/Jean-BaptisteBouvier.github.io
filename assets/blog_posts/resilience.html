@@ -24,6 +24,18 @@ title: Resilience
 		padding: 10px;
 	}
 	
+	.title {
+		margin-bottom: none;
+		padding-bottom: none;
+	}
+	.subtitle {
+		margin-top: none;
+		padding-top: none;
+		font-size: 12px;
+	}
+	.abstract {
+		margin-top: 1cm;
+	}
   </style>
   
   <script type="text/x-mathjax-config">
@@ -36,29 +48,18 @@ title: Resilience
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
   </script>
   
-  <script>
-	var title = "Understanding resilience";
-	var author = "Jean-Baptiste Bouvier";
-	var date = "June 15, 2023";
-	var abstrac = "";
-  </script>
   
 </head>
 <body>
 
+<article id="article">
 
 
-<h1 style="margin-bottom:none; padding-bottom:none;"><strong><span id="title">title</span></strong></h1>
-<p style="margin-top:none; padding-top:none; font-size:12px;">
-	<span id="date">date</span> | <span id="author">author</span>
+
+<h1 class="title"><strong>Understanding resilience</strong></h1>
+<p class="subtitle">
+	June 15, 2023 | <span id="time"></span> min | Jean-Baptiste Bouvier
 </p>
-
-<script>
-  document.getElementById("title").innerHTML = title;
-  document.getElementById("date").innerHTML = date;
-  document.getElementById("author").innerHTML = author;
-</script>
-
 
 
 
@@ -78,9 +79,11 @@ title: Resilience
 </details>
 </div>
 
-
-
- <p style="margin-top: 1cm">
+ <p class="abstract">
+	I developped <em>resilience theory</em> during my PhD to study how autonomous systems can handle a partial loss of control authority over their actuators.
+ </p>
+ 
+ <p>
 	After docking to the International Space Station (ISS), the Nauka module suffered a software error causing its thrusters to misfire.
 	In turn, these uncontrolled thrusters rotated the whole space station by 540° before being counteracted by other thrusters of the ISS.
 	Motivated by such a scenario, my PhD thesis investigated the guaranteed resilience of autonomous systems to a similar class of malfunctions called partial loss of control authority over actuators.
@@ -215,5 +218,9 @@ title: Resilience
 	<!--p align="center"> <img src="{{site.baseurl}}/assets/gifs/spacecraft_gif.gif" alt="animated" /> </p--> 
 	
 
+</article>
+
+
+<script src="{{ site.baseurl }}/assets/blog_posts/read.js" ></script>
 
 </body>
