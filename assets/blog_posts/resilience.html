@@ -25,16 +25,88 @@ title: Resilience
 	}
 	
 	.title {
-		margin-bottom: none;
+		margin-bottom: 0mm;
 		padding-bottom: none;
 	}
 	.subtitle {
-		margin-top: none;
+		margin-top: 0mm;
 		padding-top: none;
 		font-size: 12px;
 	}
 	.abstract {
 		margin-top: 1cm;
+	}
+	.reference {
+		margin-bottom: 3mm;
+	}
+	
+	ol.custom-marker {
+	  counter-reset: list;
+	}
+
+	ol.custom-marker > li {
+	  list-style: none;
+	  counter-increment: list;
+	}
+
+	ol.custom-marker.parens-after.decimal > li::marker {
+	  content: "[" counter(list) "]\a0\a0\a0";
+	}
+	.center_img {
+		display: bloc;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 0mm;
+		padding-bottom: none;
+	}
+	.caption {
+		margin-top: none;
+		padding-top: none;
+		font-size: 14px;
+		display: bloc;
+		margin-left: auto;
+		margin-right: auto;
+		width: 500;
+		margin-bottom: 5mm;
+		text-align: center;
+	}
+	
+	#topBtn {
+	  display: none; /* Hidden by default */
+	  position: fixed; /* Fixed/sticky position */
+	  bottom: 20px; /* Place the button at the bottom of the page */
+	  right: 30px; /* Place the button 30px from the right */
+	  z-index: 99; /* Make sure it does not overlap */
+	  border: none; /* Remove borders */
+	  outline: none; /* Remove outline */
+	  background-color: rgb(213, 213, 213); /* Set a background color */
+	  /* color: white;  Text color */
+	  cursor: pointer; /* Add a mouse pointer on hover */
+	  padding: 15px; /* Some padding */
+	  border-radius: 10px; /* Rounded corners */
+	  font-size: 18px; /* Increase font size */
+	}
+
+	#topBtn:hover {
+	  background-color: rgb(153, 153, 153); /* Add a dark-grey background on hover */
+	}
+
+	.videowrapper {
+		float: none;
+		clear: both;
+		width: 100%;
+		position: relative;
+		padding-bottom: 51%;
+		padding-top: 0px;
+		height: 0;
+		margin-bottom: 5mm;
+	}
+	.videowrapper iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
 	}
   </style>
   
@@ -43,6 +115,10 @@ title: Resilience
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
     });
   </script>
+  <script type="text/x-mathjax-config">
+	MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} } });
+  </script>
+   
   
   <script type="text/javascript" async
     src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -69,158 +145,540 @@ title: Resilience
 		Table of contents
 	</summary>
 	<ul>
-		<li> <a style="color:#454545; text-decoration:none;" href="#IFAC">Resilient Reachability of Linear Driftless Systems</a> </li>
-		<li> <a style="color:#454545; text-decoration:none;" href="#TAC">Designing Resilient Linear Systems</a> </li>
-		<li> <a style="color:#454545; text-decoration:none;" href="#SIAM">Quantitative Resilience of Linear Driftless Systems</a> </li>
-		<li> <a style="color:#454545; text-decoration:none;" href="#JOTA">The Maximax Minimax Quotient Theorem</a> </li>
-		<li> <a style="color:#454545; text-decoration:none;" href="#ECC">Resilience of Linear Systems</a> </li>
-		<li> <a style="color:#454545; text-decoration:none;" href="#JGCD">Resilience of an Orbital Inspection Mission</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Framework">Framework</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#section IFAC">Resilient Reachability of Linear Driftless Systems</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#section TAC">Designing Resilient Linear Systems</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#section SIAM">Quantitative Resilience of Linear Driftless Systems</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#section JOTA">The Maximax Minimax Quotient Theorem</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#section ECC">Resilience of Linear Systems</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#section JGCD">Resilience of an Orbital Inspection Mission</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Summary">Quick Summary</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#References">References</a> </li>
 	</ul>
 </details>
 </div>
 
- <p class="abstract">
-	I developped <em>resilience theory</em> during my PhD to study how autonomous systems can handle a partial loss of control authority over their actuators.
- </p>
+<p class="abstract">
+	I developped <strong>resilience theory</strong> during my PhD to study how autonomous systems can handle a <em>loss of control authority</em> over some of their actuators.
+	Let's start with a few scenarios illustrating such a malfunction.
+</p>
  
- <p>
-	After docking to the International Space Station (ISS), the Nauka module suffered a software error causing its thrusters to misfire.
-	In turn, these uncontrolled thrusters rotated the whole space station by 540° before being counteracted by other thrusters of the ISS.
-	Motivated by such a scenario, my PhD thesis investigated the guaranteed resilience of autonomous systems to a similar class of malfunctions called partial loss of control authority over actuators.
-	These malfunctions are characterized by actuators producing uncontrolled and undesirable outputs instead of following the controller’s commands.
-	A loss of control authority can be caused, for instance, by a software bug as in the ISS example or by an adversarial takeover of some actuators of the system.
-  </p>	
+<p>
+	On July 29 2021, after the Nauka module docked to the International Space Station (ISS), a software failure caused a misfire of all the module's thrusters <a href="#ISS_thruster">(Bartels 2021)</a>.
+	As a result, the whole station lost attitude control for 15 minutes and rotated by 540$^\circ$ possibly endangering the ISS crew.
+	Eventually, other thrusters on the ISS were fired to counteract the uncontrolled and undesirable thrust until the Nauka module ran out of fuel.
+</p>
+
+<img src="{{ site.baseurl }}/assets/pictures/ISS_Nauka.JPG" alt="ISS and Nauka module" title="Nauka module docked to the ISS" class="center_img" width="600">
+<div class="caption">
+	Russia's Nauka module docked with the International Space Station on July 29, 2021. <br>
+	(Image credit: Thomas Pesquet/ESA/NASA)
+</div>
+
+<p>
+	Autonomous systems’ malfunctions are not always accidental as in the previous scenario, they can
+	also be caused purposefully by adversarial attacks. Indeed, control systems are increasingly connected to the
+	Internet <a href="#Fawzi">(Fawzi et al. 2014)</a>, and hence they are more prone to cyber attacks. A well documented example is the attack on
+	the Maroochy sewage control system in Australia <a href="#Fawzi">(Fawzi et al. 2014)</a>, where a disgruntled ex-employee took remote
+	control over sewer valves and managed to flood a hotel, a park and a river with a million liters of sewage.
+</p>
 
 
-  <p>
-  We consider a system of nominal dynamics 
-  $$\dot{x}(t) = f\big(t, x(t)\big) + g\big(t, x(t)\big) \bar{B} \bar{u}(t), \qquad x(0) = x_0 \in \mathbb{R}^n,$$
-  with constant matrix $\bar{B} \in \mathbb{R}^{n \times (m+p)}$ and control signal $\bar{u}(t) \in \bar{\mathcal{U}}$.
-  </p>
-  
-  <p>
-  After a <em>partial loss of control authority</em>, $p$ of the initial $m+p$ actuators of the system are producing uncontrolled and possibly undesirable outputs within their full actuation range.
-  We split $\bar{B}$ into the controlled actuators $B$ and the malfunctioning ones $C$. Similarly, signal $\bar{u}$ is split into the controls $u(t) \in \mathcal{U}$ and the undesirable inputs $w(t) \in \mathcal{W}$.
-  The malfunctioning dynamics become 
-  $$\dot{x}(t) = f\big(t, x(t)\big) + g\big(t, x(t)\big) \big(Bu(t) + Cw(t) \big), \qquad x(0) = x_0 \in \mathbb{R}^n.$$
-  </p>
 
-  <p>
-  This malfunction leads to several problems of interest:
-  <ul>
-    <li>can the malfunctioning system <em>resiliently reach</em> a given target?</li>
-    <li>over which actuators can the system <em>resiliently</em> lose control?</li>
-    <li>how to design a system <em>resilient</em> to the loss of control over any one of its actuators?</li>
-    <li>how to quantify the <em>resilience</em> of a system?</li>
-  </ul>
-  I answered all of these questions during my PhD.
-  </p>
 
-  
-  <h2 style="margin-top:1cm;" id="IFAC">Resilient Reachability of Linear Driftless Systems</h2>
+<h2 style="margin-top:1cm;" id="Framework">Framework</h2>
+
+<p>	
+	Motivated by these accidental and orchestrated failures, my PhD thesis investigated the guaranteed resilience of autonomous systems in the face of such malfunctions.
+	We define a <strong>loss of control authority over actuators</strong> as a malfunction characterized by some actuators producing uncontrolled and undesirable outputs instead of following the controller’s commands.
+	A loss of control authority can be caused, for instance, by a software bug as in the ISS example or by an adversarial takeover of actuators as in the sewage example.
+</p>
+<p>
+	After such a malfunction a Fault Detection and Isolation (FDI) module identifies the faulty actuators thanks to real-time readings of each actuator's output <a href="#fault-tolerant">(Amin et al. 2019)</a>.
+	Then, the design of a controller operating in such off-nominal conditions would classically rely on robust control,
+	adaptive control <a href="#robust-adaptive">(Wang et al. 2001)</a>, or fault-tolerant control <a href="#fault-tolerant">(Amin et al. 2019)</a>.
+	However, robust control needs the undesirable inputs to be significantly smaller than the controls to provide meaningful results <a href="#robust-adaptive">(Wang et al. 2001)</a>, which is not the case here.
+	On the other hand, the estimators of adaptive control are designed to adapt to unknown constant parameters and not to uncontrolled inputs likely to vary at much faster timescales <a href="#robust-adaptive">(Wang et al. 2001)</a>.
+	Finally, fault-tolerant control after actuator malfunctions mostly covers partial loss of effectiveness for controllable actuators or locked-in-place actuators <a href="#fault-tolerant">(Amin et al. 2019)</a>, and not uncontrolled actuators. 
+	Therefore, a new control theory was needed to investigate loss of control authority over actuators.
+</p>
+<p>
+	We consider a system of state $x(t)$ and nominal dynamics 
+	\begin{equation}\label{eq: framework ODE}
+		\dot{x}(t) = f\big(t, x(t)\big) + g\big(t, x(t)\big) \bar{B} \bar{u}(t), \qquad x(0) = x_0 \in \mathbb{R}^n,
+	\end{equation}	
+	with constant matrix $\bar{B} \in \mathbb{R}^{n \times (m+p)}$ and control signal $\bar{u}(t) \in \bar{\mathcal{U}}$.
+</p>
+<p>
+	After a loss of control authority, $p$ of the initial $m+p$ actuators of the nominal system are now producing uncontrolled and possibly undesirable outputs within their full actuation range.
+	We split $\bar{B}$ between the controlled actuators $B$ and the malfunctioning ones $C$.
+	Similarly, nominal signal $\bar{u}$ is split between the controls $u(t) \in \mathcal{U}$ and the undesirable inputs $w(t) \in \mathcal{W}$.
+	The malfunctioning dynamics become 
+	\begin{equation}\label{eq: framework split ODE}
+		\dot{x}(t) = f\big(t, x(t)\big) + g\big(t, x(t)\big) \big(Bu(t) + Cw(t) \big), \qquad x(0) = x_0 \in \mathbb{R}^n.
+	\end{equation}
+	The loss of control authority is clearly illustrated by the fact that the controller only chooses $u(t)$, while the undesirable input $w(t)$ is determined by other uncontrolled factors.
+</p>
+<p>
+	As discussed previously, the sensors of the FDI module provide real-time measurements of the malfunctioning actuators’ outputs $w(t)$ to the controller.
+	Thus, the command $u(t)$ can be adapted in a reactive fashion to $w(t)$.
+	Thanks to additional sensors like GPS, cameras, radars, etc, the controller has also a perfect knowledge of the state $x(t)$.
+	To illustrate this knowledge, we write $u(t) = u\big(t, x(t), w(t) \big)$.
+</p>
+<p>
+	Because of the loss of control authority, malfunctioning system \eqref{eq: framework split ODE} might not be able to complete the nominal mission assigned before the malfunction.
+	We first consider simple missions of target reachability.
+	Let $\mathcal{T}$ be a target set that we assume to be <strong>reachable</strong> by nominal system \eqref{eq: framework ODE}, i.e.,
+	there exists a control $\bar{u}$ driving the state of \eqref{eq: framework ODE} from $x_0$ to $x(T_N) \in \mathcal{T}$ in some time $T_N \geq 0$.
+</p>
+<p>	
+	For the malfunctioning system, we need a slightly different notion of reachability,	because it should not depend on $w$.
+	Target $\mathcal{T}$ is <strong>resiliently reachable</strong> if for every signal $w$ there exists a control $u$
+	driving the state of \eqref{eq: framework split ODE} from $x_0$ to $x(T_M) \in \mathcal{T}$ in some time $T_M \geq 0$.
+	The main obstacle preventing resilient reachability is the actuation constraint $u(t) \in \mathcal{U}$ that might prevent the controller from overcoming some
+	undesirable inputs $w$ and adequately steering the state to $\mathcal{T}$.
+</p>
+<p>
+	<strong>Problem 1:</strong> Under what conditions is a target $\mathcal{T}$ resiliently reachable by malfunctioning system \eqref{eq: framework split ODE}?
+</p>
+<p>	
+	Solving Problem 1 gives a method to study the remaining capabilities of a system that has suffered a
+	partial loss of control authority over its actuators. When studying safety-critical systems, such a post-failure
+	analysis should conclude that the malfunctioning system is still capable of completing its nominal mission.
+	Therefore, safety-critical systems must be designed resilient to a partial loss of control authority over their
+	actuators. This train of thoughts leads us to our second problem of interest.
+</p>
+<p>
+	<strong>Problem 2:</strong> How to design a system resilient to the loss of control over any one of its actuators?
+</p>
+<p>
+	Resilience only requires that target set $\mathcal{T}$ remains reachable by malfunctioning system \eqref{eq: framework split ODE}
+	in some finite time $T_M$. After an extremely damaging loss of control, $T_M$ could be several orders of magnitude
+	larger than $T_N$, the nominal reach time for system \eqref{eq: framework ODE}. 
+	This can prevent mission completion if $T_M$ is too large.
+	For instance, a drone could run out of battery or a spacecraft run out of fuel before reaching the target.
+	Our third objective is then to quantify the resilience of the system by estimating the maximal time penalty caused by the loss of control
+	authority.
+</p>
+<p>
+	<strong>Problem 3:</strong> How to quantify the resilience of control systems?
+</p>
+<p>
+	We will now see how to solve these three problems as I did during my PhD.
+</p>
+
+
+
+
+<h2 style="margin-top:2cm;" id="section IFAC">Resilient Reachability of Linear Driftless Systems <a href="#IFAC">(Bouvier et al., 2020)</a> </h2>
     
-  We started with linear driftless nominal dynamics $\dot{x}(t) = \bar{B} \bar{u}(t)$, with $x(0) = x_0 \in \mathbb{R}^n$, and $\bar{u}(t) \in \bar{\mathcal{U}}$.
-  
-  After a <em>partial loss of control authority over actuators</em>, the malfunctioning dynamics become $\dot{x}(t) = Bu(t) + Cw(t)$, $x(0) = x_0 \in \mathbb{R}^n$, with control $u(t) \in \mathcal{U}$ and undesirable input $w(t) \in \mathcal{W}$.
-  A target $x_g$ is <em>resiliently reachable</em> if for all undesirable input $w$ there exists a control input $u$ driving the state of the malfunctioning system from $x_0$ to $x_g$.
-  The nominal system is <em>resilient</em> if any target is resiliently reachable.
-  We showed that resilience is equivalent to $BB^\top - CC^\top \succ 0$.
-  This work has been presented at the <a href="https://www.sciencedirect.com/science/article/pii/S240589632030656X" target="_blank" rel="noopener noreferrer">2020 IFAC World Congress</a>.
-  
-  
-  
-  
+<p>
+	Let us start by considering simple linear dynamics
+	\begin{equation}\label{eq: ODE}
+		\dot x(t) = Ax(t) + \bar{B} \bar{u}(t), \qquad x(0) = x_0 \in \mathbb{R}^n,
+	\end{equation}
+	where $A \in \mathbb{R}^{n \times n}$ and $\bar{B} \in \mathbb{R}^{n \times (m+p)}$ are constant matrices.
+	After a loss of control authority over $p$ of the $m+p$ actuators, we split $\bar{B}$ and $\bar{u}$ as before to obtain the malfunctioning dynamics
+	\begin{equation}\label{eq: split}
+		\dot x(t) = Ax(t) + Bu(t) + Cw(t), \quad x(0) = x_0 \in \mathbb{R}^n, \quad u(t) \in \mathcal{U}, \quad w(t) \in \mathcal{W}.
+	\end{equation}
+	We consider the admissible inputs to be square integrable signals over their time domain $[0, T]$,
+	\begin{equation*}
+		\mathcal{F}(\mathcal{U}) := \big\{u \in \mathcal{L}_2\big([0, T], \; \mathcal{U} \big) : \|u\|_{\mathcal{L}_2} \leq 1 \big\}, \qquad \mathcal{F}(\mathcal{W}) := \big\{w \in \mathcal{L}_2\big([0, T], \; \mathcal{W} \big) : \|w\|_{\mathcal{L}_2} \leq 1 \big\}.
+	\end{equation*}
+	Systems with such input bounds are typically refered to as energy bounded.
+	The target set $\mathcal{T}$ is the ball of radius $\varepsilon$ around $x_{goal} \in \mathbb{R}^n$, $\mathcal{T} := \mathbb{B}(x_{goal}, \varepsilon)$.
+</p>	
+<p>	
+	Simplifying the adjoint maps of the reachability condition from <a href="#Delfour">(Delfour et al. 1969)</a> leads to our first resilience condition.
+	Target set $\mathcal{T}$ is resiliently reachable at time $T$ by system \eqref{eq: ODE} if and only if
+    \begin{equation}\label{eq:thm2}
+        \hspace{-12mm} \underset{h\, \in\, \mathbb{S}}{\max} \Bigg\{ \hspace{-1mm} \langle h, e^{AT}x_0 - x_{goal} \rangle - \hspace{-2mm} \underset{\|u\|_{\mathcal{L}_2} = 1}{\sup} \hspace{-1mm} \left\{ \hspace{-0.5mm} \Big|\Big\langle h, \hspace{-1mm} \int_0^T \hspace{-4mm} e^{A(T-\tau)}B u(\tau) d\tau \Big\rangle\Big| \hspace{-0.5mm} \right\} + \hspace{-2mm} \underset{\|w\|_{\mathcal{L}_2} = 1}{\sup} \hspace{-1mm} \left\{ \hspace{-0.5mm} \Big|\Big\langle h, \hspace{-1mm} \int_0^T \hspace{-4mm} e^{A(T-\tau)}C w(\tau) d\tau \Big\rangle\Big| \hspace{-0.5mm} \right\} \hspace{-1mm} \Bigg\} \leq \varepsilon.
+    \end{equation}
+</p>
+<p>
+	To further simplify \eqref{eq:thm2}, we consider the linear driftless nominal dynamics
+	\begin{equation}\label{eq:driftless}
+		\dot{x}(t) = \bar{B} \bar{u}(t), \qquad x(0) = x_0 \in \mathbb{R}^n, \qquad \bar{u}(t) \in \bar{\mathcal{U}}.
+	\end{equation}
+	After a <em>loss of control authority over actuators</em>, the malfunctioning dynamics become
+	\begin{equation}\label{eq:driftless split}
+		\dot{x}(t) = Bu(t) + Cw(t), \quad x(0) = x_0 \in \mathbb{R}^n, \quad u(t) \in \mathcal{U}, \quad w(t) \in \mathcal{W}.
+	\end{equation}
+	Nominal system \eqref{eq:driftless} is <strong>resilient</strong> if any target is resiliently reachable by malfunctioning system \eqref{eq:driftless split}.
+	We can show that resilience is equivalent to $BB^\top - CC^\top \succ 0$, which is significantly easier to verify than condition \eqref{eq:thm2}.
+</p>
+<p> 
+	Now that we have solved Problem 1 for linear systems with bounded energy, let us investigate Problem 2 and the question of resilient system design.
+</p>
 
-  <h2 style="margin-top:1cm;" id="TAC">
-	Designing Resilient Linear Systems 
+
+
+<h2 style="margin-top:2cm;" id="section TAC">
+	Designing Resilient Linear Systems <a href="#TAC">(Bouvier et al., 2022)</a>
 	<a href="https://github.com/Jean-BaptisteBouvier/Designing-Resilient-Linear-Systems" target="_blank" rel="noopener noreferrer"><img src="{{site.baseurl}}/assets/logos/GitHub_logo.png" width="25" class="github-link"></a>
-  </h2>
-	          
-    With the same linear driftless dynamics as above, we showed that a system in dimension $n$ needs at least $2n+1$ actuators to be resilient to the loss of control over any one of them.
-    We derived a resilient controller $u(t) = B^\top \big( BB^\top \big)^{-1} \big( -Cw(t) + \alpha (x(t) - x_g) \big)$ with $\alpha > 0$ driving asymptotically the state to the target $x_g$.
-    This work has been published in the <a href="https://ieeexplore.ieee.org/document/9744569" target="_blank" rel="noopener noreferrer">IEEE Transactions of Automatic Control</a>.
-    
-  
+</h2>
+
+<p>
+    For the linear driftless dynamics \eqref{eq:driftless}, a system in dimension $n$ needs at least $2n+1$ actuators to be resilient to the loss of control over any one of them.
+    The intuition behind this minimal size result is easily understandable on the following example of resilient control matrix $\bar{B}$ of minimal size $n \times (2n+1)$:
+	\begin{equation*}
+		\bar{B} = \begin{pmatrix} 1 & 1 & 0 & 0 &  ...  & 0 & 0 & 1/n \\
+								  0 & 0 & 1 & 1 &  ...  & 0 & 0 & 1/n \\
+								    &   &   &   & \ddots&   &   & \vdots \\
+								  0 & 0 & 0 & 0 &  ...  & 1 & 1 & 1/n \end{pmatrix}.
+	\end{equation*}
+	After the loss of control over one of the first $2n$ column, its undesirable effect can be completely cancelled by the identical column.
+	The combined action of the other columns of $\bar{B}$ can then provide a net motion in any direction.
+	Similarly, after the loss of the last column of $\bar{B}$ its effect can be overcomed by the combined action of all the others.
+</p>	
+<p>	
+	For a resilient system verifying $BB^\top - CC^\top \succ 0$ we derived an admissible controller 
+	\begin{equation}\label{eq:control_law}
+		u(t) = B^\top \big( BB^\top \big)^{-1} \big( -Cw(t) + \alpha (x(t) - x_g) \big),
+	\end{equation}
+	with $\|u\|_{\mathcal{L}_2} \leq 1$ as long as $\|w\|_{\mathcal{L}_2} \leq 1$.
+	For $\alpha > 0$, controller \eqref{eq:control_law} drives asymptotically the state $x$ of \eqref{eq:driftless split} to the target $x_g$.
+</p>   
+<p>
+	We now return to the general linear system \eqref{eq: split}, where a control law similar to \eqref{eq:control_law} can be used if matrix $A$ is not overly unstable.
+	The intuition is that the magnitude of $u$ in excess of $w$ can be used to counteract the instability of $A$ to a certain extent.
+	If $BB^\top - CC^\top \succ 0$ and if $\|x_0\|$ is small enough, then there exists $\alpha > 0$ such that control law
+	\begin{equation}\label{eq:control_law_A}
+		u(t) := B^\top \big(BB^\top\big)^{-1} \big( -Cw(t) - \alpha x(t) \big)
+	\end{equation}
+	drives resilient system \eqref{eq: split} to the origin, and $\|u\|_{\mathcal{L}_2} \leq 1$ as long as $\|w\|_{\mathcal{L}_2} \leq 1$.
+</p>
+<p> 
+	Now that we have solved Problem 2 for linear systems with bounded energy, let us investigate Problem 3 and the question of quantifying resilience.
+</p>
 
 
 
-  <h2 style="margin-top:1cm;" id="SIAM">
-	Quantitative Resilience of Linear Driftless Systems
+
+<h2 style="margin-top:2cm;" id="section SIAM">
+	Quantitative Resilience of Linear Driftless Systems <a href="#SIAM">(Bouvier et al., 2021)</a> <a href="#Integrators">(Bouvier et al., 2024)</a>
 	<a href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience" target="_blank" rel="noopener noreferrer"><img src="{{site.baseurl}}/assets/logos/GitHub_logo.png" width="25" class="github-link"></a>
-  </h2>
-	
-  
-   We wanted to quantify how much longer the malfunctioning system needs to reach a target $x_g \in \mathbb{R}^n$ compared to the nominal dynamics, we introduce the <em>nominal reach time</em> 
-      $$T_N^*(x_g) := \underset{\bar{u}(t) \, \in \, \bar{\mathcal{U}} }{\inf} \left\{ T : x_g - x_0 = \int_0^T \bar{B} \bar{u}(t) dt \right\},$$
-    the <em>malfunctioning reach time</em>
-      $$T_M^*(x_g) := \underset{w(t) \, \in \, \mathcal{W} }{\sup} \left\{ \underset{u(t) \, \in \, \mathcal{U} }{\inf} \left\{ T : x_g - x_0 = \int_0^T Bu(t) + Cw(t) dt \right\} \right\},$$
-    and the <em>quantitative resilience</em> of the system
-      $$r_q := \underset{x_g \, \in \, \mathbb{R}^n}{\inf} \frac{T_N^*(x_g)}{T_M^*(x_g)}.$$
-    
-    Relying on time-optimal control theory we simplified the expressions of the reach times $T_N^*$ and $T_M^*$. Then, we established the Maximax Minimax Quotient Theorem to solve the nonlinear optimization over $x_g$ in $r_q$.
-    This work has first been presented at the <a href="https://epubs.siam.org/doi/abs/10.1137/1.9781611976847.5" target="_blank" rel="noopener noreferrer"> 2021 SIAM Conference on Control and its Applications</a> and a more complete version has been published in the <a href="">IEEE Transactions of Automatic Control</a>.
-  
-  
+</h2>
+
+<p> 
+	We want to quantify how much longer malfunctioning system \eqref{eq:driftless split} needs to reach a target $x_g \in \mathbb{R}^n$ compared to nominal system \eqref{eq:driftless}.
+	We introduce the <strong>nominal reach time</strong> as the fastest time in which nominal system \eqref{eq:driftless} can reach target $x_g$ 
+	\begin{equation}\label{eq: T_N}
+      T_N^*(x_g) := \underset{\bar{u}(t) \, \in \, \bar{\mathcal{U}} }{\inf} \left\{ T : x_g - x_0 = \int_0^T \hspace{-2mm} \bar{B} \bar{u}(t) dt \right\}.
+    \end{equation}
+	 Similarly, we define the <strong>malfunctioning reach time</strong> as the fastest	time in which malfunctioning system \eqref{eq:driftless split} can reach target $x_g$ when $w$ is chosen to make that time the longest
+	\begin{equation}\label{eq: T_M}
+      T_M^*(x_g) := \underset{w(t) \, \in \, \mathcal{W} }{\sup} \left\{ \underset{u(t) \, \in \, \mathcal{U} }{\inf} \left\{ T : x_g - x_0 = \int_0^T \hspace{-2mm} Bu(t) + Cw(t) dt \right\} \right\}.
+    \end{equation}
+	Then, we define the <strong>quantitative resilience</strong> of system \eqref{eq:driftless} as
+	\begin{equation}\label{eq: r_q}
+      r_q := \underset{x_g \, \in \, \mathbb{R}^n}{\inf} \frac{T_N^*(x_g)}{T_M^*(x_g)}.
+    \end{equation}
+	The larger this	ratio is, the less impact the loss of control authority has on system \eqref{eq:driftless} and hence the more resilient it is.
+	To solve Problem 3, we just need to solve optimization problem \eqref{eq: r_q}.
+	However, the ratios of reach times are nonlinear in their dependency on targets $x_g$ making this optimization non-trivial.
+	Additionally, our definitions of $T_N^*$ and $T_M^*$ introduce nested optimization problems rendering quantitative resilience an extremely difficult quantity to calculate.
+</p>
+<p>
+    Relying on time-optimal control theory we can simplify the expressions of the reach times $T_N^*$ and $T_M^*$.
+	We first need to assume $rank(\bar{B}) = n$ to make system \eqref{eq:driftless} controllable.
+	Then, using the compacity and convexity of input set $\bar{\mathcal{U}}$, theorem 4.3 of <a href="#Liberzon">(Liberzon 2011)</a> states that there exists a solution to \eqref{eq: T_N}.
+	Dynamics \eqref{eq:driftless} being driftless, this time-optimal input $\bar{u}^\star$ is constant.
+	When system \eqref{eq:driftless split} is resilient, the same reasoning applies to \eqref{eq: T_M} to obtain a constant time-optimal input $u^*(w)$ when $w$ is fixed.
+	Proving that the worst undesirable input $w^*$ is also a constant is more technical and requires the derivation of a novel bang-bang principle.
+	Additionally, $w^*$ is located at a vertex of polytope $\mathcal{W}$, while $u^*$ and $\bar{u}^*$ are respectively located on the boundaries of polytopes $\mathcal{U}$ and $\bar{\mathcal{U}}$.
+	Then, optimal times $T_N^*$ and $T_M^*$ simplify to
+	\begin{equation*}
+		T_N^* = \underset{\bar{u} \, \in \, \bar{\mathcal{U}} }{\min} \left\{ T \geq 0 : x_g - x_0 = \bar{B} \bar{u} T \right\}, \qquad T_M^*(x_g) := \underset{w \, \in \, \mathcal{V} }{\max} \left\{ \underset{u \, \in \, \mathcal{U} }{\min} \left\{ T \geq 0 : x_g - x_0 = \big( Bu + Cw \big)T \right\} \right\},
+	\end{equation*}
+	with $\mathcal{V}$ the set of vertices of $\mathcal{W}$.
+</p>
+<p>
+	We can now transform quantitative resilience into a more geometric form using polytopes $\mathcal{X} := \big\{ Cw : w \in \mathcal{W} \big\}$ and $\mathcal{Y} := \big\{ Bu : u \in \mathcal{U} \big\}$.
+	Define the target distance $d := x_g - x_0$. Then, 
+	\begin{align*}
+		r_q &= \underset{d \, \in \, \mathbb{R}^n_*}{\inf} \frac{T_N^*(d)}{T_M^*(d)} = \underset{d \, \in \, \mathbb{R}^n_*}{\inf} \frac{ \underset{\bar{u} \, \in \, \bar{\mathcal{U}} }{\min} \left\{ T \geq 0 : \bar{B} \bar{u} T = d \right\} }{ \underset{w \, \in \, \mathcal{V} }{\max} \left\{ \underset{u \, \in \, \mathcal{U} }{\min} \left\{ T \geq 0 : \big( Bu + Cw \big)T = d \right\} \right\} } \\
+		& \\
+		&= \underset{d \, \in \, \mathbb{R}^n_*}{\inf} \frac{ \underset{x \, \in \, \mathcal{X},\, y \, \in \, \mathcal{Y} }{\min} \left\{ T \geq 0 : (x+y) = d/T \right\} }{ \underset{x \, \in \, \mathcal{X} }{\max} \left\{ \underset{y \, \in \, \mathcal{Y} }{\min} \left\{ T \geq 0 : (x + y) = d/T \right\} \right\} } = \underset{d \, \in \, \mathbb{R}^n_*}{\inf} \frac{ \underset{x \, \in \, \mathcal{X} }{\min} \left\{ \underset{y \, \in \, \mathcal{Y} }{\max} \left\{ \alpha \geq 0 : (x + y) = \alpha d \right\} \right\} }{ \underset{x \, \in \, \mathcal{X},\, y \, \in \, \mathcal{Y} }{\max} \left\{ \alpha \geq 0 : (x+y) = \alpha d \right\} },
+	\end{align*}
+	by replacing $1/T$ by $\alpha$. Since $\alpha \geq 0$, we can write $\alpha = |\alpha| = \|\alpha d\|/\|d\| = \|x+y\|/\|d\|$. Then,
+	\begin{equation*}
+		r_q = \underset{d \, \in \, \mathbb{S}}{\inf} \frac{ \underset{x \, \in \, \mathcal{X} }{\min} \left\{ \underset{y \, \in \, \mathcal{Y} }{\max} \left\{ \|x+y\| : x + y \in \mathbb{R}^+ d \right\} \right\} }{ \underset{x \, \in \, \mathcal{X},\, y \, \in \, \mathcal{Y} }{\max} \left\{ \|x+y\| : x+y \in \mathbb{R}^+ d \right\} },
+	\end{equation*}
+	where we scaled $d$ to the unit circle $\mathbb{S}$ of $\mathbb{R}^n$.
+	For a given direction $d$, we then need to optimize the length of vector $x+y$ knowing that it is aligned with $d$.
+	When $C$ is a vector, i.e., when the system loses control over a single actuator, this geometrical intuition leads to the Maximax Minimax Quotient Theorem detailled in the next section.
+	This theorem states that the direction $d$ realizing $r_q$ is aligned with vector $C$, i.e.,
+	\begin{equation*}
+		r_q = \min \left\{ \frac{T_N^*(C)}{T_M^*(C)}, \frac{T_N^*(-C)}{T_M^*(-C)} \right\}.
+	\end{equation*}
+	This calculation can be even further simplified into a single linear optimization problem to determine $r_q$, while we introduced quantitative resilience as a nonlinear optimization problem with 4 nested optimizations!
+</p>
 
 
 
 
-  <h2 style="margin-top:1cm;" id="JOTA">
-    The Maximax Minimax Quotient Theorem
+<h2 style="margin-top:2cm;" id="section JOTA">
+    The Maximax Minimax Quotient Theorem <a href="#JOTA">(Bouvier et al., 2022)</a>
     <a href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax" target="_blank" rel="noopener noreferrer"><img src="{{site.baseurl}}/assets/logos/GitHub_logo.png" width="25" class="github-link"></a>
-  </h2>				
+</h2>				
   
-  
-    The problem of quantifying the resilience of driftless linear systems leads to a nonlinear optimization problem consisting of four nested optimizations :
-    $$\underset{d\, \in\, \mathbb{S}}{\max}\ \frac{\underset{x\, \in\, \mathcal{X},\ y\, \in\, \mathcal{Y}}{\max} \big\{ \|x + y\| : x + y \in \mathbb{R}^+d \big\} }{ \underset{x\, \in\, \mathcal{X}}{\min} \big\{ \underset{y\, \in\, \mathcal{Y}}{\max} \big\{ \|x + y\| : x + y \in \mathbb{R}^+d \big\} \big\} },$$
-      where $\mathcal{Y} := \big\{ Bu : u \in \mathcal{U} \big\}$ represents the admissible control inputs, while $\mathcal{X} := \big\{ Cw : w \in \mathcal{W} \big\}$ represents the undesirable and uncontrolled inputs.
-    
-    We developed a geometrical solution to this optimization in the case $\dim(\mathcal{X}) = 1$, which is illustrated in the video below generated by our <a href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax" target="_blank" rel="noopener noreferrer">MATLAB code</a>.
-    This work has been published in the <a href="https://link.springer.com/article/10.1007/s10957-022-02008-z" target="_blank" rel="noopener noreferrer">Journal of Optimization Theory and Applications</a>.
-  
+<p>
+	Let us now dive in more details about the Maximax Minimax Quotient Theorem.
+    The problem of quantifying the resilience of driftless linear systems led us to a nonlinear optimization problem consisting of four nested optimizations :
+    \begin{equation}\label{eq:maximax}
+		\underset{d\, \in\, \mathbb{S}}{\max}\ r_{\mathcal{X}, \mathcal{Y}}(d) := \underset{d\, \in\, \mathbb{S}}{\max}\ \frac{\underset{x\, \in\, \mathcal{X},\ y\, \in\, \mathcal{Y}}{\max} \big\{ \|x + y\| : x + y \in \mathbb{R}^+d \big\} }{ \underset{x\, \in\, \mathcal{X}}{\min} \big\{ \underset{y\, \in\, \mathcal{Y}}{\max} \big\{ \|x + y\| : x + y \in \mathbb{R}^+d \big\} \big\} },
+	\end{equation}
+	on the polytopes $\mathcal{X} := \big\{ Cw : w \in \mathcal{W} \big\}$ and $\mathcal{Y} := \big\{ Bu : u \in \mathcal{U} \big\}$.
+</p>
+<p>
+	The first step towards solving \eqref{eq:maximax} is to verify that the four optimizations all admit a solution.
+	This is accomplished by verifying that the functions to optimize are continuous and their domain is compact.
+    Then, in the case $\dim(\mathcal{X}) = 1$ we developed a geometrical solution to this optimization, as illustrated in the video below.
+</p> 
 
-  <!--p align="center"> <img src="{{site.baseurl}}/assets/gifs/maximax_gif.gif" alt="animated" /> </p--> 
-  
+<!--img src="{{site.baseurl}}/assets/gifs/maximax_gif.gif" alt="animated"  class="center_img"/-->
+<div class="videowrapper">
+     <iframe src="https://www.youtube.com/embed/rjKzHyDJX40">
+     </iframe>
+   </div>
+<div class="caption">
+	Illustration of the geometrical proof of the Maximax Minimax Quotient Theorem. <br>
+	Video generated by our <a href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax" target="_blank" rel="noopener noreferrer">MATLAB code</a>.
+</div>
+
+<p>
+	For optimization \eqref{eq:maximax} to make sense, we need the inclusion $\mathcal{X} \subset \mathcal{Y}$ as shown on the video.
+	Then, we work in a 2D plane containing $\mathcal{X}$ and we parametrize direction $d$ with angle $\beta$.
+	As $\beta$ goes from $0$ to $2\pi$, we need to find when $r_{\mathcal{X}, \mathcal{Y}}(\beta)$ reaches its maximum.
+	On the video, the two parts of the red broken arrow represent the $x$ and $y$ solutions of the numerator of \eqref{eq:maximax} as they maximize the length $\|x+y\|$ while being aligned with $d$.
+	Similarly, the two parts of the blue broken arrow represent the $x$ and $y$ solutions of the denominator of \eqref{eq:maximax} as this $x$ is picked to minimize $\|x+y\|$, while $y$ aims at maximizing it and aligning it with $d$.
+</p>
+<p>
+	Notice that in the video, when both broken arrows intersect the same face of $\mathcal{Y}$, ratio $r_{\mathcal{X}, \mathcal{Y}}$ is constant.
+	It only changes value at vertex crossings. 
+	Using simple trigonometry, it is possible to differentiate the vertices where the value of $r_{\mathcal{X}, \mathcal{Y}}$ increases or decreases.
+	Then, it becomes clear that the maximum of $r_{\mathcal{X}, \mathcal{Y}}$ occurs when both $d$ is aligned with $\mathcal{X}$.
+	Since this holds for any 2D plane containing $\mathcal{X}$, the maximum over all $d \in \mathbb{S}$ also occurs along $\mathcal{X}$, which concludes the proof.
+</p>
+<p>
+	We will now investigate how to extend resilience theory to non-driftless linear systems with inputs of bounded amplitude.
+</p>
 
   
-<h2 style="margin-top:1cm;" id="ECC">
-	Resilience of Linear Systems
+  
+<h2 style="margin-top:2cm;" id="section ECC">
+	Resilience of Linear Systems  <a href="#ECC">(Bouvier et al., 2022)</a> <a href="#ECC_extended">(Bouvier et al., 2023)</a>
 	<a href="https://github.com/Jean-BaptisteBouvier/Resilience-of-Linear-Systems" target="_blank" rel="noopener noreferrer"><img src="{{site.baseurl}}/assets/logos/GitHub_logo.png" width="25" class="github-link"></a>
 </h2>
    
-    The nominal dynamics of interest are $\dot{x}(t) = Ax(t) + \bar{B} \bar{u}(t)$, with $x(0) = x_0 \in \mathbb{R}^n$, and $\bar{u}(t) \in \bar{\mathcal{U}}$.</li>
-    After a <em>partial loss of control authority over actuators</em>, the malfunctioning dynamics become $\dot{x}(t) = Ax(t) + Bu(t) + Cw(t)$, $x(0) = x_0 \in \mathbb{R}^n$, with control $u(t) \in \mathcal{U}$ and undesirable input $w(t) \in \mathcal{W}$.
-    To quantify how much longer the malfunctioning system needs to reach a target $x_g \in \mathbb{R}^n$ compared to the nominal dynamics, we introduce the <em>nominal reach time</em> 
-        $$T_N^*(x_0, x_g) := \underset{\bar{u}(t) \, \in \, \bar{\mathcal{U}} }{\inf} \left\{ T \geq 0 : x_g = e^{AT}\left( x_0 + \int_0^T e^{-At}\bar{B} \bar{u}(t) dt\right) \right\},$$
-        the <em>malfunctioning reach time</em>
-        $$T_M^*(x_0, x_g) := \underset{w(t) \, \in \, \mathcal{W} }{\sup} \left\{ \underset{u(t) \, \in \, \mathcal{U} }{\inf} \left\{ T \geq 0 : x_g = e^{AT}\left( x_0 + \int_0^T e^{-At}\big(Bu(t) + Cw(t) \big)dt \right)\right\} \right\},$$
-        and the <em>quantitative resilience</em> of the system
-        $$r_q := \underset{x_0 \, \in \, \mathbb{R}^n, \ x_g \, \in \, \mathbb{R}^n}{\inf} \frac{T_N^*(x_0, x_g)}{T_M^*(x_0, x_g)}.$$
-      
-    Relying on Lyapunov theory we derived analytical bounds on $T_N^*$, $T_M^*$ and $r_q$.
-    This work has first been presented at the <a href="https://ieeexplore.ieee.org/document/9838147" target="_blank" rel="noopener noreferrer">2022 European Control Conference</a>
-	and a more complete version has been published in <a href="https://doi.org/10.1016/j.automatica.2023.110985" target="_blank" rel="noopener noreferrer">Automatica</a>.
-
+<p>
+	We now return to the initial non-driftless dynamics \eqref{eq: ODE} and \eqref{eq: split} but the input sets $\bar{\mathcal{U}}$, $\mathcal{U}$ and $\mathcal{W}$ are now polytopes instead of relying on $\mathcal{L}_2$-bounds.
+	To establish resilience conditions for these systems in a more understandable form than \eqref{eq:thm2}, we build on the differential games theory of <a href="#Hajek">(H&aacute;jek 1974)</a>.
+	This duality result states the equivalence between the <strong>resilient stabilizability</strong> of \eqref{eq: split} and the <strong>stabilizability</strong> of system
+	\begin{equation}\label{eq: Hajek}
+		\dot x(t) = Ax(t) + z(t), \qquad x(0) = x_0 \in \mathbb{R}^n, \quad z(t) \in \mathcal{Z},
+	\end{equation}
+	where $\mathcal{Z} \subset \mathbb{R}^n$ is the <em>Minkowski difference</em> between the set of admissible control inputs $B\mathcal{U} := \big\{Bu : u \in \mathcal{U} \big\}$, and the opposite of the set of undesirable inputs $C\mathcal{W} := \big\{Cw : w \in \mathcal{W} \big\}$, i.e.,
+	\begin{equation*}
+		\mathcal{Z} := B\mathcal{U} \ominus (−C\mathcal{W}) = \big\{ z \in B\mathcal{U} : z − Cw \in B\mathcal{U}\ \text{for all}\ w \in \mathcal{W} \big\}.
+	\end{equation*}
+	Set $\mathcal{Z}$ represents the control authority left after counteracting the worst possible undesirable inputs $Cw$.
+	System \eqref{eq: split} is <strong>resiliently stabilizable</strong> if for all $x_0 \in \mathbb{R}^n$ and all $w(\cdot) \in \mathcal{W}$, there exists $T \geq 0$ and a control $u(\cdot) \in \mathcal{U}$ driving the state of \eqref{eq: split} from $x_0$ to $x(T) = 0$.
+	System \eqref{eq: Hajek} is <strong>stabilizable</strong> if for all $x_0 \in \mathbb{R}^n$, there exists $T \geq 0$ and a control $z(\cdot) \in \mathcal{Z}$ driving the state of \eqref{eq: Hajek} from $x_0$ to $x(T) = 0$.
+</p>
+<p>	
+	Let $q := dim(\mathcal{Z})$ and define a matrix $Z \in \mathbb{R}^{n \times q}$ such that $Im(Z) = span(\mathcal{Z})$.
+	Then, we can formulate a resilient stabilizability condition by building on the stabilizability condition of <a href="#Brammer">(Brammer 1972)</a>.
+	System \eqref{eq: split} is resiliently stabilizable if and only if $rank \big(\mathcal{C}(A,Z)\big) = n$, $Re\big( \lambda(A) \big) \leq 0$, and there is no real eigenvector $v$ of $A^\top$ satisfying $v^\top z \leq 0$ for all $z \in \mathcal{Z}$.
+</p>
+<p>
+    To quantify the resilience of linear systems, we reuse the nominal reach time $T_N^*$ and the malfunctioning reach time $T_M^*$.
+	However, the dynamics being non-driftless, these reach times now depend on both the initial state $x_0$ and the target $x_g$, not just their difference $d$.
+	These modifications appear in the <strong>nominal reach time</strong> 
+    \begin{equation}\label{eq: T_N non-drift}
+		T_N^*(x_0, x_g) := \underset{\bar{u}(t) \, \in \, \bar{\mathcal{U}} }{\inf} \left\{ T \geq 0 : x_g = e^{AT}\left( x_0 + \int_0^T \hspace{-2mm} e^{-At}\bar{B} \bar{u}(t) dt\right) \right\},
+    \end{equation}
+	the <strong>malfunctioning reach time</strong>
+    \begin{equation}\label{eq: T_M non-drift}
+		T_M^*(x_0, x_g) := \underset{w(t) \, \in \, \mathcal{W} }{\sup} \left\{ \underset{u(t) \, \in \, \mathcal{U} }{\inf} \left\{ T \geq 0 : x_g = e^{AT}\left( x_0 + \int_0^T \hspace{-2mm} e^{-At}\big(Bu(t) + Cw(t) \big)dt \right)\right\} \right\},
+    \end{equation}
+	and the <strong>quantitative resilience</strong>
+    $$r_q := \underset{x_0 \, \in \, \mathbb{R}^n, \ x_g \, \in \, \mathbb{R}^n}{\inf} \frac{T_N^*(x_0, x_g)}{T_M^*(x_0, x_g)}.$$
+</p> 
+<p>
+    Because dynamics \eqref{eq: ODE} and \eqref{eq: split} are not driftless, the arguments of the solutions of \eqref{eq: T_N non-drift} and \eqref{eq: T_M non-drift} are time-varying bang-bang signals and not constants anymore.
+	Therefore, none of the geometrical work developed previously can be reused to calculate $T_N^*$ and $T_M^*$, only algorithmical solutions exist.
+	Instead, relying on Lyapunov theory we derived analytical bounds on $T_N^*$, $T_M^*$ and $r_q$.
+    Assuming that $A$ is Hurwitz, there exists $P \succ 0$ and $Q \succ 0$ such that $A^\top P + PA = -Q$, which also defines a $P$-norm as $\|x\|_P := \sqrt{x^\top P x}$.
+	Further assuming the stabilizability of nominal system \eqref{eq: ODE} yields
+	\begin{equation*}
+		2 \frac{\lambda^P_{min}}{\lambda^Q_{max}} ln \left(1 + \frac{\lambda^Q_{max} \|x_0\|_P}{2 \lambda^P_{min} b^P_{max}}\right) \leq T_N^*(x_0) \leq 2 \frac{\lambda^P_{max}}{\lambda^Q_{min}} ln \left(1 + \frac{\lambda^Q_{min} \|x_0\|_P}{2 \lambda^P_{max} b^P_{min}}\right),
+	\end{equation*}
+	with $b^P_{max} := \max \big\{ \| \bar{B} \bar{u} \|_P : \bar{u} \in \bar{\mathcal{U}} \big\}$ and $b^P_{min} := \min \big\{ \| \bar{B} \bar{u} \|_P : \bar{u} \in \partial \bar{\mathcal{U}} \big\}$.
+	Malfunctioning reach time $T_M^*$ can be bounded similarly
+	\begin{equation*}
+		2 \frac{\lambda^P_{min}}{\lambda^Q_{max}} ln \left(1 + \frac{\lambda^Q_{max} \|x_0\|_P}{2 \lambda^P_{min} z^P_{max}}\right) \leq T_M^*(x_0) \leq 2 \frac{\lambda^P_{max}}{\lambda^Q_{min}} ln \left(1 + \frac{\lambda^Q_{min} \|x_0\|_P}{2 \lambda^P_{max} z^P_{min}}\right),
+	\end{equation*}
+	with $z^P_{max} := \max \big\{ \| z \|_P : z \in \mathcal{Z} \big\}$ and $z^P_{min} := \min \big\{ \| z \|_P : z \in \partial \mathcal{Z} \big\}$.
+	Combining their bounds allows to estimate quantitative resilience analytically 
+	\begin{equation*}
+		\max \left( \frac{\lambda^P_{min} \lambda^Q_{min}}{\lambda^P_{max} \lambda^Q_{max}}, \frac{z^P_{min}}{b^P_{max}}\right) \leq r_q \leq \max \left( \frac{\lambda^P_{max} \lambda^Q_{max}}{\lambda^P_{min} \lambda^Q_{min}}, \frac{z^P_{max}}{b^P_{min}}\right).
+	\end{equation*}
+</p>
+<p>
+	We have now addressed all three problems of interest for linear systems with different types of input bounds.
+	Let us see if we can extend the scope of resilience theory by removing a few of its limitations.
+</p>
 
   
     
-  <h2 style="margin-top:1cm;" id="JGCD">
-    Resilience of an Orbital Inspection Mission
+<h2 style="margin-top:2cm;" id="section JGCD">
+    Resilience of an Orbital Inspection Mission <a href="#JGCD">(Bouvier et al., 2023)</a>
 	<a href="https://github.com/Jean-BaptisteBouvier/Spacecraft-Resilience" target="_blank" rel="noopener noreferrer"><img src="{{site.baseurl}}/assets/logos/GitHub_logo.png" width="25" class="github-link"></a>
-  </h2>
+</h2>
 	
-    
+<p>
+	We extend resilience theory to nonlinear systems
+</p>
+<p>
+	Another major limitation of resilience theory is the requirement that the controller $u(t)$ has immediate knowledge of the undesirable inputs $w(t)$.
+	To make our framework more general and more realistic, we add a constant actuation delay $\tau > 0$ to the controller.
+	Then, the controller knowledge at time $t > \tau$ can be written as $u(t) = u\big(t, x[0:t-\tau], w[0:t-\tau]\big)$.
+	<a href="#Lechappe">(L&eacute;chapp&eacute; 2015)</a>
+</p>
+<p>  
     We demonstrate the resilience of a spacecraft to perform an orbital inspection mission depsite the loss of control authority over one of its thrusters and with a controller further plagued by actuation delay.
     We extend resilience theory to include resilient trajectory tracking and to account for actuation delays.
-    This work received the John V. Breakwell award at the 2022 AAS/AIAA Astrodynamics Specialists Conference and is submitted to the Journal of Guidance, Control, and Dynamics.
     
+</p>  
 
-	<!--p align="center"> <img src="{{site.baseurl}}/assets/gifs/spacecraft_gif.gif" alt="animated" /> </p--> 
+<img src="{{site.baseurl}}/assets/gifs/spacecraft_gif.gif" alt="animated" class="center_img"/> 
+<div class="caption">
+	Spacecraft video generated by our <a href="https://github.com/Jean-BaptisteBouvier/Spacecraft-video" target="_blank" rel="noopener noreferrer">Matlab code</a>.
+</div>	
+
+
+
+
+
+<h2 style="margin-top:2cm;" id="Summary">
+	Quick Summary
+</h2>
+
+<p>
+
+</p>
 	
+	
+	
+<h2 style="margin-top:2cm;" id="References">
+	References
+</h2>
+
+
+<ol class='custom-marker parens-after decimal'>
+	<li>
+		<div class="reference" id="ISS_thruster">
+			M. Bartels, <a href="https://www.space.com/space-station-nauka-arrival-thruster-fireupdate" target="_blank" rel="noopener noreferrer">"Russia says ’software failure’ caused thruster misfire at space station"</a>, space.com, 2021.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Fawzi">
+			H. Fawzi, P. Tabuada, and S. Diggavi, <a href="https://ieeexplore.ieee.org/document/6727407" target="_blank" rel="noopener noreferrer">"Secure estimation and control for cyber-physical systems under adversarial attacks"</a>, IEEE Transactions on Automatic Control, vol. 59, no. 6, pp. 1454–1467, 2014. 
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="fault-tolerant">
+			A. A. Amin and K. M. Hasan, <a href="https://www.sciencedirect.com/science/article/pii/S0263224119304099?via%3Dihub" target="_blank" rel="noopener noreferrer">"A review of fault tolerant control systems: Advancements and applications"</a>, Measurement, vol. 143, pp. 58–68, 2019.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="robust-adaptive">
+			L. Y. Wang and J.-F. Zhang, <a href="https://ieeexplore.ieee.org/document/945742" target="_blank" rel="noopener noreferrer">"Fundamental limitations and differences of robust and adaptive control"</a>, in 2001 American Control Conference, vol. 6, pp. 4802–4807, 2001.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="IFAC">
+			J.-B. Bouvier and M. Ornik, <a href="https://www.sciencedirect.com/science/article/pii/S240589632030656X?via%3Dihub" target="_blank" rel="noopener noreferrer">"Resilient reachability for linear systems"</a>, in 21<sup>st</sup> IFAC World Congress, 2020, pp. 4409–4414.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Delfour">
+			M. Delfour and S. Mitter, <a href="https://epubs.siam.org/doi/10.1137/0307038" target="_blank" rel="noopener noreferrer">"Reachability of perturbed systems and min sup problems"</a>, SIAM Journal on Control and Optimization, vol. 7, no. 4, pp. 521–533, 1969.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="TAC">
+			J.-B. Bouvier and M. Ornik, <a href="https://ieeexplore.ieee.org/document/9744569" target="_blank" rel="noopener noreferrer">"Designing resilient linear systems"</a>, IEEE Transactions on Automatic Control, vol. 67, no. 9, pp. 4832–4837, 2022.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="SIAM">
+			J.-B. Bouvier, K. Xu, and M. Ornik, <a href="https://epubs.siam.org/doi/10.1137/1.9781611976847.5" target="_blank" rel="noopener noreferrer">"Quantitative resilience of linear driftless systems"</a>, in SIAM Conference on Control and its Applications, 2021, pp. 32–39.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Integrators">
+			J.-B. Bouvier, K. Xu, and M. Ornik, <a href="https://ieeexplore.ieee.org/document/10154130" target="_blank" rel="noopener noreferrer">"Quantitative resilience of generalized integrators"</a>, IEEE Transactions on Automatic Control, 2024.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Liberzon">
+			D. Liberzon, <a href="http://liberzon.csl.illinois.edu/teaching/cvoc.pdf" target="_blank" rel="noopener noreferrer">"Calculus of Variations and Optimal Control Theory: a Concise Introduction"</a>, Princeton University Press, 2011.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="JOTA">
+			J.-B. Bouvier and M. Ornik, <a href="https://link.springer.com/article/10.1007/s10957-022-02008-z" target="_blank" rel="noopener noreferrer">"The Maximax Minimax Quotient Theorem"</a>, Journal of Optimization Theory and Applications, vol. 192, pp. 1084–1101, 2022.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="ECC">
+			J.-B. Bouvier and M. Ornik, <a href="https://ieeexplore.ieee.org/document/9838147" target="_blank" rel="noopener noreferrer">"Quantitative resilience of linear systems"</a>, in 20<sup>th</sup> European Control Conference, 2022, pp. 485–490.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="ECC_extended">
+			J.-B. Bouvier and M. Ornik, <a href="https://www.sciencedirect.com/science/article/pii/S0005109823001383" target="_blank" rel="noopener noreferrer">"Resilience of linear systems to partial loss of control authority"</a>, Automatica, vol. 152, 2023.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Hajek">
+			O. H&aacute;jek, <a href="https://link.springer.com/article/10.1007/BF01761702" target="_blank" rel="noopener noreferrer">"Duality for differential games and optimal control"</a>, Mathematical Systems Theory, vol. 8, no. 1, pp. 1–7, 1974.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Brammer">
+			R. Brammer, <a href="https://epubs.siam.org/doi/10.1137/0310026" target="_blank" rel="noopener noreferrer">"Controllability in linear autonomous systems with positive controllers"</a>, SIAM Journal on Control, vol. 10, no. 2, pp. 339–353, 1972.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="JGCD">
+			J.-B. Bouvier, H. Panag, R. Woollands, and M. Ornik, <a href="https://arxiv.org/abs/2303.12877" target="_blank" rel="noopener noreferrer">"Resilient trajectory tracking to partial loss of control authority over actuators with actuation delay"</a>, ArXiv, 2023.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Lechappe">
+			V. L&eacute;chapp&eacute;, E. Moulay, F. Plestan, A. Glumineau, and A. Chriette, <a href="https://www.sciencedirect.com/science/article/pii/S0005109814005342?via%3Dihub" target="_blank" rel="noopener noreferrer">"New predictive scheme for the control of LTI systems with input delay and unknown disturbances"</a>, Automatica, vol. 52, pp. 179–184, 2015.
+		</div>
+	</li>
+</ol>
+
+
+
+
+
+
 
 </article>
 
+<!-- Code to add a button return to top -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+<script src="{{ site.baseurl }}/assets/blog_posts/top_button.js" ></script>
 
+<!-- Javascript code to calculate the reading time for this blog post -->
 <script src="{{ site.baseurl }}/assets/blog_posts/read.js" ></script>
 
 </body>
