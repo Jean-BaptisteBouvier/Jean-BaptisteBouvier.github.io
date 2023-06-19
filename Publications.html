@@ -17,24 +17,11 @@ title: Publications
 	pre {
 	  padding: 10px;
 	}
-	.column {
-	  float: left;
-	  padding: 10px;
-	  margin-bottom: 5mm;
-	}
-	.left {
-	  width: 25%;
-	}
 	.right {
 	  width: 75%;
 	  font-size: 16px;
 	}
-	/* Clear floats after the columns */
-	.row:after {
-	  content: "";
-	  display: table;
-	  clear: both;
-	}
+	
 	table, tr, td {
 		border: none;
 	}
@@ -734,10 +721,6 @@ title: Publications
         
 
   
-<script src='../assets/js/chart.js'></script>
-
-
-  
 <!-- Commented model
 
 <div class="row">
@@ -772,6 +755,15 @@ title: Publications
 </div>
 -->
   
-  
+ 
+ 
+<!-- Code to add the histogram of citations -->
+<script src="{{ site.baseurl }}/assets/js/chart.js"></script>
+
+<!-- Code to add a button return to top -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+<script src="{{ site.baseurl }}/assets/js/top_button.js" ></script>
+
+ 
   
 </body>

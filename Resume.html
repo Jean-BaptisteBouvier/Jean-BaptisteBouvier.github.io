@@ -4,34 +4,13 @@ title: Resume
 ---
 <head>
 <style>
-	/* Create two unequal columns that floats next to each other */
-	.column {
-	  float: left;
-	  padding: 10px;
-	  margin-bottom: 5mm;
-	}
-	.left {
-	  width: 25%;
-	}
-	.right {
-	  width: 75%;
-	}
-	/* Clear floats after the columns */
-	.row:after {
-	  content: "";
-	  display: table;
-	  clear: both;
-	}
-	
-	.story {
-		font-size: 16px;
-    }
+	/* Everything is in `style.scss` */
 </style>
 </head>
 <body>
 
 <p style="margin-bottom:1cm;">
-    pdf version of my <a href="{{site.baseurl}}/assets/PDFs/CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+    Here is a pdf version of my <a href="{{site.baseurl}}/assets/PDFs/CV.pdf" target="_blank" rel="noopener noreferrer">CV</a>.
 </p>
 
 
@@ -110,7 +89,6 @@ title: Resume
     <div>Research Assistant, 2017 - 2018</div>
 	<div><a href="https://ssog.ae.gatech.edu/?_ga=2.135728057.946823942.1680189798-775619562.1680189798" target="_blank" rel="noopener noreferrer">Space System Optimization group</a></div>
     <div><a href="https://aerospace.illinois.edu/" target="_blank" rel="noopener noreferrer">Department of Aerospace Engineering</a></div>
-    <div>Astrodynamics and trajectory optimization</div>
   </div>
 </div>
 
@@ -336,7 +314,7 @@ title: Resume
 
 <hr>
 
-<div class="story">
+<div style="font-size: 16px;">
 <p style="margin-bottom:5mm;">
 My name is Jean-Baptiste Bouvier and I am a French postdoctoral researcher with interests spanning robotics, astrodynamics, autonomy, control theory, machine learning and optimization among others.
 </p>
@@ -377,6 +355,10 @@ I am an Ironman triathlete and I won the 2022 Illinois State Championship of tri
 
 
 
+
+<!-- Code to add a button return to top -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+<script src="{{ site.baseurl }}/assets/js/top_button.js" ></script>
 
 
 </body>
