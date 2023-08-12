@@ -99,7 +99,7 @@ def replace(filedata, keyword, replacement):
 ############## Extracting data from Google Scholar #####################
 
 # Getting the html code of the page
-html = urlopen(link).read().decode("utf-8")
+html = urlopen(link).read().decode("latin-1") # "utf-8"
 
 # Searching for the number of citations per year
 citations_per_year = find_all_number(html, '<span class="gsc_g_al">', '<')
