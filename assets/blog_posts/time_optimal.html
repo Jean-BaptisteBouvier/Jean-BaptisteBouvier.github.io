@@ -1,0 +1,238 @@
+---
+layout: default
+title: time_optimal
+---
+
+<head>
+  <title>time_optimal</title>
+  
+  <style>
+	/* Everything is in `page_style.css` */
+  </style>
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });
+	MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} } });
+  </script>
+  
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
+</head>
+<body>
+
+<article id="article">
+
+
+<h1 class="title"><strong>Time Optimal Linear Control</strong></h1>
+<p class="subtitle">
+	August 20, 2023 | <span id="time"></span> min | Jean-Baptiste Bouvier
+</p>
+
+
+
+<div class="table-of-content">
+<details>
+	<summary>
+		Table of contents
+	</summary>
+	<ul>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Framework">Framework</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#History">History</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Current">Current State</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Summary">Quick Summary</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#References">References</a> </li>
+	</ul>
+</details>
+</div>
+
+<p class="abstract">
+	During my PhD I came across the problem of determining the minimal time for a linear system to reach a state.
+	This is a straightforward optimal problem studied and solved several decades ago.
+	However, I was surprised to find that there are no closed-form solutions for this minimal time despite the apparently simple framework.
+</p>
+
+
+
+<h2 style="margin-top:2cm;" id="Framework">Framework</h2>
+
+<p>
+	Consider the following time-invariant linear system with unit bounded inputs:
+	\begin{equation}\label{eq: dynamics}
+		\dot x(t) = Ax(t) + Bu(t), \quad u(t) \in \mathcal{U}, \quad x(0) = x_0 \in \mathbb{R}^n,
+	\end{equation}
+	where the set of admissible inputs is $\mathcal{U} := [-1, 1]^m$, and matrices $A \in \mathbb{R}^{n \times n}$ and $B \in \mathbb{R}^{n \times m}$ are constant.
+</p>
+	
+<p>
+	Our objective is to determine the minimal time necessary to reach the origin $x=0 \in \mathbb{R}^n$ from initial state $x_0$ with dynamics \eqref{eq: dynamics}.
+	To be more specific, we want to calculate
+	\begin{equation}\label{eq: T_N^*}
+		T_N^*(x_0) := \underset{u\, \in\, \mathcal{F}(\mathcal{U})}{\inf} \big\{ T \geq 0 : x(T) = 0,\ \text{for dynamics \eqref{eq: dynamics}}\big\},
+	\end{equation}
+	where $\mathcal{F}(\mathcal{U})$ is the set of functions of time taking values in $\mathcal{U}$.
+</p>
+
+<p>
+	We will first review how this problem was historically solved before discussing some recent works on this topic.
+</p>
+
+
+
+<h2 style="margin-top:2cm;" id="History">History</h2>
+
+<p>
+	Determining the minimal time to the origin was of particular interest during the 1950's as discussed in the introduction of <a href="#LaSalle">(LaSalle 1959)</a>.
+	The work <a href="#LaSalle">(LaSalle 1959)</a> establishes that $T_N^*$ exists and that the optimal input $u^*$ argument of the optimization \eqref{eq: T_N^*} is unique and bang-bang for normal and Hurwitz linear systems.
+	The notion of normality is related to the structure of the reachable set and directly implies uniqueness of the time-optimal inputs <a href="#Rechtschaffen_unique">(Rechtschaffen 1979)</a>.
+</p>
+
+<p>
+	However, the problem of synthesizing $u^*$ in a general setting was not solved until the work <a href="#Neustadt_numerical">(Neustadt 1960)</a>, which derives an iterative method converging to the optimal control. 
+	Shortly after, work <a href="#Ho">(Ho 1962)</a> establishes a method of successive approximations of $u^*$ designed for the engineers in need of a practical process.
+	Instead of solving directly the minimal time problem \eqref{eq: T_N^*}, <a href="#Ho">(Ho 1962)</a> solves recursively the easier problem of minimizing the norm of the final state at a given time.
+	The smallest of these times where the norm of the state is null is the minimal stabilizing time $T_N^*$.
+	The same year <a href="#Eaton">(Eaton 1962)</a> derives another algorithmic way of computing $u^*$, but based on geometrical intuition and hyperplanes.
+</p>
+<p>
+	Then, the work <a href="#Neustadt">(Neustadt 1963)</a> extended the bang-bang principle of <a href="#LaSalle">(LaSalle 1959)</a> to systems with nonlinear control but linear internal dynamics.
+	More specifically, <a href="#Neustadt">(Neustadt 1963)</a> established the compactness of the reachable set of dynamics $\dot x(t) = A(t)x(t) + \varphi(u,t)$ when $u(t) \in \mathcal{U}$ is compact, and $A$ and $\varphi$ are continuous.
+</p>
+<p>
+	In the following years, <a href="#Babunashvili">(Babunashvili 1964)</a> derives another algorithm relying on gradient descent to compute $u^*$ for semilinear systems of the form $\dot x(t) = A(t)x(t) + B(t)u(t) + f(t)$.
+	Most of the results cited so far required the normality of the dynamics to ensure the uniqueness of the optimal solution.
+	That is where the work <a href="#Fujisawa">(Fujisawa et al. 1967)</a> comes into play, since its algorithm to synthesize $u^*$ does not need normality.
+</p>
+<p>
+	The profusion of numerical methods to determine $u^*$ and $T_N^*$ is in fact due to the absence of a closed-form analytical description of these optimal quantities as stated in the review <a href="#Athans">(Athans 1966)</a>.
+	The structure of the optimal input is known to be bang-bang, but the optimal switching times can only be described as the solutions of an optimization problem and hence have no closed-form expression.
+</p>
+
+
+
+
+
+<h2 style="margin-top:2cm;" id="Current">Current State</h2>
+
+<p>	
+	Most of the algorithms discussed above are not very efficient in terms of computation.
+	Indeed, these gradient-based iterative methods are very sensitive to initial guess and usually exhibit poor convergence properties.
+	To address this issue, recent work have been studying the single input case and determining the optimal sequence of switching times of the bang-bang input $u^*$ <a href="#Grognard">(Grognard et al. 2003)</a>.
+	This method provides an algorithm with much better convergence properties than older approaches.
+</p>
+
+<p>
+	Contemporary research is also performed on the theoretical front for time optimal control of linear systems,
+	as witnessed by the work <a href="#Romano">(Romano et al. 2020)</a> studying the case of time-optimal transfer between two non-zero states,
+	which had not been solved previously. 
+</p>
+
+
+
+
+
+<h2 style="margin-top:2cm;" id="Summary">Quick Summary</h2>
+
+<p>
+<ul>
+	<li>The minimal time problem for linear systems with bounded inputs gained a lot of interest in the 1950's and 60's.</li>
+	<li>Despite its apparent simplicity, there exists <em>no closed-form solution.</em>.
+</ul>
+</p>
+	
+	
+<h2 style="margin-top:2cm;" id="References">References</h2>
+
+
+
+<ol class='custom-marker parens-after decimal'>
+	<li>
+		<div class="reference" id="Athans">
+			M. Athans,
+			<a href="https://doi.org/10.1109/TAC.1966.1098353" target="_blank" rel="noopener noreferrer">The status of optimal control theory and applications for deterministic systems</a>,
+			IEEE Transactions on Automatic Control, p. 580-596, 1966.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Babunashvili">
+			TG Babunashvili,
+			<a href="https://doi.org/10.1137/0302023" target="_blank" rel="noopener noreferrer">The synthesis of linear optimal systems</a>,
+			Journal of the Society for Industrial and Applied Mathematics, Series A: Control, p. 261-265, SIAM, 1964.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Eaton">
+			J. Eaton,
+			<a href="https://doi.org/10.1016/S0022-247X(62)80015-8" target="_blank" rel="noopener noreferrer">An iterative solution to time-optimal control</a>,
+			Journal of Mathematical Analysis and Applications, p. 329-344, Academic Press, 1962.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Fujisawa">
+			T. Fujisawa, and Y. Yasuda,
+			<a href="https://doi.org/10.1137/0305029" target="_blank" rel="noopener noreferrer">An iterative procedure for solving the time-optimal regulator problem</a>,
+			SIAM Journal on Control, p. 501-512, 1967.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Grognard">
+			F. Grognard, and R. Sepulchre,
+			<a href="https://doi.org/10.23919/ECC.2003.7085292" target="_blank" rel="noopener noreferrer">Computation of time-optimal switchings for linear systems with complex poles</a>,
+			2003 European Control Conference (ECC), p. 2190-2195, 2003.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Ho">
+			Y. Ho,
+			<a href="https://doi.org/10.1115/1.3657263" target="_blank" rel="noopener noreferrer">A successive approximation technique for optimal control systems subject to input saturation</a>,
+			Journal of Basic Engineering, p. 33-37, 1962.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="LaSalle">
+			J. LaSalle,
+			<a href="https://doi.org/10.1073/pnas.45.4.573" target="_blank" rel="noopener noreferrer">Time Optimal Control Systems</a>,
+			Proceedings of the National Academy of Sciences of the United States of America, p. 573-577, 1959.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Neustadt_numerical">
+			L. Neustadt,
+			<a href="https://doi.org/10.1016/0022-247X(60)90015-9" target="_blank" rel="noopener noreferrer">Synthesizing time optimal control systems</a>,
+			Journal of Mathematical Analysis and Applications, p. 484-493, Elsevier, 1960.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Neustadt">
+			L. Neustadt,
+			<a href="https://doi.org/10.1016/0022-247X(63)90081-7" target="_blank" rel="noopener noreferrer">The Existence of Optimal Controls in the Absence of Convexity Conditions</a>,
+			Journal of Mathematical Analysis and Applications, p. 110-117, 1963.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Rechtschaffen_unique">
+			E. Rechtschaffen,
+			<a href="https://doi.org/10.1007/BF00934455" target="_blank" rel="noopener noreferrer">Unique winning policies for linear differential pursuit games</a>,
+			Journal of Optimization Theory and Applications, p. 629-658, Springer, 1979.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Romano">
+			M. Romano, and  F. Curti,
+			<a href="https://doi.org/10.1016/j.automatica.2020.109151" target="_blank" rel="noopener noreferrer">Time-optimal control of linear time invariant systems between two arbitrary states</a>,
+			Automatica, p. 109151, Elsevier, 2020.
+		</div>
+	</li>
+</ol>
+
+</article>
+
+<!-- Code to add a button return to top -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+<script src="{{ site.baseurl }}/assets/js/top_button.js" ></script>
+
+<!-- Javascript code to calculate the reading time for this blog post -->
+<script src="{{ site.baseurl }}/assets/blog_posts/read.js" ></script>
+
+</body>

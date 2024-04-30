@@ -1,0 +1,326 @@
+---
+layout: default
+title: safe_RL
+---
+
+<head>
+  <title>safe_RL</title>
+
+  <style>
+	/* Everything is in `page_style.css` */
+  </style>
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });
+	MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} } });
+  </script>
+   
+  
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  
+  
+</head>
+<body>
+
+<article id="article">
+
+
+
+<h1 class="title"><strong>Safety in Reinforcement Learning</strong></h1>
+<p class="subtitle">
+	April 30, 2024 | <span id="time"></span> min | Jean-Baptiste Bouvier
+</p>
+
+
+
+<div class="table-of-content">
+<details>
+	<summary>
+		Table of contents
+	</summary>
+	<ul>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Framework">Framework</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#section soft">Soft Constraints</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#section proba">Probabilistic Constraints</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#section hard">Hard Constraints</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Summary">Quick Summary</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#References">References</a> </li>
+	</ul>
+</details>
+</div>
+
+<p class="abstract">
+	Safety in Reinforcement Learning (RL) typically consists in enforcing a constraint to prevent trajectories from entering some unsafe region.
+	We are interested in <em>closed-loop constrained RL</em>, where the constraint on the state of the system is enforced by a learned policy, as illustrated below.
+</p>
+
+<img src="{{ site.baseurl }}/assets/pictures/constrained_RL.PNG" alt="graph" title="Closed-loop constrained RL" class="center_img" width="600">
+<div class="caption">
+	Illustration of closed-loop constrained RL. Image from <a href="#POLICEd_RL">(Bouvier et al. 2024)</a>.
+</div>
+
+<p>
+	The learned policy predicts an action to be taken. This action modifies the state of the environment environment and produces a reward signal.
+	The policy learns to maximize this reward by improving its action prediction at any given state.
+	In this post we will review how constraints are implemented in safe RL. 
+</p>
+
+
+
+
+
+<h2 style="margin-top:1cm;" id="Framework">Framework</h2>
+
+<p>	
+	Following the review work of <a href="#safety_levels">Brunke et al. 2022</a>, we distinguish three safety levels used in RL depending on the type of constraint employed.
+	The lowest level of safety is provided by <em>soft constraints</em>, which only encourage the policy to respect the constraint through reward shaping, but no guarantees are provided.
+	The intermediate safety level is obtained with <em>probabilistic constraints</em>, which provide an upper bound to the probability of violating the constraint.
+	Finally, the highest level of safety is enforced by <em>hard constraints</em>, which guarantee no constraint violations.
+	These three safety levels are illustrated below.
+</p>
+
+
+<img src="{{ site.baseurl }}/assets/pictures/ThreeConstraints.PNG" alt="Illustration of the three safety levels" title="Illustration of the three safety levels" class="center_img" width="600">
+<div class="caption" width="600">
+	Illustration of the three safety levels and their respective constraint types. Image from <a href="#POLICEd_RL">(Bouvier et al. 2024)</a> focusing on hard constraints.
+</div>
+
+<p>
+	We will now discuss in greater detail these three levels of safety and their corresponding type of constraint.
+</p>
+
+
+
+
+<h2 style="margin-top:2cm;" id="section soft">Soft Constraints</h2>
+    
+<p>
+	The most common approach to enforce constraints in RL adopts the framework of constrained Markov decision processes (CMDPs) <a href="#CMDP">(Altman 2021)</a>.
+	CMDPs encourage policies to respect constraints by penalizing the expectation of the cumulative constraint violations <a href="#RL_soft_constraint">(Liu et al. 2023)</a>.
+	
+</p>	
+	
+<p>	
+	Numerous variations of this framework have been developed such as state-wise constrained MDP <a href="#state_wise_CMDP">(Zhao et al. 2023)</a>,
+	constrained policy optimization <a href="#CPO">(Achiam et al. 2017)</a>,
+	and state-wise constrained policy optimization <a href="#imagination">(Zhao et al. 2023)</a>.
+	These approaches belong to the category of <em>soft constraints</em> as the policy is only <em>encouraged</em> to respect the constraint and provides no satisfaction guarantees.
+	This category also encompasses work <a href="#ConBaT">(Meng et al. 2023)</a> where a control barrier transformer is trained to avoid unsafe actions, but no safety guarantees can be derived.
+</p>	
+
+	
+	
+
+<h2 style="margin-top:2cm;" id="section proba">Probabilisitic Constraints</h2>
+
+<p>
+	A <em>probabilistic</em> constraint comes with the guarantee of satisfaction with some probability threshold <a href="#safety_levels">(Brunke et al. 2022)</a>
+	and hence ensures a higher level of safety than soft constraints. 
+	For instance, <a href="#probably_approx_correct">(Kalagarla et al. 2021)</a> derived policies having a high probability of not violating the constraints by more than a small tolerance.
+	Using control barrier functions, <a href="#end_to_end">(Cheng et al. 2019)</a> guaranteed safe learning with high probability.
+</p>
+
+<p>
+	Since unknown stochastic environments prevent hard constraints enforcement, <a href="#hard_soft">(Wang et al. 2023)</a> proposed to learn generative model-based soft barrier functions to encode chance constraints.
+	Similarly, by using a safety index on an unknown environment modeled by Gaussian processes, <a href="#probabilistic">(Zhao et al. 2023)</a>, <a href="#Knuth">(Knuth et al. 2021)</a> established probabilistic safety guarantees.
+</p>
+
+
+
+<h2 style="margin-top:2cm;" id="section hard">Hard Constraints</h2>
+
+<p>
+	The third and highest safety level corresponds to inviolable <em>hard constraints</em> <a href="#safety levels">(Brunke et al. 2022)</a>.
+	Work <a href="#Optlayer">(Pham et al. 2018)</a> learns a safe policy thanks to a differentiable safety layer projecting any unsafe action onto the closest safe action.
+	However, since this safety layers only correct actions, a precise model of the robot dynamics model must be known, which is typically unavailable in RL settings.
+	This limitation is also shared by <a href="#backward">(Rober et al. 2023)</a>, which requires knowledge of the robot dynamics model to compute its backward reachable sets and avoid obstacles.
+</p>
+
+<p>
+	To circumvent any knowledge of the robot dynamics model, <a href="#ISSA">(Zhao et al. 2022)</a> used an implicit black-box model of the environment but is restricted to collision avoidance problems in 2D.
+	To avoid this limitations, the Lagrangian-based approach of <a href="#ma2022joint">(Ma et al. 2022)</a> and the model-free approach of <a href="#yang2023model">(Yang et al. 2023)</a> both learn a safety certificate with a deep neural network.
+	However, to ensure that these neural net approximators actually verify the safety guarantees of their analytical counterparts,
+	they would need to be evaluated at every point of their state space, which is infeasible in practice.
+	Hence, the safety guarantees of these approaches only hold for the states where their neural networks verify the safety certificate equations.
+</p>
+
+<p>
+	This lack of provable constraint satisfaction prompted our work POLICEd RL where we establish an algorithm to enforce an affine hard constraint on a
+	learned policy in closed-loop with a black-box deterministic environment <a href="#POLICEd">(Bouvier et al. 2024)</a>.
+</p>
+
+
+
+<h2 style="margin-top:2cm;" id="Summary">
+	Quick Summary
+</h2>
+
+<p>
+<ul>
+	<li>Safe RL works can be grouped together based on the type of constraints they consider, which lead to one of three safety level.</li>
+	<li>The lowest level of safety is provided by <em>soft constraints</em>, which only encourage the policy to respect the constraint through reward shaping, but no guarantees are provided.
+	<li>The intermediate safety level is obtained with <em>probabilistic constraints</em>, which provide an upper bound to the probability of violating the constraint.
+	<li>Finally, the highest level of safety is enforced by <em>hard constraints</em>, which guarantee no constraint violations.
+</ul>
+</p>
+	
+	
+	
+<h2 style="margin-top:2cm;" id="References">
+	References
+</h2>
+
+
+<ol class='custom-marker parens-after decimal'>
+	<li>
+		<div class="reference" id="CPO">
+			Joshua Achiam, David Held, Aviv Tamar, and Pieter Abbeel,
+			<a href="https://proceedings.mlr.press/v70/achiam17a" target="_blank" rel="noopener noreferrer">Constrained Policy Optimization</a>,
+			International Conference on Machine Learning, pages 22 – 31. PMLR, 2017.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="CMDP">
+			Eitan Altman, <a href="https://doi.org/10.1201/9781315140223" target="_blank" rel="noopener noreferrer">Constrained Markov Decision Processes</a>, Routledge, 2021.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="POLICEd_RL">
+			Jean-Baptiste Bouvier, Kartik Nagpal, and Negar Mehr,
+			<a href="https://arxiv.org/abs/2403.13297" target="_blank" rel="noopener noreferrer">POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints</a>,
+			2024.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="safety_levels">
+			Lukas Brunke, Melissa Greeff, Adam W Hall, Zhaocong Yuan, Siqi Zhou, Jacopo Panerati, and Angela P Schoellig,
+			<a href="https://www.annualreviews.org/content/journals/10.1146/annurev-control-042920-020211" target="_blank" rel="noopener noreferrer">Safe learning in robotics: From learning-based control to safe reinforcement learning</a>,
+			Annual Review of Control, Robotics, and Autonomous Systems, 5:411 – 444, 2022.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="end_to_end">
+			Richard Cheng, Gábor Orosz, Richard M Murray, and Joel W Burdick,
+			<a href="https://doi.org/10.1609/aaai.v33i01.33013387" target="_blank" rel="noopener noreferrer">End-to-end safe reinforcement learning through barrier functions for safety-critical continuous control tasks</a>,
+			Proceedings of the AAAI Conference on Artificial Intelligence, volume 33, pages 3387–3395, 2019.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="probably_approx_correct">
+			Krishna C Kalagarla, Rahul Jain, and Pierluigi Nuzzo,
+			<a href="https://doi.org/10.1609/aaai.v35i9.16979" target="_blank" rel="noopener noreferrer">A sample-efficient algorithm for episodic finite-horizon MDP with constraints</a>,
+			Proceedings of the AAAI Conference on Artificial Intelligence, volume 35, pages 8030–8037, 2021.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="Knuth">
+			Craig Knuth, Glen Chou, Necmiye Ozay, and Dmitry Berenson,
+			<a href="https://ieeexplore.ieee.org/abstract/document/9387079" target="_blank" rel="noopener noreferrer">Planning with learned dynamics: Probabilistic guarantees on safety and reachability via Lipschitz constants</a>,
+			IEEE Robotics and Automation Letters, 6(3):5129–5136, 2021.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="RL_soft_constraint">
+			Zuxin Liu, Zijian Guo, Yihang Yao, Zhepeng Cen, Wenhao Yu, Tingnan Zhang, and Ding Zhao,
+			<a href="https://arxiv.org/abs/2302.07351" target="_blank" rel="noopener noreferrer">Constrained Decision Transformer for Offline Safe Reinforcement Learning</a>,
+			arXiv preprint arXiv:2302.07351, 2023.
+		</div>
+	</li>	
+	<li>
+		<div class="reference" id="ma2021model">
+			Haitong Ma, Jianyu Chen, Shengbo Eben, Ziyu Lin, Yang Guan, Yangang Ren, and Sifa Zheng,
+			<a href="https://ieeexplore.ieee.org/abstract/document/9636468" target="_blank" rel="noopener noreferrer">Model-based Constrained Reinforcement Learning using Generalized Control Barrier Function</a>,
+			IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pages 4552–4559. IEEE, 2021.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="ma2022joint">
+			Haitong Ma, Changliu Liu, Shengbo Eben Li, Sifa Zheng, and Jianyu Chen,
+			<a href="https://proceedings.mlr.press/v168/ma22a.html" target="_blank" rel="noopener noreferrer">Joint Synthesis of Safety Certificate and Safe Control Policy using Constrained Reinforcement Learning</a>,
+			Learning for Dynamics and Control Conference, pages 97–109. PMLR, 2022.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="ConBaT">
+			Yue Meng, Sai Vemprala, Rogerio Bonatti, Chuchu Fan, and Ashish Kapoor,
+			<a href="https://arxiv.org/abs/2303.04212" target="_blank" rel="noopener noreferrer">ConBaT: Control Barrier Transformer for Safe Policy Learning</a>,
+			arXiv preprint arXiv:2303.04212, 2023.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="OptLayer">
+			Tu-Hoa Pham, Giovanni De Magistris, and Ryuki Tachibana, 
+			<a href="https://ieeexplore.ieee.org/abstract/document/8460547" target="_blank" rel="noopener noreferrer">OptLayer: Practical Constrained Optimization for Deep Reinforcement Learning in the Real World</a>, 
+			International Conference on Robotics and Automation (ICRA), pages 6236–6243. IEEE, 2018.
+		</div>
+	</li>
+	<li>
+	<li>
+		<div class="reference" id="backward">
+			Nicholas Rober, Sydney M Katz, Chelsea Sidrane, Esen Yel, Michael Everett, Mykel J Kochenderfer, and Jonathan P How,
+			<a href="https://ieeexplore.ieee.org/abstract/document/10097878" target="_blank" rel="noopener noreferrer">Backward reachability analysis of neural feedback loops: Techniques for linear and nonlinear systems</a>,
+			IEEE Open Journal of Control Systems, 2:108–124, 2023.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="hard_soft">
+			Yixuan Wang, Simon Sinong Zhan, Ruochen Jiao, Zhilu Wang, Wanxin Jin, Zhuoran Yang, Zhaoran Wang, Chao Huang, and Qi Zhu,
+			<a href="https://proceedings.mlr.press/v202/wang23as.html" target="_blank" rel="noopener noreferrer">Enforcing hard constraints with soft barriers: Safe reinforcement learning in unknown stochastic environments</a>,
+			International Conference on Machine Learning, pages 36593–36604. PMLR, 2023.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="yang2023model">
+			Yujie Yang, Yuxuan Jiang, Yichen Liu, Jianyu Chen, and Shengbo Eben Li,
+			<a href="https://ieeexplore.ieee.org/document/10023989" target="_blank" rel="noopener noreferrer">Model-free safe reinforcement learning through neural barrier certificate</a>,
+			IEEE Robotics and Automation Letters, 8(3):1295–1302, 2023.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="ISSA">
+			Weiye Zhao, Tairan He, and Changliu Liu,
+			<a href="https://proceedings.mlr.press/v164/zhao22a.html" target="_blank" rel="noopener noreferrer">Model-free safe control for zero-violation reinforcement learning</a>,
+			5th Annual Conference on Robot Learning, pages 784–793. PMLR, 2022.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="state_wise_CMDP">
+			Weiye Zhao, Rui Chen, Yifan Sun, Tianhao Wei, and Changliu Liu,
+			<a href="https://arxiv.org/abs/2306.12594" target="_blank" rel="noopener noreferrer">State-wise Constrained Policy Optimization</a>,
+			arXiv preprint arXiv:2306.12594, 2023.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="probabilistic">
+			Weiye Zhao, Tairan He, and Changliu Liu,
+			<a href="https://proceedings.mlr.press/v211/zhao23a.html" target="_blank" rel="noopener noreferrer">Probabilistic Safeguard for Reinforcement Learning using Safety Index Guided Gaussian Process Models</a>,
+			Learning for Dynamics and Control Conference, pages 783–796. PMLR, 2023.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="imagination">
+			Weiye Zhao, Yifan Sun, Feihan Li, Rui Chen, Tianhao Wei, and Changliu Liu,
+			<a href="https://arxiv.org/abs/2308.13140" target="_blank" rel="noopener noreferrer">Learn with imagination: Safe set guided state-wise constrained policy optimization</a>,
+			arXiv preprint arXiv:2308.13140, 2023.
+		</div>
+	</li>
+</ol>
+
+
+
+
+
+
+
+</article>
+
+<!-- Code to add a button return to top -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+<script src="{{ site.baseurl }}/assets/js/top_button.js" ></script>
+
+<!-- Javascript code to calculate the reading time for this blog post -->
+<script src="{{ site.baseurl }}/assets/js/read.js" ></script>
+
+</body>
