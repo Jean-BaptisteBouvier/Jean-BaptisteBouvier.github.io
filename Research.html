@@ -23,6 +23,43 @@ title: Research
   
 </head>
 <body>
+
+The overarching objective of my research work is to establish provable safety guarantees for autonomous systems. 
+During my PhD I focused on establishing safety guarantees for systems losing control over some of their actuators, which led to my resilience framework discussed below.
+As a postdoctoral scholar I am interested in ensuring safety for black-box systems relying on reinforcement learning and diffusion.
+
+  <hr style="margin-top:1cm;">
+  <h2>Guaranteeing Safety in Reinforcement Learning</h2>
+  
+  <p>
+    My most recent research topic is to develop provable safety guarantees in Reinforcement Learning (RL).
+	More specifically, I have been looking at enforcing hard constraints with a learned policy in closed-loop with a black-box environment.
+	In <a href="{{ site.baseurl }}/assets/blog_posts/safe_RL" target="_blank" rel="noopener noreferrer">this blog post</a> I discuss how most of the safe RL literature <em>cannot guarantee such constraint respect</em>.
+	Based on this observation, I devised <strong>POLICEd RL</strong> to solve this issue.
+  </p>
+  <p>
+	The main idea for POLICEd RL is to make the policy repulsive in the state-space region surrounding the constraint.
+	This repulsive buffer will then push trajectories away from the constraint and guarantee its satisfaction.
+	The policy learns to be repulsive as it receives penalties for each constraint violation during training.
+	My key insight is to use the <a href="https://ieeexplore.ieee.org/document/10096520" target="_blank" rel="noopener noreferrer">POLICE algorithm</a>
+	to make the policy affine in this buffer, which then allows to verify its repulsive character by only evaluating the policy at the vertices of the buffer.
+	This discrete and small number of evaluations to <em>guarantee safety</em> contrasts with the typical approach of learning a safety certificate that needs to be
+	evaluated <em>everywhere on the state space</em> to check if this learned certificate verifies the analytical safety conditions.
+  </p>
+  <p>
+	We illustrate POLICEd RL below on a simple 2D system and show that safety is guaranteed at the end of training.
+	Without the affine policy, TD3 requires several orders of magnitude more training episodes to learn a policy pointing away from the constraint line on its whole length.
+	For more details the POLICEd RL paper is accessible <a href="{{ site.baseurl }}/assets/PDFs/POLICEd_RL_ArXiv.pdf" target="_blank" rel="noopener noreferrer">here</a>.
+  </p>
+	<img src="{{site.baseurl}}/assets/gifs/POLICEd_2D_gif.gif" alt="animated" class="center_img"/> 
+	<div class="caption">
+		Training of a policy to direct trajectories toward the target (cyan) whithout crossing the constraint line (red).<br>
+		The POLICEd policy is affine in the buffer region (green) and learns to push trajectories away from the constraint.
+		The black-box dynamics are 2D and continuous, the RL algorithm is TD3.<br>
+	</div>	
+
+  
+  
   
   
   <hr style="margin-top:1cm;">
