@@ -1,0 +1,377 @@
+---
+layout: default
+title: diffusion
+---
+
+<head>
+  <title>diffusion</title>
+
+  <style>
+	/* Everything is in `page_style.css` */
+	.column_left {
+	  float: left;
+	  width: 35%;
+	  padding-right: 5%;
+	}
+	.column_right {
+	  float: left;
+	  width: 60%;
+	}
+	/* Clear floats after the columns */
+	.row:after {
+	  content: "";
+	  display: table;
+	  clear: both;
+	}
+	
+	pre {
+	  margin-top: 0px; 
+      margin-bottom: 0px;
+	}
+	
+  </style>
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });
+	MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} } });
+  </script>
+   
+  
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  
+  
+</head>
+<body>
+
+<article id="article">
+
+
+
+<h1 class="title"><strong>Introduction to Diffusion Models</strong></h1>
+<p class="subtitle">
+	May 27, 2024 | <span id="time"></span> min | Jean-Baptiste Bouvier
+</p>
+
+
+
+<div class="table-of-content">
+<details>
+	<summary>
+		Table of contents
+	</summary>
+	<ul>
+		<li> <a style="color:#454545; text-decoration:none;" href="#what">What are diffusion models?</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#coding">How to implement a diffusion model in 100 lines of Python?</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#2d">Diffusion models in 2D</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#DDPM">Denoising Diffusion Probabilistic Models</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Summary">Quick Summary</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#References">References</a> </li>
+	</ul>
+</details>
+</div>
+
+<p class="abstract">
+	Diffusion models have reached state-of-the-art performance in terms of image and video generation.
+	Thus, most of the models available online focus on these difficult tasks which require complex code inaccessible to the novice.
+	Instead, in this post I will focus on the implementation of a simple diffusion model in Python in just 100 lines of code!
+	This mininal implementation makes understanding diffusion models much easier!
+	All the codes mentioned in this post are available on <a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion" target="_blank" rel="noopener noreferrer">GitHub</a>.
+</p>
+
+
+<h2 style="margin-top:1cm;" id="what">What are diffusion models?</h2>
+
+<p>
+	Diffusion models belong to the class of generative machine learning as they can create new content.
+	In short, diffusion models learn to iteratively remove noise from the data until obtaining a clean sample.
+	The generation process starts from a purely stochastic signal, a white noise.
+	Then, a trained diffusion model can iteratively decrease the noise level of this data until converging to a sample of a desired distribution (for instance images of bikes).
+</p>
+
+<p>	
+	There are plenty of good resources explaining in great detail how diffusion models work, such as 
+	<a href="https://lilianweng.github.io/posts/2021-07-11-diffusion-models/" target="_blank" rel="noopener noreferrer">Lilian Weng's blog post</a>
+	or even <a href="https://en.wikipedia.org/wiki/Diffusion_model" target="_blank" rel="noopener noreferrer">Wikipedia</a>.
+	However, the understanding brought by these excellent resources is not enough to actually code a diffusion model.
+	Here I will focus on extremely simple models allowing to understanding how to code your first diffusion model.
+</p>
+
+
+
+<h2 style="margin-top:1cm;" id="coding">How to implement a diffusion model in 100 lines of Python?</h2>
+
+<p>
+	The simplest diffusion code is <a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion/blob/main/codes/simple_1Diffusion.py" target="_blank" rel="noopener noreferrer"><code>simple_1Diffusion.py</code></a>,
+	which you can find in the codes folder of the <a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion" target="_blank" rel="noopener noreferrer">GitHub repo</a>.
+	This code implements a basic diffusion model for 1D data and is self-contained in 100 lines of Python!
+</p>
+
+
+<h3 style="margin-top:5mm;">Libraries</h3>
+
+<div class="row">
+  <div class="column_left"><p>
+	In this simplest implementation, the only extra libraries to install are <a href="https://pytorch.org/">torch</a> for the neural networks,
+	<a href="https://matplotlib.org/" target="_blank" rel="noopener noreferrer">matplotlib</a> for plotting our results,
+	and <a href="https://numpy.org/" target="_blank" rel="noopener noreferrer">numpy</a> for the calculations. 
+  </p></div>
+  <div class="column_right">
+  <pre style="font-size:14px">import torch
+import random
+import numpy as np
+import torch.nn as nn
+import matplotlib.pyplot as plt</pre>
+  </div>
+</div>
+
+
+<h3 style="margin-top:5mm;">Data distribution</h3>
+
+<div class="row">
+  <div class="column_left"><p>
+	The data distribution to be generated is a Gaussian of mean <code>mu_data</code> and standard deviation (std) <code>sigma_data</code>.
+  </p></div>
+  <div class="column_right">
+  <pre><code style="font-size:14px">mu_data = 1.
+sigma_data = 0.01 </code></pre>
+  </div>
+</div>
+
+<p>	
+	The goal will be to recover this data distribution from a unit Gaussian noise of mean $\mu_{noise} = 0$ and std $\sigma_{noise} = 1$ as illustrated below.
+</p>
+
+<img src="{{site.baseurl}}/assets/gifs/pdf_diffusion_gif.gif" alt="animated" class="center_img"/> 
+<div class="caption">
+	Transformation of the probability density function (pdf) a Gaussian noise of mean $\mu_{noise} = 0$ and std $\sigma_{noise} = 1$ into the pdf of mean $\mu_{data} = 1$ and std $\sigma_{data} = 0.01$.<br>
+</div>
+
+
+<h3 style="margin-top:5mm;">Hyperparameters</h3>
+
+<div class="row">
+  <div class="column_left"><p>
+	Training of the denoiser neural network (dnn) will use a learning rate <code>lr</code> and iterate for 1000 epochs.
+	We define the minimal and maximal std of the noise levels of the dnn <code>sigma_min</code> and <code>sigma_max</code>.
+	These noise levels <code>Sigmas</code> are spread following a log-normal scale as suggested by the paper 
+	<a href="#DDPM">"Elucidating the Design Space of Diffusion-Based Generative Models"</a>.
+	The <code>test_size</code> describes the number of datapoints to be denoised after training.
+  </p></div>
+  <div class="column_right">
+  <pre><code style="font-size:14px">lr = 1e-3 
+batch_size = 32 
+nb_epochs = 1000
+sigma_min = sigma_data/10 
+sigma_max = 1. 
+N = 10 # number of noise scales 
+rho = 7 # log normal scale
+Sigmas = (sigma_max**(1/rho) + torch.arange(N)*(sigma_min**(1/rho) - sigma_max**(1/rho))/(N-1))**rho
+Sigmas = torch.cat((Sigmas, torch.tensor([0.])), dim=0)
+test_size = 1000  </code></pre>
+  </div>
+</div>
+
+
+
+<h3 style="margin-top:5mm;">Denoiser</h3>
+
+<div class="row">
+  <div class="column_left"><p>
+	The dnn is coded using the class <code>Denoiser</code> with a neural network taking as inputs the data <code>x</code> and its noise level <code>sigma</code>
+	before returning its prediction of the noise to be removed.
+	We use a simple Multi-Layer Perceptron with <code>ReLU</code> activations as our neural network.
+  </p></div>
+  <div class="column_right">
+  <pre><code style="font-size:14px">class Denoiser(nn.Module):
+  def __init__(self, width):
+    super().__init__()
+    self.net = nn.Sequential(nn.Linear(1+1, width), nn.ReLU(),
+			  nn.Linear(width, width), nn.ReLU(),
+			  nn.Linear(width, 1) )
+  
+  def forward(self, x, sigma):
+    s = sigma*torch.ones_like(x)
+    return self.net( torch.cat((x, s), dim=1) )   
+
+denoiser = Denoiser(32)  </code></pre>
+  </div>
+</div>
+
+
+<h3 style="margin-top:5mm;">Training</h3>
+
+<div class="row">
+  <div class="column_left"><p>
+	The training loop randomly chooses a noise level <code>sigma</code> and creates a noise signal <code>n</code> to be added to
+	the clean data <code>y</code> of mean <code>mu_data</code> and std <code>sigma_data</code>.
+	The dnn <code>denoiser</code> takes as inputs the noised data <code>y + n</code> and its noise level <code>sigma</code>.
+	The dnn is trained to predict the extra noise corresponding to a transition between levels <code>Sigmas[i]</code> and <code>Sigmas[i+1]</code>.
+	We calculate a quadratic <code>loss</code> and use stochastic gradient descent (<code>SGD</code>) to optimize the <code>denoiser</code>.
+  </p><p>
+	Finally, we plot the evolution of the training loss over the epochs.
+  </p></div>
+  <div class="column_right">
+  <pre><code style="font-size:14px">losses = np.zeros(nb_epochs)
+optimizer = torch.optim.SGD(denoiser.parameters(), lr)
+
+for epoch in range(nb_epochs):
+  id_sigma = random.randint(0, N-1) 
+  sigma = Sigmas[id_sigma]
+  y = torch.randn((batch_size,1))*sigma_data + mu_data
+  n = torch.randn_like(y)*sigma
+
+  pred = denoiser(y + n, sigma)
+  loss = torch.sum( (pred - n*Sigmas[id_sigma+1]/sigma )**2 ) 
+  optimizer.zero_grad()
+  loss.backward()
+  optimizer.step() 
+  losses[epoch] = loss.detach().item()
+
+plt.title("Training loss")
+plt.plot(np.arange(nb_epochs), losses)
+plt.show()  </code></pre>
+  </div>
+</div>
+
+
+<h3 style="margin-top:5mm;">Denoising</h3>
+
+<div class="row">
+  <div class="column_left"><p>
+	The denoising process starts from a stochastic signal <code>x</code> of mean 0 and std <code>sigma_max</code>.
+	From this signal we iteratively remove one noise level using the trained dnn until obtaining a cleaned signal corresponding to
+	the initial data distribution of mean <code>mu_data</code> and std <code>sigma_data</code>.
+  </p></div>
+  <div class="column_right">
+  <pre><code style="font-size:14px">x = torch.randn((test_size, 1))*sigma_max
+print(f"Noised sample:   mean {x.mean().item():.3f}  std {x.std().item():.3f}")
+Mean,    Std    = np.zeros(N+1),   np.zeros(N+1)
+Mean[0], Std[0] = x.mean().item(), x.std().item()
+
+for i in range(N):
+  with torch.no_grad():
+  x -= denoiser(x, Sigmas[i])
+  Mean[i+1], Std[i+1] = x.mean().item(), x.std().item()
+   
+print(f"Denoised sample: mean {x.mean().item():.3f}  std {x.std().item():.3f}")
+print(f"Denoising goal:  mean {mu_data:.3f}  std {sigma_data:.3f}")  </code></pre>
+  </div>
+</div>
+
+<p>
+	You can now run this code and verify that the Denoiser can actually generates the initial data distribution from a random sample.
+	We can even make a video of this quick denoising process with
+	<a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion/blob/main/codes/simple_1Diffusion_video.py"  target="_blank" rel="noopener noreferrer"><code>simple_1Diffusion_video.py</code></a>.
+</p>
+
+
+<img src="{{site.baseurl}}/assets/gifs/denoising_1_gif.gif" alt="animated" class="center_img"/> 
+<div class="caption">
+	Iterative denoising of a 1D random sample of points of mean $\mu_{noise} = 0$ and std $\sigma_{noise} = 1$ <br>
+	into the data distribution of mean $\mu_{data} = 1$ and std $\sigma_{data} = 0.01$.
+</div>
+
+
+
+<h2 style="margin-top:1cm;" id="2D">Diffusion models in 2D</h2>
+
+<p>
+	Now that we have a 1D denoiser, we can scale it up to 2D with minimal changes and obtain the code
+	<a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion/blob/main/codes/simple_2Diffusion.py" target="_blank" rel="noopener noreferrer"><code>simple_2Diffusion.py</code></a>.
+</p>
+
+<p>
+	Diffusion models are supposed to be very expressive, allowing them to capture multimodalities present in the initial data. 
+	We will illustrate this with an initial data distribution being the sum of 4 narrow Gaussians with spikes at $(-1, -1)$, $(-1, 1)$, $(1, -1)$, and $(1, 1)$.
+	As before, we will add noise until this initial distribution is indistinguishable from a Gaussian centered at the origin with std 1.
+	The denoising process should then separate the data into the four spikes as illustrated on the gif below.
+</p>
+
+
+<img src="{{site.baseurl}}/assets/gifs/denoising_4_gif.gif" alt="animated" class="center_img"/> 
+<div class="caption">
+	Iterative denoising of a multimodal distribution composed of the sum of 4 Gaussians of means located at $(-1, -1)$, $(-1, 1)$, $(1, -1)$, and $(1, 1)$.<br>
+</div>
+
+
+<p>
+	The code to implement this 2D multimodal diffusion process is
+	<a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion/blob/main/codes/simple_multimodal.py" target="_blank" rel="noopener noreferrer"><code>simple_multimodal.py</code></a>
+	and the gif can be generated with <a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion/blob/main/codes/simple_multimodal_video.py" target="_blank" rel="noopener noreferrer"><code>simple_multimodal_video.py</code></a>.
+</p>
+
+
+
+<h2 style="margin-top:1cm;" id="DDPM">Denoising Diffusion Probabilistic Models (DDPM)</h2>
+
+<p>
+	The diffusion models presented so far use a naive denoising process which works on our simple cases.
+	To obtain better quality diffusion models we will follow the implementation of <a href="#DDPM">"Denoising Diffusion Probabilistic Models" (DDPM)</a>.
+	The simplest code for 1D data is <a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion/blob/main/codes/single_DDPM.py" target="_blank" rel="noopener noreferrer"><code>single_DDPM.py</code></a>.
+	Note that <code>single_DDPM.py</code> uses a single neural network to denoise each noise level, but we could also have one neural network for each noise level as implemented in <a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion/blob/main/codes/simple_DDPM.py" target="_blank" rel="noopener noreferrer"><code>simple_DDPM.py</code></a>.
+</p>
+<p>
+	As we did previously, we can also extend DDPM to 2D multimodal data distributions with the code
+	<a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion/blob/main/codes/multimodal_DDPM.py" target="_blank" rel="noopener noreferrer"><code>multimodal_DDPM.py</code></a>.
+	Finally, to get a better understanding of the evolution of the probability density functions (pdf) through the different noise scales you can look at
+	<a href="https://github.com/Jean-BaptisteBouvier/intro-to-diffusion/blob/main/codes/detailed_DDPM.py" target="_blank" rel="noopener noreferrer"><code>detailed_DDPM.py</code></a>.
+</p>
+
+
+
+
+
+<h2 style="margin-top:2cm;" id="Summary">
+	Quick Summary
+</h2>
+
+<p>
+<ul>
+	<li>Diffusion models learn to iteratively remove noise.</li>
+	<li>A trained diffusion model generates new data by denoising some random initial data.</li>
+	<li>We implemented a simple diffusion model in 100 lines of Python!</li>
+</ul>
+</p>
+	
+	
+	
+<h2 style="margin-top:2cm;" id="References">
+	References
+</h2>
+
+
+<ol class='custom-marker parens-after decimal'>
+	<li>
+		<div class="reference" id="DDPM">
+			Jonathan Ho, Ajay Jain, and Pieter Abbeel,
+			<a href="https://arxiv.org/abs/2006.11239" target="_blank" rel="noopener noreferrer">Denoising diffusion probabilistic models</a>,
+			Advances in Neural Information Processing Systems, pages 6840 - 6851, 2020.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="EDM">
+			Tero Karras, Miika Aittala, Timo Aila, and Samuli Laine,
+			<a href="https://arxiv.org/abs/2206.00364"  target="_blank" rel="noopener noreferrer">Elucidating the Design Space of Diffusion-Based Generative Models</a>,
+			Advances in Neural Information Processing Systems, pages 26565 - 26577, 2022.
+		</div>
+	</li>
+</ol>
+
+
+
+
+
+
+
+</article>
+
+<!-- Code to add a button return to top -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+<script src="{{ site.baseurl }}/assets/js/top_button.js" ></script>
+
+<!-- Javascript code to calculate the reading time for this blog post -->
+<script src="{{ site.baseurl }}/assets/js/read.js" ></script>
+
+</body>
