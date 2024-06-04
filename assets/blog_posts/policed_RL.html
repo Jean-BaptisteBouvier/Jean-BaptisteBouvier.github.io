@@ -1,0 +1,665 @@
+---
+layout: default
+title: policed_RL
+---
+
+<head>
+  <title>policed_RL</title>
+
+  <style>
+	/* Everything is in `page_style.css` */
+	td, th {
+	 font-size: 16px;
+	 text-align: center; 
+     vertical-align: middle;
+	}
+	
+	li {
+	 font-size: 18px;
+	}
+	
+	* {box-sizing:border-box}
+
+	/* Slideshow container */
+	.slideshow-container {
+	  max-width: 1000px;
+	  position: relative;
+	  margin: auto;
+	}
+
+	/* Hide the images by default */
+	.mySlides {
+	  display: none;
+	}
+	
+	/* Next and previous buttons */
+	.prev, .next {
+	  cursor: pointer;
+	  position: absolute;
+	  top: 50%;
+	  width: auto;
+	  margin-top: -22px;
+	  padding: 16px;
+	  color: white;
+	  font-weight: bold;
+	  font-size: 18px;
+	  transition: 0.6s ease;
+	  border-radius: 0 3px 3px 0;
+	  user-select: none;
+	}
+
+	/* Position the "next button" to the right */
+	.next {
+	  right: 0;
+	  border-radius: 3px 0 0 3px;
+	}
+
+	/* On hover, add a black background color with a little bit see-through */
+	.prev:hover, .next:hover {
+	  background-color: rgba(0,0,0,0.8);
+	}
+
+	/* The dots/bullets/indicators */
+	.dot {
+	  cursor: pointer;
+	  height: 15px;
+	  width: 15px;
+	  margin: 0 2px;
+	  background-color: #bbb;
+	  border-radius: 50%;
+	  display: inline-block;
+	  transition: background-color 0.6s ease;
+	}
+
+	.active, .dot:hover {
+	  background-color: #717171;
+	}
+
+	/* Fading animation */
+	.fade {
+	  animation-name: fade;
+	  animation-duration: 1.5s;
+	}
+
+	@keyframes fade {
+	  from {opacity: .4}
+	  to {opacity: 1}
+	}
+  </style>
+  
+  <script>
+	let slideIndex = 1;
+	showSlides(slideIndex);
+
+	// Next/previous controls
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+
+	// Thumbnail image controls
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+
+	function showSlides(n) {
+	  let i;
+	  let slides = document.getElementsByClassName("mySlides");
+	  let dots = document.getElementsByClassName("dot");
+	  if (n > slides.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = slides.length}
+	  for (i = 0; i < slides.length; i++) {
+		slides[i].style.display = "none";
+	  }
+	  for (i = 0; i < dots.length; i++) {
+		dots[i].className = dots[i].className.replace(" active", "");
+	  }
+	  slides[slideIndex-1].style.display = "block";
+	  dots[slideIndex-1].className += " active";
+	}
+  </script>
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} });
+	MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "AMS"} } });
+  </script>
+   
+  
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  
+  <style>
+	.MathJax {
+	  font-size: 12pt;
+	}
+  </style>
+  
+</head>
+<body>
+
+<article id="article">
+
+
+
+<h1 class="title"><strong>An Overview of</strong> <em>"POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints"</em></h1>
+<p class="subtitle">
+	June 4, 2024 | <span id="time"></span> min | Jean-Baptiste Bouvier
+</p>
+
+
+
+<div class="table-of-content">
+<details>
+	<summary>
+		Table of contents
+	</summary>
+	<ul>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Intro">Introduction</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Framework">Framework</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#police">Preliminaries</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Theory">Constrained Reinforcement Learning</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Simulations">Simulations</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#Summary">Quick Summary</a> </li>
+		<li> <a style="color:#454545; text-decoration:none;" href="#References">References</a> </li>
+	</ul>
+</details>
+</div>
+
+
+<p class="abstract">
+	In this post I will introduce the work I completed with <a href="https://kartik-nagpal.github.io/" target="_blank" rel="noopener noreferrer">Kartik Nagpal</a>
+	and <a href="https://negarmehr.com/" target="_blank" rel="noopener noreferrer">Prof. Negar Mehr</a>.
+	I presented this work at the 2024 Robotics: Science and Systems (RSS) conference.
+	The full paper is available on <a href="">ArXiv</a>.
+</p>
+
+
+
+<h2 style="margin-top:1cm;" id="Intro">Introduction</h2>
+ 
+<p>
+	As discussed in my previous <a href="{{ site.baseurl }}/assets/blog_posts/safe_RL">post</a>,
+	safety in reinforcement learning (RL) is typically not guaranteed, but only encouraged through reward shaping.
+	Provable guarantees of <em>hard constraint</em> satisfaction are much more difficult to obtain.
+	Indeed, previous attempts typically suffer from one of these two limitations:
+    either they need an accurate model of the environment, or their learned 'safety certificate' only approximates without guarantees an actual safety certificate.
+    On the other hand, our <strong>POLICEd RL</strong> approach can provably enforce hard constraint satisfaction in closed-loop with a black-box environment.
+</p>
+
+
+
+<h2 style="margin-top:1cm;" id="Framework">Framework</h2>
+ 
+<p>
+	Consider a robot of state $s \in \mathcal{S}$ with black-box dynamics 
+	\begin{equation}\label{eq: nonlinear dynamics}
+		\dot s(t) = f\big( s(t), a(t) \big),
+	\end{equation}
+	where $a(t) \in \mathcal{A}$ denotes an admissible action.
+	The state of the robot is constrained by a single affine inequality 
+	\begin{equation}\label{eq: constraint}
+		C s(t) \leq d, \quad \text{for all}\ t \geq 0.
+	\end{equation}
+	The action is chosen by a deterministic feedback policy $a(t) = \mu_\theta\big( s(t) \big) \in \mathcal{A}$
+	modeled by a deep neural network $\mu_\theta$ parameterized by $\theta$.
+	Applying this policy in environment \eqref{eq: nonlinear dynamics} generates a reward signal $R\big( s(t), a(t)\big)$, as illustrated below.
+</p>
+
+
+<img src="{{ site.baseurl }}/assets/pictures/constrained_RL.png" alt="Closed-loop constrained RL" title="Closed-loop constrained RL" class="center_img" width="400">
+<div class="caption">
+	Illustration of closed-loop constrained RL. Image from <a href="#POLICEd_RL">(Bouvier et al. 2024)</a>.
+</div>
+
+
+<p>	
+	Our objective is to train $\mu_\theta$ to maximize the expected discounted reward while respecting constraint \eqref{eq: constraint} at all times, i.e.,
+	\begin{equation}\label{eq: expected reward}
+		\underset{\theta}{\max}\, \mathcal{G}(\mu_\theta) :=  \underset{s(0)}{\mathbb{E}} \int_0^{\infty} \hspace{-2mm} \gamma^t R\big( s(t), \mu_\theta(s(t))\big) dt \hspace{2mm} \text{s.t.}\ \eqref{eq: constraint},
+	\end{equation}
+	where $\gamma \in (0,1)$ is a discount factor. 
+	We emphasize that constraint \eqref{eq: constraint} is a <em>hard constraint</em> to be respected at all times.
+</p>
+
+
+
+
+<h2 style="margin-top:2cm;" id="police">Preliminaries</h2>
+
+<p>
+	We build our approach on the POLICE algorithm <a href="#police">(Balestriero and LeCun 2023)</a> which 
+	uses the spline theory of neural networks <a href="#spline">(Balestriero and Baraniuk 2018)</a>
+	to modify their training to make their outputs strictly affine within a user-specified region as shown below.
+</p>
+
+
+<img src="{{ site.baseurl }}/assets/pictures/POLICEd/sine_wave.png" alt="Sine-wave classification with enforced affine region" 
+title="Sine-wave classification with enforced affine region"  class="center_img" width="400">
+<div class="caption">
+	Classification task of <strong><span style="color:orange;">orange</span></strong> versus <strong><span style="color:purple;">purple</span></strong> by a learned decision boundary
+	(<strong><span style="color:red;">red</span></strong>) which is required to be affine inside the <span style="color:black;">black</span> square. <br>
+	POLICE <a href="#police">(Balestriero and LeCun 2023)</a> guarantees the deep neural network is affine in the region of interest. <br>
+	Image from <a href="#POLICEd_RL">(Bouvier et al. 2024)</a>.
+</div>
+
+
+
+<h2 style="margin-top:2cm;" id="Theory">Constrained Reinforcement Learning</h2>
+    
+<p>
+	To enforce the satisfaction of affine constraint $Cs \leq d$, we will construct a buffer region $\mathcal{B}$ encompassing all states $s$
+	judged too close from the constraint line $Cs = d$, as illustrated in the image below.
+	We will make this region repulsive by enforcing $C\dot s \leq 0$ for all $s \in \mathcal{B}$.
+	This will then guarantee that closed-loop trajectories of the robot cannot breach the constraint.
+</p>
+
+<img src="{{ site.baseurl }}/assets/pictures/POLICEd/schema.png" alt="Illustration of POLICEd RL" title="Illustration of POLICEd RL" class="center_img" width="500">
+<div class="caption">
+	Schematic illustration of POLICEd RL. To prevent state $s$ from violating an affine constraint represented by $Cs \leq d$,
+	our POLICEd policy enforces $C\dot s \leq 0$ in buffer region $\mathcal{B}$ (<strong><span style="color:LightSeaGreen;">blue</span></strong>) directly below
+	the unsafe area (<strong><span style="color:PaleVioletRed;">red</span></strong>).
+	The POLICEd policy (arrows in the environment) is affine inside buffer region $\mathcal{B}$,
+	which allows us to easily verify whether trajectories can violate the constraint.
+	Image from <a href="#POLICEd_RL">(Bouvier et al. 2024)</a>.
+</div>
+
+<p>
+	We start by constructing this buffer region of 'radius' $r > 0$, defined as
+	\begin{equation}\label{eq: buffer}
+		\mathcal{B} := \big\{ s \in \mathcal{S} : C s \in [d - r, d]\big\}.
+	\end{equation}
+	Note that any state trajectory initially verifying constraint \eqref{eq: constraint}, i.e.,
+	$Cs(0) \leq d$, has to cross buffer $\mathcal{B}$ before being able to violate the constraint.
+	Therefore, if buffer $\mathcal{B}$ cannot be crossed, constraint \eqref{eq: constraint} cannot be violated.
+</p>
+
+<p>
+	We choose a deterministic policy $\mu_\theta : \mathcal{S} \rightarrow \mathcal{A}$ modeled by a deep neural network with ReLU activations 
+	and linear layers implementing the POLICE algorithm <a href="#police">(Balestriero and LeCun 2023)</a>.
+	This algorithm allows to enforce $\mu_\theta$ to be affine over polytopic region $\mathcal{B}$.
+	Thus, there exists constant matrices $D_{\theta}$ and $e_{\theta}$ such that
+	\begin{equation}\label{eq: police}
+		\mu_\theta(s) = D_{\theta} s + e_{\theta} \quad \text{for all}\ s \in \mathcal{B}.
+	\end{equation}
+	Training policy $\mu_\theta$ with any RL algorithm will optimize the values of $D_\theta$, $e_\theta$, and $\mu_\theta$ outside of $\mathcal{B}$ to maximize \eqref{eq: expected reward}.
+	The POLICE algorithm <a href="#police">(Balestriero and LeCun 2023)</a> only enforces the affine structure of $\mu_\theta$ over $\mathcal{B}$, not the specific values of $D_{\theta}$ and $e_{\theta}$.
+</p>
+
+<p>
+	To simplify the constraint enforcement process, we would like the dynamics to be affine. 
+	However, in general, robot dynamics \eqref{eq: nonlinear dynamics} are nonlinear.
+	We will thus use an affine approximation of \eqref{eq: nonlinear dynamics} inside buffer $\mathcal{B}$ with the following definition.
+</p>
+
+<p>
+	<strong>Definition.</strong>
+		An <em>approximation measure</em> $\varepsilon$ of dynamics \eqref{eq: nonlinear dynamics} with respect to constraint \eqref{eq: constraint}
+		and buffer \eqref{eq: buffer} is any $\varepsilon \geq 0$ for which there exists constant matrices $A$, $B$, and $c$ such that
+		\begin{equation}\label{eq: approximation}
+			\big| C f(s, a) - C(A s + B a + c) \big| \leq \varepsilon,
+		\end{equation}
+		for all $s \in \mathcal{B}$, and all $a \in \mathcal{A}$.
+</p>
+<p>
+	Intuitively, the value of $\varepsilon$ quantifies how far from affine are dynamics \eqref{eq: nonlinear dynamics} over buffer $\mathcal{B}$.
+	We can use data-driven techniques to estimate $\varepsilon$.
+	Then, we can show how to <em>guarantee</em> satisfaction of constraint \eqref{eq: constraint} by black-box environment \eqref{eq: nonlinear dynamics}
+	armed <em>only</em> with an approximation measure $\varepsilon$ and <em>without</em> knowing matrices $A$, $B$, $c$ or dynamics $f$.
+</p>
+<p>
+	<strong>Theorem 1.</strong> 
+	For any approximation measure $\varepsilon$, if at each vertex $v$ of buffer $\mathcal{B}$ repulsion condition 
+	\begin{equation}\label{eq: repulsion}
+		Cf\big(v, \mu_\theta(v) \big) \leq -2\varepsilon,
+	\end{equation}
+	holds, then $Cs(0) &lt; d$ yields $Cs(t) &lt; d$ for all $t \geq 0$.
+</p>
+<p>
+	<em>Proof:</em>
+	The intuition behind this proof is to use \eqref{eq: repulsion} and approximation \eqref{eq: approximation} to show that
+	$C\dot s \leq 0$ for all $s \in \mathcal{B}$, which in turn prevents trajectory from crossing buffer $\mathcal{B}$ 
+	and hence from violating the constraint. Full proof available in <a href="#POLICEd_RL">(Bouvier et al. 2024)</a>.
+</p>
+<p>
+	Theorem 1 guarantees that trajectories steered by $\mu_\theta\big( s(t) \big)$ satisfy constraint \eqref{eq: constraint}
+	at all times as long as repulsion condition \eqref{eq: repulsion} is satisfied. 
+	This is the major strength of POLICEd RL: to ensure constraint satisfaction we only need to check whether \eqref{eq: repulsion} 
+	holds at the vertices of $\mathcal{B}$. 
+	Without POLICE, $\mu_\theta$ would not be affine over $\mathcal{B}$, and repulsion condition \eqref{eq: repulsion} would need to be verified <em>at all states</em> $s \in \mathcal{B}$.
+
+</p>	
+	
+
+
+
+
+<h2 style="margin-top:2cm;" id="Simulations">Simulations</h2>
+
+<h3 style="margin-top:5mm;">2D system</h3>
+
+<p>
+	We first illustrate POLICEd RL on a simple 2D example where the agent must learn to reach a target while avoiding an obstacle.
+	The arrows in the affine buffer shows whether the agent learns to go around the obstacle.
+</p>
+<img src="{{site.baseurl}}/assets/gifs/POLICEd_2D_gif.gif" alt="animated" class="center_img"/> 
+<div class="caption">
+	Training of a POLICEd policy in a 2D environment. <br>
+	The affine policy in buffer $\mathcal{B}$ (<strong><span style="color:LightGreen;">green</span></strong>) pushes states away from the constraint line
+	(<strong><span style="color:red;">red</span></strong>) before heading towards the target (<strong><span style="color:cyan;">cyan</span></strong>).
+</div>
+
+
+
+
+<h3 style="margin-top:5mm;">Inverted pendulum experiment</h3>
+
+<p>
+	We test POLICEd RL on the inverted pendulum environment with the MuJoCo physics engine.
+	To maintain the pendulum upright and prevent it from falling past $\theta_{max} = 0.2\, rad$, we aim at enforcing
+	constraint $\dot \theta(t) \leq 0$ for $\theta(t) \in [0.1, 0.2]\, rad$.
+</p>
+
+<p>
+	We use Proximal Policy Optimization (PPO) <a href="#PPO">(Schulman et al. 2017)</a> to learn both a baseline and a POLICEd policy.
+	The baseline is a standard PPO policy that does not have the enforced affine buffer $\mathcal{B}$ of the POLICEd policy.
+	They both follow the same training procedure in the same environment where they receive identical penalties for constraint violations.
+	The reward curves below show that both methods achieve maximal reward.
+</p>
+
+
+
+<img src="{{ site.baseurl }}/assets/pictures/POLICEd/reward_pendulum.png" alt="Inverse Pendulum reward curve" title="Inverse Pendulum reward curve" class="center_img" width="400">
+<div class="caption">
+	Reward curves for the inverted pendulum (max = 1000). <br>
+	The solid lines correspond to the average and the shaded regions to the 95% confidence interval over 5 runs. <br>
+	Image from <a href="#POLICEd_RL">(Bouvier et al. 2024)</a>.
+</div>
+
+
+<p>
+	During training we measure the proportion of buffer $\mathcal{B}$ where repulsion condition $C\dot s \leq -2\varepsilon$ is satisfied
+	and report these proportions below.
+	Since the POLICEd policy achieves maximal reward while completely satisfying repulsion condition \eqref{eq: repulsion} at episode 1180 it stops training.
+	However, the figure below shows that the baseline never succeeds in enforcing $C\dot s \leq -2\varepsilon$ over the entire buffer.
+	Moreover, trying to improve constraint satisfaction causes a large drop in the baseline rewards as seen after episode 1300.
+	Our POLICEd policy guarantees the satisfaction of constraint $\dot\theta \leq 0$ by enforcing repulsion condition \eqref{eq: repulsion},
+	i.e., $\ddot \theta \leq 0$.
+	Consequently, it guarantees that trajectories starting from $\dot \theta(0) &lt; 0$ will never reach any state where $\dot \theta(t) \geq 0$.
+</p>
+
+<img src="{{ site.baseurl }}/assets/pictures/POLICEd/respect_pendulum.png" alt="respect curve" title="respect curve" class="center_img" width="400">
+<div class="caption">
+	Relative portion of buffer $\mathcal{B}$ where repulsion condition \eqref{eq: repulsion} is respected. <br>
+	The baseline never succeeds in entirely enforcing \eqref{eq: repulsion} hence allowing possible constraint violations. <br>
+	The solid lines correspond to the average and the shaded regions to the 95% confidence interval over 5 runs. <br>
+	Image from <a href="#POLICEd_RL">(Bouvier et al. 2024)</a>.
+</div>
+
+
+
+
+<h3 style="margin-top:5mm;">Robotic arm</h3>
+
+<p>
+	We further showcase our method on a KUKA robotic arm with 7 degrees of freedom implemented in the high-fidelity MuJoCo simulator.
+	The goal is to reach a target while avoiding an unsafe region as illustrated below.
+</p>
+
+
+
+<div class="slideshow-container">
+  <div class="mySlides fade" style="display:block;">
+    <img src="{{ site.baseurl }}/assets/pictures/POLICEd/KUKA-No-Buffer-1.png" alt="KUKA arm" title="KUKA arm" class="center_img" height="400">
+  </div>
+  
+  <div class="mySlides fade">
+    <img src="{{ site.baseurl }}/assets/pictures/POLICEd/KUKA-No-Buffer-2.png" alt="KUKA arm" title="KUKA arm" class="center_img" height="400">
+  </div>
+  
+  <div class="mySlides fade">
+    <img src="{{ site.baseurl }}/assets/pictures/POLICEd/KUKA-No-Buffer-3.png" alt="KUKA arm" title="KUKA arm" class="center_img" height="400">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="{{ site.baseurl }}/assets/pictures/POLICEd/KUKA-POLICEd-1.png" alt="KUKA arm" title="KUKA arm" class="center_img" height="400">
+  </div>
+
+  <div class="mySlides fade">
+    <img src="{{ site.baseurl }}/assets/pictures/POLICEd/KUKA-POLICEd-2.png" alt="KUKA arm" title="KUKA arm" class="center_img" height="400">
+  </div>
+  
+  <div class="mySlides fade">
+    <img src="{{ site.baseurl }}/assets/pictures/POLICEd/KUKA-POLICEd-3.png" alt="KUKA arm" title="KUKA arm" class="center_img" height="400">
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+  <span class="dot" onclick="currentSlide(4)"></span>
+  <span class="dot" onclick="currentSlide(5)"></span>
+  <span class="dot" onclick="currentSlide(6)"></span>
+</div>
+
+<div class="caption">
+	Robotic arm tasked to bring their end-effectors to the target (<strong><span style="color:LimeGreen;">green</span></strong>) while avoiding 
+	the constraint surface (<strong><span style="color:PaleVioletRed;">red</span></strong>). <br>
+	The POLICEd method uses a buffer region (<strong><span style="color:cyan;">cyan</span></strong>). <br>
+	Images from <a href="#POLICEd_RL">(Bouvier et al. 2024)</a>.
+</div>
+
+<p>
+	We learn a baseline and a POLICEd policy using Twin Delayed DDPG (TD3) <a href="#TD3">(Fujimoto et al. 2018)</a>, an improved version of Deep Deterministic Policy Gradient (DDPG). 
+	While we believe ours is the first paper to provably enforce hard constraints with black-box environments,
+	safe RL has produced remarkable works in soft constraints and learned safety certificate methods.
+	As such, we also compare our approach with the soft constraint method Constrained Policy Optimization (CPO) <a href="#CPO">(Achiam et al. 2017)</a>,
+	as well as the learned control barrier function approach PPO-Barrier of <a href="#yang2023model">(Yang et al. 2023)</a>.
+</p>
+<p>
+	After training all these models, we deploy them for 500 episodes on the safe arm task.
+	From these episodes we collected a series of metrics summarizing their performance and their constraint respect.
+</p>
+
+<img src="{{ site.baseurl }}/assets/pictures/POLICEd/comparison.png" alt="comparison stats" title="comparison stats" class="center_img" width="700">
+
+<table style="margin-top:1cm;">
+  <tr>
+    <th>Models</th>
+    <th>Completion % (&uarr;)</th>
+    <th>Completion % w/o violation (&uarr;)</th>
+	<th>Average reward &plusmn; 95% CI (&uarr;)</th>
+	<th>Average % constraint satisfaction &plusmn; 95% CI (&uarr;)</th>
+  </tr>
+  <tr>
+    <td>POLICEd (ours)</td>
+    <td>93.4</td>
+    <td><strong>93.4</strong></td>
+	<td><strong>-16.22 &plusmn; 0.68</strong></td>
+	<td><strong>100 &plusmn; 0.0</strong></td>
+  </tr>
+  <tr>
+    <td>TD3</td>
+    <td>75.8</td>
+    <td>12.0</td>
+	<td>-45.20 &plusmn; 3.23</td>
+	<td>28.4 &plusmn; 3.9</td>
+  </tr>
+  <tr>
+    <td>CPO</td>
+    <td>2.0</td>
+    <td>2.0</td>
+	<td>-96.71 &plusmn; 3.45</td>
+	<td>89.9 &plusmn; 2.7</td>
+  </tr>
+  <tr>
+    <td>PPO-Barrier</td>
+    <td><strong>100</strong></td>
+    <td>86.2</td>
+	<td>-41.26 &plusmn; -2.30</td>
+	<td>86.2 &plusmn; 3.0</td>
+  </tr>
+  <tr>
+    <td>POLICEd trained w/o penalty</td>
+    <td>48.0</td>
+    <td>41.6</td>
+	<td>-70.09 &plusmn; 1.22</td>
+	<td>41.6 &plusmn; 4.3</td>
+  </tr>
+  <tr>
+    <td>TD3 trained w/o penalty</td>
+    <td>99.8</td>
+    <td>48.8</td>
+	<td>-45.69 &plusmn; 16.61</td>
+	<td>53.4 &plusmn; 4.4</td>
+  </tr>
+</table>
+<div class="caption">
+	Metrics comparison for different methods based on a 500 episode deployment with the fully-trained policies on the safe arm task.
+	We compare our POLICEd method against the soft-constraint baseline CPO <a href="#CPO">(Achiam et al. 2017)</a> and 
+	the learned safety certificate baseline PPO-Barrier <a href="#yang2023model">(Yang et al. 2023)</a>.
+	We also report the metrics for TD3 trained with and without the penalty as well as our POLICEd method trained without penalty as part of our ablation study.
+	The completion task only assess whether the target is eventually reached, even if the constraint is not properly respected.
+	For all metrics higher is better (&uarr;). <br>
+	Table from <a href="#POLICEd_RL">(Bouvier et al. 2024)</a>
+</div>
+
+
+<p>
+	As seen in the table above, our POLICEd policy is the only algorithm to <em>guarantee</em> constraint satisfaction.
+	The soft constraint CPO <a href="#CPO">(Achiam et al. 2017)</a> and the learned safety certificate PPO-Barrier <a href="#yang2023model">(Yang et al. 2023)</a>
+	baselines provide better constraint adherence than standard RL algorithms like TD3, but still fall far short of guaranteed satisfaction.
+	In comparison, our POLICEd approach has the highest task completion percentage without violations by a 40% margin,
+	while also being the highest reward earning policy by nearly a margin of 3 times.
+</p>
+<p>
+	The ablation study confirms that our POLICEd approach is necessary for constraint satisfaction,
+	as seen by the poor average constraint satisfaction by the TD3 and TD3 trained without penalty policies.
+	As expected, training without penalizing constraint violations is vastly detrimental to the performance of both the TD3 and POLICEd policies.
+	Indeed, the reward shaping is necessary for the POLICEd policy to appropriately tune its affine region to avoid the constraint.
+</p>
+<p>
+	We additionally observed that our POLICEd approach exhibited significantly greater sample efficiency than the other methods.
+	The POLICEd policy converged within 4000 episodes, while PPO-Barrier required nearly twice this amount,
+	and CPO frequently failed to converge after 20,000 episodes.
+</p>
+
+
+
+
+
+
+
+
+<h2 style="margin-top:2cm;" id="Summary">
+	Conclusion
+</h2>
+
+<p>
+<ul>
+	<li><strong>Summary.</strong>
+	We proposed <em>POLICEd RL</em>, a novel algorithm explicitly designed to enforce hard safety constraints for a black-box robot in closed-loop with a RL policy.
+	Our key insight was to build a repulsive buffer around the unsafe area with a locally affine learned policy to guarantee that trajectories never leave the safe set.
+	Our experiments showed that POLICEd RL can enforce hard constraints in high-dimensional, high-fidelity robotics tasks while significantly outperforming existing soft constraint methods.</li>
+
+	<li><strong>Limitations.</strong> As in standard RL, there are no guarantees that the training will converge to a safe policy.
+	Note that this was not an issue in our experiments.
+	Moreover, in high dimensional environments, the number of vertices of buffer region $\mathcal{B}$ can become computationally prohibitive.
+	However, once trained, a POLICEd neural network is just as fast as a standard unconstrained one <a href="#police">(Balestriero and LeCun 2023)</a>.
+	Finally, if the estimate of the approximation measure $\varepsilon$ is too low, then the safety guarantee of Theorem 1 will not hold.
+	Hence we usually use upper bound of $\varepsilon.$ </li>
+
+	<li><strong>Future Directions.</strong>
+	We are excited by our findings and believe our method is only the first step towards enforcing hard constraints on RL policy. 
+	For future work, we plan to investigate how to enforce multiple constraints simultaneously and study the case of high relative-degree constraints.</li>
+</ul>
+</p>
+	
+	
+	
+<h2 style="margin-top:2cm;" id="References">
+	References
+</h2>
+
+
+<ol class='custom-marker parens-after decimal'>
+	<li>
+		<div class="reference" id="CPO">
+			Joshua Achiam, David Held, Aviv Tamar, and Pieter Abbeel,
+			<a href="https://proceedings.mlr.press/v70/achiam17a" target="_blank" rel="noopener noreferrer">Constrained Policy Optimization</a>,
+			34th International Conference on Machine Learning (ICML), 2017.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="CMDP">
+			Eitan Altman, <a href="https://doi.org/10.1201/9781315140223" target="_blank" rel="noopener noreferrer">Constrained Markov Decision Processes</a>,
+			Routledge, 2021.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="spline">
+			Randall Balestriero and Richard Baraniuk,
+			<a href="http://proceedings.mlr.press/v80/balestriero18b/balestriero18b.pdf" target="_blank" rel="noopener noreferrer">A spline theory of deep learning</a>, 
+			35th International Conference on Machine Learning (ICML), 2018.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="POLICE">
+			Randall Balestriero and Yann LeCun,
+			<a href="https://ieeexplore.ieee.org/abstract/document/10096520" target="_blank" rel="noopener noreferrer"> POLICE: Provably optimal linear constraint enforcement for deep neural networks</a>,
+			 IEEE International Conference on Acoustics, Speech and Signal Processing, 2023.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="POLICEd_RL">
+			Jean-Baptiste Bouvier, Kartik Nagpal, and Negar Mehr,
+			<a href="https://arxiv.org/abs/2403.13297" target="_blank" rel="noopener noreferrer">POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints</a>,
+			Robotics: Science and Systems (RSS), 2024.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="TD3">
+			Scott Fujimoto, Herke Hoof, and David Meger,
+			<a href="https://proceedings.mlr.press/v80/fujimoto18a.html" target="_blank" rel="noopener noreferrer">Addressing function approximation error in actor-critic methods</a>,
+			International Conference on Machine Learning (ICML), 2018.
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="PPO">
+			John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov,
+			<a href="https://arxiv.org/abs/1707.06347"  target="_blank" rel="noopener noreferrer">Proximal policy optimization algorithms</a>,
+			arXiv preprint arXiv:1707.06347, 2017
+		</div>
+	</li>
+	<li>
+		<div class="reference" id="yang2023model">
+			Yujie Yang, Yuxuan Jiang, Yichen Liu, Jianyu Chen, and Shengbo Eben Li,
+			<a href="https://ieeexplore.ieee.org/document/10023989" target="_blank" rel="noopener noreferrer">Model-free safe reinforcement learning through neural barrier certificate</a>,
+			IEEE Robotics and Automation Letters, 2023.
+		</div>
+	</li>
+	
+</ol>
+
+
+
+
+
+
+
+</article>
+
+<!-- Code to add a button return to top -->
+<button onclick="topFunction()" id="topBtn" title="Go to top">Top</button>
+<script src="{{ site.baseurl }}/assets/js/top_button.js" ></script>
+
+<!-- Javascript code to calculate the reading time for this blog post -->
+<script src="{{ site.baseurl }}/assets/js/read.js" ></script>
+
+</body>
