@@ -149,13 +149,12 @@ ol.custom-marker.parens-after.decimal > li::marker {
 /* Buttons with short link and icon */
 .button-link {
 	text-decoration: none;
-	margin-right: 16px;
+	margin-right: 3px;
 }
 .button-link:hover {
 	text-decoration: none;
 }
 .button {
-	margin-top: 5px;
 	border: 0px;
 	border-radius: 25px;
 	color: white; /*text color*/
@@ -164,9 +163,6 @@ ol.custom-marker.parens-after.decimal > li::marker {
 	padding: 5px;
 	height: fit-content;
 }
-
-/*Font Awesome*/
-.reveal .fa {
-  font-family: 'FontAwesome';
-  font-style: normal;
+.links {
+	margin-top: 5px;
 }
