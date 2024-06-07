@@ -39,15 +39,9 @@ title: Publications
   </script>
   
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/fontawesome.all.min.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/academicons.min.css"/>
-  <style>
-	.link-block {
-		margin-top: 5px;
-		margin-bottom: 5px;
-	}
-  </style>
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
 </head>
 <body>
 
@@ -108,78 +102,28 @@ title: Publications
 
 
 
-
-
-
-
-
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/network_pic.PNG" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/network_pic.PNG" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
 	<em>Losing Control of your Linear Network? Try Resilience Theory</em> <br>
 	<strong>Jean-Baptiste Bouvier</strong>, Sai Pushpak Nandanoori, Melkior Ornik <br>
 	<!--a href="" target="_blank" rel="noopener noreferrer"-->accepted to the IEEE Transactions on Control of Network Systems<!--/a-->, 2024 <br>
-	<a onclick="toggleDisplay('network-abstract')">Abstract</a> | 
-	<a onclick="toggleDisplay('network-bibtex')">Bibtex</a> |
-	<a href="{{ site.baseurl }}/assets/PDFs/Resilience_of_Linear_Networks__ArXiv_.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-	<a href="https://arxiv.org/abs/2306.16588" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-	<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Losing Control of your Network? Try Resilience Theory' target="_blank" rel="noopener noreferrer">0</a> <br>
-	
-	<a class="button-link" onclick="toggleDisplay('network-abstract')">
-		<span class="button">
-			<i class="fas fa-list"></i>
-			<span>Abstract</span>
-		</span>
-	</a>
-	<a class="button-link" onclick="toggleDisplay('network-bibtex')">
-		<span class="button">
-			<i class="ai ai-obp"></i>
-			<span>Bibtex</span>
-		</span>
-	</a>
-	
-	<!-- Arxiv PDF link -->
-	<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilience_of_Linear_Networks__ArXiv_.pdf" target="_blank" rel="noopener noreferrer">
-		<span class="button">
-			<i class="far fa-file-pdf"></i>
-			<span>Pdf</span>
-		</span>
-	</a>
-
-	<!-- Github link -->
-	<a class="button-link" href="https://github.com/labicon/POLICEd-RL" target="_blank" rel="noopener noreferrer">
-		<span class="button">
-			<i class="fab fa-github"></i>
-			<span>Code</span>
-		</span>
-	</a>
-
-	<!-- ArXiv abstract Link -->
-	<a class="button-link" href="https://arxiv.org/abs/2306.16588" target="_blank" rel="noopener noreferrer">
-		<span class="button">
-			<i class="ai ai-arxiv"></i>
-			<span>ArXiv</span>
-		</span>
-	</a>
-
-	<!-- Blog Link -->
-	<a class="button-link" href="https://jean-baptistebouvier.github.io/assets/blog_posts/policed_RL/" target="_blank" rel="noopener noreferrer">
-		<span class="button">
-			<i class="fas fa-scroll"></i>
-			<span>Blog</span>
-		</span>
-	</a>
-	
-	<a class="button-link" href="https://jean-baptistebouvier.github.io/assets/blog_posts/policed_RL/" target="_blank" rel="noopener noreferrer">
-		<span class="button">
-			<i class="far fa-file-powerpoint"></i>
-			<span>Slides</span>
-		</span>
-	</a>
-	
-	
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('network-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('network-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilience_of_Linear_Networks__ArXiv_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Network-Resilience" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2306.16588" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Losing Control of your Network? Try Resilience Theory' target="_blank" rel="noopener noreferrer">0</a>
+    </div>
   </div>
 </div>
 <div id="network-abstract" class="abstract">
@@ -208,17 +152,26 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/delay_pic.jpg" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/delay_pic.jpg" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
 	<em>Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay</em> <br>
 	<strong>Jean-Baptiste Bouvier</strong>, Himmat Panag, Robyn Woollands, Melkior Ornik <br>
 	<!--a href="" target="_blank" rel="noopener noreferrer"-->submitted to the Journal of Guidance, Control, and Dynamics<!--/a-->, 2023 <br>
-	<a onclick="toggleDisplay('delay-abstract')">Abstract</a> | 
-	<a onclick="toggleDisplay('delay-bibtex')">Bibtex</a> |
-	<a href="{{ site.baseurl }}/assets/PDFs/Resilient_Trajectory_Tracking_to_Partial_Loss_of_Control_Authority_over_Actuators_with_Actuation_Delay_arXiv.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-	<a href="https://arxiv.org/abs/2303.12877" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-	Cited by <a href='' id='Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('delay-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('delay-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilient_Trajectory_Tracking_to_Partial_Loss_of_Control_Authority_over_Actuators_with_Actuation_Delay_arXiv.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Spacecraft-Resilience" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2303.12877" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="delay-abstract" class="abstract">
@@ -246,18 +199,26 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/Integrators_pic.JPG" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/Integrators_pic.JPG" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
 	<em>Quantitative Resilience of Generalized Integrators</em> <br>
 	<strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Melkior Ornik <br>
 	<a href="https://ieeexplore.ieee.org/document/10154130" target="_blank" rel="noopener noreferrer">IEEE Transactions on Automatic Control</a>, 2023 <br>
-	<a onclick="toggleDisplay('integrators-abstract')">Abstract</a> | 
-	<a onclick="toggleDisplay('integrators-bibtex')">Bibtex</a> |
-	<a href="{{ site.baseurl }}/assets/PDFs/Quantitative_Resilience_of_Generalized_Integrators__ArXiv_.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-	<a href="https://arxiv.org/abs/2111.04163" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-	<a href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience" target="_blank" rel="noopener noreferrer">GitHub</a> |
-	Cited by <a href='' id='Quantitative resilience of generalized integrators' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('integrators-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('integrators-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Quantitative_Resilience_of_Generalized_Integrators__ArXiv_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2111.04163" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Quantitative resilience of generalized integrators' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="integrators-abstract" class="abstract">
@@ -285,18 +246,26 @@ title: Publications
       
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/Automatica_pic.jpg" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/Automatica_pic.jpg" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Resilience of Linear Systems to Partial Loss of Control Authority</em> <br>
     <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
     <a href="https://www.sciencedirect.com/science/article/pii/S0005109823001383" target="_blank" rel="noopener noreferrer">Automatica</a>, 2023 <br>
-    <a onclick="toggleDisplay('ECC_ext-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('ECC_ext-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/Resilience_of_Linear_Systems__ECC_extended_.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-    <a href="https://arxiv.org/abs/2209.08034" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-    <a href="https://github.com/Jean-BaptisteBouvier/Resilience-of-Linear-Systems" target="_blank" rel="noopener noreferrer">GitHub</a> |
-	Cited by <a href='' id='Resilience of linear systems to partial loss of control authority' target="_blank" rel="noopener noreferrer">0</a>
+    <div class="links">
+		<a class="button-link" onclick="toggleDisplay('ECC_ext-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('ECC_ext-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilience_of_Linear_Systems__ECC_extended_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Resilience-of-Linear-Systems" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2209.08034" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Resilience of linear systems to partial loss of control authority' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="ECC_ext-abstract" class="abstract">
@@ -326,18 +295,26 @@ title: Publications
       
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/Design_pic.png" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/Design_pic.png" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Designing Resilient Linear (Driftless) Systems</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
     <a href="https://ieeexplore.ieee.org/document/9744569" target="_blank" rel="noopener noreferrer">IEEE Transactions on Automatic Control</a>, 2022 <br>
-    <a onclick="toggleDisplay('design-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('design-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/Designing_Resilient_Linear_Driftless_Systems__arXiv_.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-    <a href="https://arxiv.org/abs/2006.13820" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-    <a href="https://github.com/Jean-BaptisteBouvier/Designing-Resilient-Linear-Systems" target="_blank" rel="noopener noreferrer">GitHub</a> |
-	Cited by <a href='' id='Designing resilient linear systems' target="_blank" rel="noopener noreferrer">0</a> + <a href='' id='Designing resilient linear driftless systems' target="_blank" rel="noopener noreferrer">0</a>
+    <div class="links">
+		<a class="button-link" onclick="toggleDisplay('design-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('design-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Designing_Resilient_Linear_Driftless_Systems__arXiv_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Designing-Resilient-Linear-Systems" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2006.13820" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Designing resilient linear systems' target="_blank" rel="noopener noreferrer">0</a> + <a href='' id='Designing resilient linear driftless systems' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="design-abstract" class="abstract">
@@ -368,18 +345,26 @@ title: Publications
       
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/JOTA_pic.PNG" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/JOTA_pic.PNG" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>The Maximax Minimax Quotient Theorem</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
     <a href="https://doi.org/10.1007/s10957-022-02008-z" target="_blank" rel="noopener noreferrer">Journal of Optimization Theory and Applications</a>, 2022 <br>
-    <a onclick="toggleDisplay('maximax-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('maximax-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/Maximax_Minimax_Quotient_Theorem__arXiv_.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-    <a href="https://arxiv.org/abs/2104.15025" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-    <a href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax" target="_blank" rel="noopener noreferrer">GitHub</a> |
-	Cited by <a href='' id='The Maximax Minimax Quotient Theorem' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('maximax-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('maximax-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Maximax_Minimax_Quotient_Theorem__arXiv_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2104.15025" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='The Maximax Minimax Quotient Theorem' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="maximax-abstract" class="abstract">
@@ -407,15 +392,17 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/Tiago_pic.PNG" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/Tiago_pic.PNG" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Spacecraft Trajectory Tracking and Parameter Estimation around a Splitting Contact Binary Asteroid</em><br>
     Tiago Silva, <strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Masatoshi Hirabayashi, Koki Ho <br>
     <a href="https://www.sciencedirect.com/science/article/pii/S0094576520301259" target="_blank" rel="noopener noreferrer">Acta Astronautica</a>, 2020 <br>
-    <a onclick="toggleDisplay('asteroid-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('asteroid-bibtex')">Bibtex</a> |
-	Cited by <a href='' id='Spacecraft trajectory tracking and parameter estimation around a splitting contact binary asteroid' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('asteroid-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('asteroid-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>		
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Spacecraft trajectory tracking and parameter estimation around a splitting contact binary asteroid' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="asteroid-abstract" class="abstract">
@@ -445,16 +432,20 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/Bindu_pic.png" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/Bindu_pic.png" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Preliminary Design of Low-Energy, Low-Thrust Transfers to Halo Orbits using Feedback Control</em><br>
     Bindu Jagannatha, <strong>Jean-Baptiste Bouvier</strong>, Koki Ho <br>
     <a href="https://arc.aiaa.org/doi/full/10.2514/1.G003759" target="_blank" rel="noopener noreferrer">Journal of Guidance, Control and Dynamics</a>, 2019 <br>
-    <a onclick="toggleDisplay('halo-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('halo-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/Preliminary_Design_of_Low_Energy_Low_Thrust_Transfers_to_Halo_Orbits_using_Feedback_Control__13350576qwkhqypqjjvj_.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-	Cited by <a href='' id='Preliminary design of low-energy, low-thrust transfers to halo orbits using feedback control' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('halo-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('halo-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Preliminary_Design_of_Low_Energy_Low_Thrust_Transfers_to_Halo_Orbits_using_Feedback_Control__13350576qwkhqypqjjvj_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Preliminary design of low-energy, low-thrust transfers to halo orbits using feedback control' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="halo-abstract" class="abstract">
@@ -491,16 +482,26 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/CDC24_pic.png" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/CDC24_pic.png" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Learning to Provably Satisfy High Relative Degree Constraints for Black-Box Systems</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Kartik Nagpal, Negar Mehr <br>
     <!--a href="https://" target="_blank" rel="noopener noreferrer"-->IEEE Conference on Decision and Control (CDC)<!--/a-->, 2024 <br>
-    <a onclick="toggleDisplay('CDC24-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('CDC24-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/CDC24.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-	Cited by <a href='' id='Learning to Provably Satisfy High Relative Degree Constraints for Black-Box Systems' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('CDC24-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('CDC24-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/CDC24.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/24" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Learning to Provably Satisfy High Relative Degree Constraints for Black-Box Systems' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="CDC24-abstract" class="abstract">
@@ -529,18 +530,32 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/POLICEd_pic.png" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/POLICEd_pic.png" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Kartik Nagpal, Negar Mehr <br>
     <!--a href="https://" target="_blank" rel="noopener noreferrer"-->Robotics: Science and Systems (RSS)<!--/a-->, 2024 <br>
-    <a onclick="toggleDisplay('policed-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('policed-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/POLICEd_RL_ArXiv.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-	<a href="https://arxiv.org/abs/2403.13297" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-	<a href="https://github.com/labicon/POLICEd-RL" target="_blank" rel="noopener noreferrer">GitHub</a> |
-	Cited by <a href='' id='POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('policed-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('policed-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/POLICEd_RL_ArXiv.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/labicon/POLICEd-RL" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2403.13297" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<a class="button-link" href="https://iconlab.negarmehr.com/POLICEd-RL" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-globe"></i> Website</span>
+		</a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/blog_posts/policed_RL" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-scroll"></i> Blog</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="policed-abstract" class="abstract">
@@ -569,16 +584,20 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/ISC_pic.PNG" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/ISC_pic.PNG" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Assured System-Level Resilience for Guaranteed Disaster Response</em><br>
     Melkior Ornik, <strong>Jean-Baptiste Bouvier</strong> <br>
     <a href="https://ieeexplore.ieee.org/document/9922438" target="_blank" rel="noopener noreferrer">8<sup>th</sup> IEEE International Smart Cities Conference</a>, 2022 <br>
-    <a onclick="toggleDisplay('disaster-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('disaster-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/ISC2_Resilience.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-	Cited by <a href='' id='Assured System-Level Resilience for Guaranteed Disaster Response' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('disaster-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('disaster-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/ISC2_Resilience.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Assured System-Level Resilience for Guaranteed Disaster Response' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="disaster-abstract" class="abstract">
@@ -607,18 +626,26 @@ title: Publications
   
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/ECC_pic.jpg" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/ECC_pic.jpg" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Quantitative Resilience of Linear Systems</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
     <a href="https://ieeexplore.ieee.org/document/9838147" target="_blank" rel="noopener noreferrer">20<sup>th</sup> European Control Conference</a>, 2022 <br>
-    <a onclick="toggleDisplay('ECC-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('ECC-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/Quantitative_Resilience_of_Linear_Systems__ECC_.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-    <a href="https://arxiv.org/abs/2201.12278" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-    <a href="{{site.baseurl}}/assets/Slides/ECC_2022_presentation.pdf" target="_blank" rel="noopener noreferrer">Slides</a> |
-	Cited by <a href='' id='Quantitative Resilience of Linear Systems' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('ECC-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('ECC-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Quantitative_Resilience_of_Linear_Systems__ECC_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2201.12278" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<a class="button-link" href="{{site.baseurl}}/assets/Slides/ECC_2022_presentation.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-powerpoint"></i> Slides</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Quantitative Resilience of Linear Systems' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="ECC-abstract" class="abstract">
@@ -648,19 +675,29 @@ title: Publications
  
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/ACC_pic.JPG" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/ACC_pic.JPG" alt="pic from paper" width="200">
   </div>
   <div class="column right">
     <em>Distributed Transient Safety Verification via Robust Control Invariant Sets: A Microgrid Application</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Sai Pushpak Nandanoori, Melkior Ornik, Soumya Kundu <br>
     <a href="https://ieeexplore.ieee.org/document/9867323" target="_blank" rel="noopener noreferrer">American Control Conference</a>, 2022 <br>
-    <a onclick="toggleDisplay('ACC-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('ACC-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/ACC long.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-    <a href="https://arxiv.org/abs/2202.09320" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-    <a href="https://github.com/Jean-BaptisteBouvier/Microgrid-transient-safety" target="_blank" rel="noopener noreferrer">GitHub</a> |
-    <a href="{{site.baseurl}}/assets/Slides/ACC Presentation.pdf" target="_blank" rel="noopener noreferrer">Slides</a> |
-	Cited by <a href='' id='Distributed Transient Safety Verification via Robust Control Invariant Sets: A Microgrid Application' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('ACC-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('ACC-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/ACC long.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2202.09320" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Microgrid-transient-safety" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>		
+		<a class="button-link" href="{{site.baseurl}}/assets/Slides/ACC Presentation.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-powerpoint"></i> Slides</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Distributed Transient Safety Verification via Robust Control Invariant Sets: A Microgrid Application' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="ACC-abstract" class="abstract">
@@ -687,19 +724,29 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/SIAM_pic.PNG" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/SIAM_pic.PNG" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Quantitative Resilience of Linear Driftless Systems</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Melkior Ornik <br>
     <a href="https://epubs.siam.org/doi/abs/10.1137/1.9781611976847.5" target="_blank" rel="noopener noreferrer">SIAM Conference on Control and its Applications</a>, 2021 <br>
-    <a onclick="toggleDisplay('SIAM-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('SIAM-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/Quantitative_Resilience_of_Linear_Driftless_Systems__SIAM_CT_.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-    <a href="https://arxiv.org/abs/2101.12063" target="_blank" rel="noopener noreferrer">ArXiv</a> |
-    <a href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience" target="_blank" rel="noopener noreferrer">GitHub</a> |
-    <a href="{{site.baseurl}}/assets/Slides/SIAM_CT_21_Presentation.pdf" target="_blank" rel="noopener noreferrer">Slides</a> |
-	Cited by <a href='' id='Quantitative resilience of linear driftless systems' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('SIAM-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('SIAM-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Quantitative_Resilience_of_Linear_Driftless_Systems__SIAM_CT_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2101.12063" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Quantitative-Resilience" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>		
+		<a class="button-link" href="{{site.baseurl}}/assets/Slides/SIAM_CT_21_Presentation.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-powerpoint"></i> Slides</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Quantitative resilience of linear driftless systems' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="SIAM-abstract" class="abstract">
@@ -732,17 +779,23 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/IFAC_pic.PNG" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/IFAC_pic.PNG" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Resilient Reachability for Linear Systems</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
     <a href="https://www.sciencedirect.com/science/article/pii/S240589632030656X" target="_blank" rel="noopener noreferrer">21<sup>st</sup> IFAC World Congress</a>, 2020 <br>
-    <a onclick="toggleDisplay('IFAC-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('IFAC-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/Resilient_Reachability_for_Linear_Systems__IFAC_.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-    <a href="{{site.baseurl}}/assets/Slides/IFAC_presentation.pdf" target="_blank" rel="noopener noreferrer">Slides</a> |
-	Cited by <a href='' id='Resilient reachability for linear systems' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('IFAC-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('IFAC-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilient_Reachability_for_Linear_Systems__IFAC_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>	
+		<a class="button-link" href="{{site.baseurl}}/assets/Slides/IFAC_presentation.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-powerpoint"></i> Slides</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Resilient reachability for linear systems' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="IFAC-abstract" class="abstract">
@@ -777,17 +830,23 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/AAS_pic.jpg" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/AAS_pic.jpg" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Resilience of Orbital Inspections to Partial Loss of Control Authority of the Chaser Satellite</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Himmat Panag, Robyn Woollands, Melkior Ornik <br>
     <!--a href="" target="_blank" rel="noopener noreferrer"-->AAS/AIAA Astrodynamics Specialist Conference<!--/a-->, 2022 <br>
-    <a onclick="toggleDisplay('AAS-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('AAS-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/Resilience_of_Orbital_Inspections_to_Partial_Loss_of_Control_Authority_of_the_Chaser_Satellite.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-    <a href="{{site.baseurl}}/assets/Slides/AAS Presentation.pdf" target="_blank" rel="noopener noreferrer">Slides</a> |
-	Cited by <a href='' id='Resilience of orbital inspections to partial loss of control authority of the chaser satellite' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('AAS-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('AAS-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilience_of_Orbital_Inspections_to_Partial_Loss_of_Control_Authority_of_the_Chaser_Satellite.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>	
+		<a class="button-link" href="{{site.baseurl}}/assets/Slides/AAS Presentation.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-powerpoint"></i> Slides</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Resilience of orbital inspections to partial loss of control authority of the chaser satellite' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="AAS-abstract" class="abstract">
@@ -815,15 +874,19 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/DRO_pic.png" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/DRO_pic.png" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Strategies for Space Rendezvous on Lunar Distant Retrograde Orbits</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Williams Zanga, Bastien Le Bihan, Stephanie Lizy-Destrez <br>
     ISAE Supaero, 2017 <br>
-    <a onclick="toggleDisplay('ISAE-abstract')">Abstract</a> | 
-    <a href="{{site.baseurl}}/assets/PDFs/final_PIR_paper.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-	Cited by <a href='' id='Strategies for space rendezvous on Lunar Distant Retrograde Orbits' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('ISAE-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/final_PIR_paper.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Strategies for space rendezvous on Lunar Distant Retrograde Orbits' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="ISAE-abstract" class="abstract">
@@ -842,17 +905,23 @@ title: Publications
   
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/PhD_pic.png" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/PhD_pic.png" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Guaranteed Resilience of Autonomous Systems to Loss of Control Authority over Actuators</em><br>
     <strong>Jean-Baptiste Bouvier</strong> &nbsp;&nbsp;&nbsp; Advisor: Melkior Ornik <br>
     Doctoral thesis. <a href="https://www.ideals.illinois.edu/items/127446" target="_blank" rel="noopener noreferrer">University of Illinois Urbana-Champaign</a>, 2023 <br>
-    <a onclick="toggleDisplay('PhD-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('PhD-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/PhD_Thesis.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-    <a href="{{site.baseurl}}/assets/Slides/Defense.pdf" target="_blank" rel="noopener noreferrer">Slides</a> |
-	Cited by <a href='' id='Guaranteed Resilience of Autonomous Systems to Loss of Control Authority over Actuators' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('PhD-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('PhD-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/PhD_Thesis.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>		
+		<a class="button-link" href="{{site.baseurl}}/assets/Slides/Defense.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-powerpoint"></i> Slides</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Guaranteed Resilience of Autonomous Systems to Loss of Control Authority over Actuators' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="PhD-abstract" class="abstract">
@@ -880,16 +949,20 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/MSc_pic.PNG" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pics/MSc_pic.PNG" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Orbit Control for a Spacecraft around a Splitting Contact Binary Asteroid</em><br>
     <strong>Jean-Baptiste Bouvier</strong> &nbsp;&nbsp;&nbsp; Advisor: Koki Ho <br>
     Master thesis. <a href="https://www.ideals.illinois.edu/items/109882" target="_blank" rel="noopener noreferrer">University of Illinois Urbana-Champaign</a>, 2018 <br>
-    <a onclick="toggleDisplay('MSc-abstract')">Abstract</a> | 
-    <a onclick="toggleDisplay('MSc-bibtex')">Bibtex</a> |
-    <a href="{{site.baseurl}}/assets/PDFs/Master_Thesis.pdf" target="_blank" rel="noopener noreferrer">Pdf</a> |
-	Cited by <a href='' id='Orbit control for a spacecraft around a splitting contact binary asteroid' target="_blank" rel="noopener noreferrer">0</a>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('MSc-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('MSc-bibtex')"><span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Master_Thesis.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Orbit control for a spacecraft around a splitting contact binary asteroid' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
   </div>
 </div>
 <div id="MSc-abstract" class="abstract">
@@ -919,7 +992,7 @@ title: Publications
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pic.png" alt="pic from paper" width="200" />
+    <img src="{{ site.baseurl }}/assets/paper_pic.png" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
     <em>Title</em><br>
@@ -931,7 +1004,38 @@ title: Publications
     <a href="https://arxiv.org/abs/___" target="_blank" rel="noopener noreferrer">ArXiv</a> |
     <a href="https://github.com/Jean-BaptisteBouvier/___" target="_blank" rel="noopener noreferrer">GitHub</a> |
     <a href="{{site.baseurl}}/assets/Slides/___.pdf" target="_blank" rel="noopener noreferrer">Slides</a> |
-	Cited by <a href='' id="title" target="_blank" rel="noopener noreferrer">0</a>
+	Cited by <a href='' id="title" target="_blank" rel="noopener noreferrer">0</a> <br>
+	
+	<a class="button-link" onclick="toggleDisplay('network-abstract')">
+		<span class="button"><i class="fas fa-list"></i> Abstract</span>
+	</a>
+	<a class="button-link" onclick="toggleDisplay('network-bibtex')">
+		<span class="button"><i class="fas fa-magnifying-glass"></i> Bibtex</span>
+	</a>
+	
+	<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilience_of_Linear_Networks__ArXiv_.pdf" target="_blank" rel="noopener noreferrer">
+		<span class="button"><i class="fas fa-file-pdf"></i> Pdf</span>
+	</a>
+
+	<a class="button-link" href="https://github.com/labicon/POLICEd-RL" target="_blank" rel="noopener noreferrer">
+		<span class="button"><i class="fab fa-github"></i> Code</span>
+	</a>
+
+	<a class="button-link" href="https://arxiv.org/abs/2306.16588" target="_blank" rel="noopener noreferrer">
+		<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+	</a>
+
+	<a class="button-link" href="https://jean-baptistebouvier.github.io/assets/blog_posts/policed_RL/" target="_blank" rel="noopener noreferrer">
+		<span class="button"><i class="fas fa-scroll"></i> Blog</span>
+	</a>
+	
+	<a class="button-link" href="https://jean-baptistebouvier.github.io/assets/blog_posts/policed_RL/" target="_blank" rel="noopener noreferrer">
+		<span class="button"><i class="fas fa-file-powerpoint"></i> Slides</span>
+	</a>
+	
+	<a class="button-link" href="https://jean-baptistebouvier.github.io/assets/blog_posts/policed_RL/" target="_blank" rel="noopener noreferrer">
+		<span class="button"><i class="fas fa-globe"></i> Website</span>
+	</a>
   </div>
 </div>
 
