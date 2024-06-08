@@ -47,7 +47,10 @@ p, details {
 	font-size: 12px;
 }
 .abstract {
-	margin-top: 1cm;
+	margin-top: 0mm;
+	margin-bottom: 4mm;
+	text-align: justify;
+	text-justify: inter-word;
 }
 .reference {
 	margin-bottom: 3mm;
