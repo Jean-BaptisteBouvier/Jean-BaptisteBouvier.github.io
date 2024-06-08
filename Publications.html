@@ -9,7 +9,16 @@ title: Publications
     .abstract, .bibtex {
       display: none;
       font-size: 14px;
+	  margin-top:-10mm;
+	  margin-bottom:10mm;
     }
+	.column {
+		margin-bottom:-5mm;
+	}
+	.row {
+		margin-top:5mm;
+		margin-bottom:10mm;
+	}
     a { 
       color: #0000EE;
       cursor: pointer;
@@ -20,17 +29,15 @@ title: Publications
 	.right {
 	  width: 75%;
 	  font-size: 16px;
-	}
-	
+	}	
 	table, tr, td {
 		border: none;
 	}
-	
   </style>
   <script>
     function toggleDisplay(id) {
       var element = document.getElementById(id);
-      if (element.style.display === "none") {
+      if (!element.style.display || element.style.display === "none") {
         element.style.display = "block";
       } else {
         element.style.display = "none";
