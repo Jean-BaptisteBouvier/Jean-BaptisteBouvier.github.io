@@ -175,7 +175,7 @@ title: Publications
   <div class="column right">
 	<em>Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay</em> <br>
 	<strong>Jean-Baptiste Bouvier</strong>, Himmat Panag, Robyn Woollands, Melkior Ornik <br>
-	<!--a href="" target="_blank" rel="noopener noreferrer"-->submitted to the Journal of Guidance, Control, and Dynamics<!--/a-->, 2023 <br>
+	<a href="https://doi.org/10.2514/1.G007652" target="_blank" rel="noopener noreferrer">Journal of Guidance, Control, and Dynamics</a>, 2025 <br>
 	<div class="links">
 		<a class="button-link" onclick="toggleDisplay('delay-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
 		<a class="button-link" onclick="toggleDisplay('delay-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
@@ -203,11 +203,11 @@ title: Publications
 @article{bouvier2023resilient,
   title = {Resilient trajectory tracking to partial loss of control authority over actuators with actuation delay},
   author = {Jean-Baptiste Bouvier and Himmat Panag and Robyn Woollands and Melkior Ornik},
-  journal = {submitted to the Journal of Guidance, Control, and Dynamics},
-  year = {2023},
+  journal = {Journal of Guidance, Control, and Dynamics},
+  year = {2025},
   volume = {},
   pages = {},
-  doi = {}
+  doi = {10.2514/1.G007652}
 }
 </pre>        
 
@@ -848,6 +848,51 @@ title: Publications
   
 <hr style="margin-top:1cm;">
 <h2 id="Nonpeer">Other conference papers</h2>
+
+
+
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/Scitech_pic.png" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+    <em>Risk-Sensitive Orbital Debris Collision Avoidance using Distributionally Robust Chance Constraints</em><br>
+    Kanghyun Ryu, <strong>Jean-Baptiste Bouvier</strong>, Shaizab Lalani, Siegfried Eggl, Negar Mehr<br>
+    <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2025-0758" target="_blank" rel="noopener noreferrer">AIAA SCITECH Forum</a>, 2025 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('Scitech-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('Scitech-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="https://arxiv.org/pdf/2412.17358" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Risk-Sensitive Orbital Debris Collision Avoidance using Distributionally Robust Chance Constraints' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="Scitech-abstract" class="abstract">
+   The exponential increase in orbital debris and active satellites will lead to congested orbits, necessitating more frequent collision avoidance maneuvers by satellites.
+   To minimize fuel consumption while ensuring the safety of satellites, enforcing a chance constraint, which poses an upper bound in collision probability with debris, can serve as an intuitive safety measure.
+   However, accurately evaluating collision probability, which is critical for the effective implementation of chance constraints, remains a non-trivial task.
+   This difficulty arises because uncertainty propagation in nonlinear orbit dynamics typically provides only limited information, such as finite samples or moment estimates about the underlying arbitrary non-Gaussian distributions.
+   Furthermore, even if the full distribution were known, it remains unclear how to effectively compute chance constraints with such non-Gaussian distributions.
+    To address these challenges, we propose a distributionally robust chance-constrained collision avoidance algorithm that provides a sufficient condition for collision probabilities under limited information about the underlying non-Gaussian distribution.
+	Our distributionally robust approach satisfies the chance constraint for all debris position distributions sharing a given mean and covariance, thereby enabling the enforcement of chance constraints with limited distributional information.
+	To achieve computational tractability, the chance constraint is approximated using a Conditional Value-at-Risk (CVaR) constraint, which gives a conservative and tractable approximation of the distributionally robust chance constraint.
+	We validate our algorithm on a real-world inspired satellite-debris conjunction scenario with different uncertainty propagation methods and show that our controller can effectively avoid collisions.
+</div>
+<div id="Scitech-bibtex" class="bibtex">
+<pre><code>
+@inproceedings{ryu2025risk,
+  title={Risk-Sensitive Orbital Debris Collision Avoidance using Distributionally Robust Chance Constraints},
+  author={Ryu, Kanghyun and Bouvier, Jean-Baptiste and Lalani, Shazaib and Eggl, Siegfried and Mehr, Negar},
+  booktitle={AIAA SCITECH 2025 Forum},
+  pages={0758},
+  year={2025}
+}
+</code></pre>
+</div>
+
+
 
 
 <div class="row">
