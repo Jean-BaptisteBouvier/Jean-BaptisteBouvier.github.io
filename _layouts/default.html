@@ -10,13 +10,13 @@
       <header class="masthead">
         <div class="container">
           <h3 class="masthead-title">
-            <a href="{{ site.baseurl }}/">About</a>
+            <a href="{{ site.baseurl }}/" class="masthead-link">About</a>
             
             {% assign pages_list = site.pages | sort:"url" %}
             {% for node in pages_list %}
               {% if node.title != null and node.url != "/404.html" %}
                 {% if node.layout == "page" %}
-                  &nbsp; &nbsp; <a href="{{ site.baseurl }}{{ node.url }}">{{ node.title }}</a>
+                  &nbsp; &nbsp; <a href="{{ site.baseurl }}{{ node.url }}" class="masthead-link">{{ node.title }}</a>
                 {% endif %}
               {% endif %}
             {% endfor %}
