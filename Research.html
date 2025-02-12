@@ -26,14 +26,26 @@ title: Research
 
 The overarching objective of my research work is to establish provable safety guarantees for autonomous systems. 
 During my PhD I focused on establishing safety guarantees for systems losing control over some of their actuators, which led to my resilience framework discussed below.
-As a postdoctoral scholar I am interested in ensuring safety for black-box systems relying on reinforcement learning and diffusion.
+As a postdoctoral scholar I am interested in ensuring the safety of black-box systems controlled by reinforcement learning or diffusion models.
 
+
+<hr style="margin-top:1cm;">
+<h2>DDAT: Diffusion Planning of Dynamically Feasible Robot Trajectories</h2>
+  
+<p>
+   Diffusion planners can generate an entire trajectory in 1-shot, but their predicted sequences of states have no feasibility guarantees.
+   A transition $s_t$ to $s_{t+1}$ is <em>dynamically feasible</em> if and only if there exists an action $a_t$ transforming state $s_t$ into $s_{t+1}$ by the robot's dynamics.
+   To generate only dynamically feasible trajectories I devised several projection algorithms counteracting compounding projection errors and I incorporate these projectors into the training and inference of a diffusion transformer (DiT).
+   More details coming soon. <!--a href="arxiv.pdf" target="_blank" rel="noopener noreferrer">paper</a> and the <a href="https://iconlab.negarmehr.com/DDAT/" target="_blank" rel="noopener noreferrer">website</a-->
+</p>
+
+	
   <hr style="margin-top:1cm;">
-  <h2>Guaranteeing Safety in Reinforcement Learning</h2>
+  <h2>POLICEd RL: Guaranteeing Safety in Reinforcement Learning</h2>
   
   <p>
-    My most recent research topic is to develop provable safety guarantees in Reinforcement Learning (RL).
-	More specifically, I have been looking at enforcing hard constraints with a learned policy in closed-loop with a black-box environment.
+    In this work I developed provable safety guarantees in Reinforcement Learning (RL).
+	More specifically, I enforce hard constraints on a learned policy in closed-loop with a black-box environment.
 	In <a href="{{ site.baseurl }}/assets/blog_posts/safe_RL" target="_blank" rel="noopener noreferrer">this blog post</a> I discuss how most of the safe RL literature <em>cannot guarantee such constraint respect</em>.
 	Based on this observation, I devised <strong>POLICEd RL</strong> to solve this issue.
   </p>
@@ -49,7 +61,7 @@ As a postdoctoral scholar I am interested in ensuring safety for black-box syste
   <p>
 	We illustrate POLICEd RL below on a simple 2D system and show that safety is guaranteed at the end of training.
 	Without the affine policy, TD3 requires several orders of magnitude more training episodes to learn a policy pointing away from the constraint line on its whole length.
-	For more details the POLICEd RL paper is accessible <a href="{{ site.baseurl }}/assets/PDFs/POLICEd_RL_ArXiv.pdf" target="_blank" rel="noopener noreferrer">here</a>.
+	For more details, checkout the <a href="{{ site.baseurl }}/assets/PDFs/POLICEd_RL_ArXiv.pdf" target="_blank" rel="noopener noreferrer">paper</a> and the <a href="https://iconlab.negarmehr.com/POLICEd-RL/" target="_blank" rel="noopener noreferrer">website</a>.
   </p>
 	<img src="{{site.baseurl}}/assets/gifs/POLICEd_2D_gif.gif" alt="animated" class="center_img"/> 
 	<div class="caption">
