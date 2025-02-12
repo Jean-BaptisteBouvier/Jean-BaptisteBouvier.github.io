@@ -166,6 +166,13 @@ ol.custom-marker.parens-after.decimal > li::marker {
 	padding: 5px;
 	height: fit-content;
 }
+.button:hover {
+	background-color: black;
+}
+.button:active {
+	  text-decoration: none;
+	  background-color: black;
+}
 .links {
 	margin-top: 5px;
 }
