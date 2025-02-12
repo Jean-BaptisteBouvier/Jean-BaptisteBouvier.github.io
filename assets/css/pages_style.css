@@ -169,3 +169,27 @@ ol.custom-marker.parens-after.decimal > li::marker {
 .links {
 	margin-top: 5px;
 }
+
+
+.masthead-link:link {
+	color: #454545 !important;
+	background-color: transparent;
+	text-decoration: none;
+}
+
+.masthead-link:visited {
+  color: #454545 !important;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.masthead-link:hover {
+  color: #454545 !important;
+  background-color: transparent;
+}
+
+.masthead-link:active {
+  color: #454545 !important;
+  background-color: transparent;
+  text-decoration: none;
+}
