@@ -496,7 +496,56 @@ title: Publications
 <hr style="margin-top:1cm;">
 <h2 id="Peer">Peer-reviewed conference papers</h2>
 
-
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/DDAT25_pic.png" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+    <em>DDAT: Diffusion Policies Enforcing Dynamically Admissible Robot Trajectories</em><br>
+    <strong>Jean-Baptiste Bouvier</strong>, Kanghyun Ryu, Kartik Nagpal, Qiayuan Liao, Koushil Sreenath, Negar Mehr <br>
+    <!--a href="https://" target="_blank" rel="noopener noreferrer"-->Preprint Under Review<!--/a-->, 2025 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('DDAT25-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('DDAT25-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Dynamics_Enforced_Diffusion_2025.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/labicon/DDAT" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2502.15043" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>
+		<a class="button-link" href="https://iconlab.negarmehr.com/DDAT/" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-globe"></i> Website</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='DDAT: Diffusion Policies Enforcing Dynamically Admissible Robot Trajectories' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="DDAT25-abstract" class="abstract">
+The stochastic nature of diffusion models prevents them from generating trajectories exactly satisfying the equations of motion of robots.
+To alleviate this issue, we introduce <strong>DDAT: Diffusion policies for Dynamically Amissible Trajectories</strong>.
+A trajectory is dynamically admissible if each state belongs to the reachable set of its predecessor by the robot's equations of motion.
+To generate such trajectories, our diffusion policies project their predictions onto a dynamically admissible manifold during both training and inference to align the objective of the denoiser neural network with the dynamical admissibility constraint.
+Due to the auto-regressive nature of such projections as well as the black-box nature of robot dynamics, exact projections are challenging.
+We instead sample a polytopic under-approximation of the reachable set onto which we project the predicted successor, before iterating this process with the projected successor.
+By producing accurate trajectories, this projection eliminates the need for diffusion models to continually replan, enabling one-shot long-horizon trajectory planning.
+We demonstrate our framework through extensive simulations on a quadcopter and various MuJoCo environments, along with real-world experiments on a Unitree GO1 and GO2.
+</div>
+<div id="DDAT25-bibtex" class="bibtex">
+<pre><code>
+@inproceedings{bouvier2025ddat,
+  title = {DDAT: Diffusion Policies Enforcing Dynamically Admissible Robot Trajectories},
+  author = {Jean-Baptiste Bouvier and Kanghyun Ryu and Kartik Nagpal and Qiayuan Liao and Koushil Sreenath and Negar Mehr},
+  booktitle = {Preprint (under review)},
+  year = {2025},
+  pages = {},
+  doi = {}
+}
+</code></pre>
+</div>
+	
 
 <div class="row">
   <div class="column left">
@@ -556,7 +605,7 @@ title: Publications
   <div class="column right">
     <em>POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints</em><br>
     <strong>Jean-Baptiste Bouvier</strong>, Kartik Nagpal, Negar Mehr <br>
-    <!--a href="https://" target="_blank" rel="noopener noreferrer"-->Robotics: Science and Systems (RSS)<!--/a-->, 2024 <br>
+    <a href="https://www.roboticsproceedings.org/rss20/p104.html" target="_blank" rel="noopener noreferrer">Robotics: Science and Systems (RSS)</a>, 2024 <br>
 	<div class="links">
 		<a class="button-link" onclick="toggleDisplay('policed-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
 		<a class="button-link" onclick="toggleDisplay('policed-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
@@ -597,7 +646,7 @@ title: Publications
   booktitle = {Robotics: Science and Systems (RSS)},
   year = {2024},
   pages = {},
-  doi = {}
+  doi = {10.15607/RSS.2024.XX.104}
 }
 </code></pre>
 </div>
