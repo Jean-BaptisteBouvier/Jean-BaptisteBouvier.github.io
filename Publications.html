@@ -64,20 +64,7 @@ title: Publications
 
 
 
-
-
-
-<ul style="margin-top:1cm;">
-	<li> <a style="color:#454545; text-decoration:none;" href="#Journal">Journal papers</a> </li>
-	<li> <a style="color:#454545; text-decoration:none;" href="#Peer">Peer-reviewed conference papers</a> </li>
-	<li> <a style="color:#454545; text-decoration:none;" href="#Nonpeer">Other conference papers</a> </li>
-	<li> <a style="color:#454545; text-decoration:none;" href="#Theses">Theses</a> </li>
-</ul>
-
-
-
 <hr style="margin-top:1cm;"> 
-<h2>Citations</h2>
 
 <div class="row">
   <div class="column" width="40%">
@@ -111,12 +98,257 @@ title: Publications
   
   
 <hr style="margin-top:1cm;"> 
-<h2 id="Journal">Journal papers</h2>
-  
+
   
   
 
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/DDAT25_pic.png" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+    <em>DDAT: Diffusion Policies Enforcing Dynamically Admissible Robot Trajectories</em><br>
+    <strong>Jean-Baptiste Bouvier</strong>, Kanghyun Ryu, Kartik Nagpal, Qiayuan Liao, Koushil Sreenath, Negar Mehr <br>
+    <!--a href="https://" target="_blank" rel="noopener noreferrer"-->Preprint Under Review<!--/a-->, 2025 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('DDAT25-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('DDAT25-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Dynamics_Enforced_Diffusion_2025.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/labicon/DDAT" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2502.15043" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>
+		<a class="button-link" href="https://iconlab.negarmehr.com/DDAT/" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-globe"></i> Website</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='DDAT: Diffusion Policies Enforcing Dynamically Admissible Robot Trajectories' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="DDAT25-abstract" class="abstract">
+The stochastic nature of diffusion models prevents them from generating trajectories exactly satisfying the equations of motion of robots.
+To alleviate this issue, we introduce <strong>DDAT: Diffusion policies for Dynamically Amissible Trajectories</strong>.
+A trajectory is dynamically admissible if each state belongs to the reachable set of its predecessor by the robot's equations of motion.
+To generate such trajectories, our diffusion policies project their predictions onto a dynamically admissible manifold during both training and inference to align the objective of the denoiser neural network with the dynamical admissibility constraint.
+Due to the auto-regressive nature of such projections as well as the black-box nature of robot dynamics, exact projections are challenging.
+We instead sample a polytopic under-approximation of the reachable set onto which we project the predicted successor, before iterating this process with the projected successor.
+By producing accurate trajectories, this projection eliminates the need for diffusion models to continually replan, enabling one-shot long-horizon trajectory planning.
+We demonstrate our framework through extensive simulations on a quadcopter and various MuJoCo environments, along with real-world experiments on a Unitree GO1 and GO2.
+</div>
+<div id="DDAT25-bibtex" class="bibtex">
+<pre><code>
+@inproceedings{bouvier2025ddat,
+  title = {DDAT: Diffusion Policies Enforcing Dynamically Admissible Robot Trajectories},
+  author = {Jean-Baptiste Bouvier and Kanghyun Ryu and Kartik Nagpal and Qiayuan Liao and Koushil Sreenath and Negar Mehr},
+  booktitle = {Preprint (under review)},
+  year = {2025},
+  pages = {},
+  doi = {}
+}
+</code></pre>
+</div>
 
+
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/delay_pic.jpg" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+	<em>Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay</em> <br>
+	<strong>Jean-Baptiste Bouvier</strong>, Himmat Panag, Robyn Woollands, Melkior Ornik <br>
+	<a href="https://doi.org/10.2514/1.G007652" target="_blank" rel="noopener noreferrer">Journal of Guidance, Control, and Dynamics</a>, 2025 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('delay-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('delay-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilient_Trajectory_Tracking_to_Partial_Loss_of_Control_Authority_over_Actuators_with_Actuation_Delay_arXiv.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Spacecraft-Resilience" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2303.12877" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Delayed resilient trajectory tracking after partial loss of control authority over actuators' target="_blank" rel="noopener noreferrer">0</a> + <a href='' id='Resilient trajectory tracking to partial loss of control authority over actuators with actuation delay' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="delay-abstract" class="abstract">
+	After the loss of control authority over thrusters of the Nauka module, the International Space Station lost attitude control for 45 minutes with potentially disastrous consequences.
+	Motivated by a scenario of orbital inspection, we consider a similar malfunction occurring to the inspector satellite and investigate whether its mission can still be safely fulfilled.
+	While a natural approach is to counteract in real-time the uncontrolled and undesirable thrust with the remaining controlled thrusters, vehicles are often subject to actuation delays hindering this approach.
+	Instead, we extend resilience theory to systems suffering from actuation delay and build a resilient trajectory tracking controller with stability guarantees relying on a state predictor.
+	We demonstrate that this controller can track accurately the reference trajectory of the inspection mission despite the actuation delay and the loss of control authority over one of the thrusters.
+</div>
+<pre class="bibtex" id="delay-bibtex">
+@article{bouvier2023resilient,
+  title = {Resilient trajectory tracking to partial loss of control authority over actuators with actuation delay},
+  author = {Jean-Baptiste Bouvier and Himmat Panag and Robyn Woollands and Melkior Ornik},
+  journal = {Journal of Guidance, Control, and Dynamics},
+  year = {2025},
+  volume = {48},
+  pages = {508 - 519},
+  doi = {10.2514/1.G007652}
+}
+</pre>   
+
+
+
+ 
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/Scitech_pic.png" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+    <em>Risk-Sensitive Orbital Debris Collision Avoidance using Distributionally Robust Chance Constraints</em><br>
+    Kanghyun Ryu, <strong>Jean-Baptiste Bouvier</strong>, Shaizab Lalani, Siegfried Eggl, Negar Mehr<br>
+    <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2025-0758" target="_blank" rel="noopener noreferrer">AIAA SCITECH Forum</a>, 2025 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('Scitech-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('Scitech-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/AIAA_Scitech_2025___Distributionally_Robust_Satellite_Control.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2412.17358" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Risk-Sensitive Orbital Debris Collision Avoidance using Distributionally Robust Chance Constraints' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="Scitech-abstract" class="abstract">
+   The exponential increase in orbital debris and active satellites will lead to congested orbits, necessitating more frequent collision avoidance maneuvers by satellites.
+   To minimize fuel consumption while ensuring the safety of satellites, enforcing a chance constraint, which poses an upper bound in collision probability with debris, can serve as an intuitive safety measure.
+   However, accurately evaluating collision probability, which is critical for the effective implementation of chance constraints, remains a non-trivial task.
+   This difficulty arises because uncertainty propagation in nonlinear orbit dynamics typically provides only limited information, such as finite samples or moment estimates about the underlying arbitrary non-Gaussian distributions.
+   Furthermore, even if the full distribution were known, it remains unclear how to effectively compute chance constraints with such non-Gaussian distributions.
+    To address these challenges, we propose a distributionally robust chance-constrained collision avoidance algorithm that provides a sufficient condition for collision probabilities under limited information about the underlying non-Gaussian distribution.
+	Our distributionally robust approach satisfies the chance constraint for all debris position distributions sharing a given mean and covariance, thereby enabling the enforcement of chance constraints with limited distributional information.
+	To achieve computational tractability, the chance constraint is approximated using a Conditional Value-at-Risk (CVaR) constraint, which gives a conservative and tractable approximation of the distributionally robust chance constraint.
+	We validate our algorithm on a real-world inspired satellite-debris conjunction scenario with different uncertainty propagation methods and show that our controller can effectively avoid collisions.
+</div>
+<div id="Scitech-bibtex" class="bibtex">
+<pre><code>
+@inproceedings{ryu2025risk,
+  title={Risk-Sensitive Orbital Debris Collision Avoidance using Distributionally Robust Chance Constraints},
+  author={Ryu, Kanghyun and Bouvier, Jean-Baptiste and Lalani, Shazaib and Eggl, Siegfried and Mehr, Negar},
+  booktitle={AIAA SCITECH 2025 Forum},
+  pages={0758},
+  year={2025}
+}
+</code></pre>
+</div>
+
+
+
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/CDC24_pic.png" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+    <em>Learning to Provably Satisfy High Relative Degree Constraints for Black-Box Systems</em><br>
+    <strong>Jean-Baptiste Bouvier</strong>, Kartik Nagpal, Negar Mehr <br>
+    <a href="https://css.paperplaza.net/images/temp/CDC/files/1849.pdf" target="_blank" rel="noopener noreferrer">IEEE Conference on Decision and Control (CDC)</a>, 2024 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('CDC24-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('CDC24-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/CDC24.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/labicon/CDC-POLICEd-RL" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2407.20456" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>
+		<a class="button-link" href="https://iconlab.negarmehr.com/CDC-POLICEd-RL" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-globe"></i> Website</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Learning to Provably Satisfy High Relative Degree Constraints for Black-Box Systems' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="CDC24-abstract" class="abstract">
+   In this paper, we develop a method for learning a control policy guaranteed to satisfy an affine state constraint of high relative degree in closed loop with a black-box system.
+   Previous reinforcement learning (RL) approaches to satisfy safety constraints either require access to the system model, or assume control affine dynamics, or only discourage violations with reward shaping.
+   Only recently have these issues been addressed with POLICEd RL, which guarantees constraint satisfaction for black-box systems.
+   However, this previous work can only enforce constraints of relative degree 1.
+   To address this gap, we build a novel RL algorithm explicitly designed to enforce an affine state constraint of high relative degree in closed loop with a black-box control system.
+   Our key insight is to make the learned policy be affine around the unsafe set and to use this affine region to dissipate the inertia of the high relative degree constraint.
+   We prove that such policies guarantee constraint satisfaction for deterministic systems while being agnostic to the choice of the RL training algorithm.
+   Our results demonstrate the capacity of our approach to enforce hard constraints in the Gym inverted pendulum and on a space shuttle landing simulation.    
+</div>
+<div id="CDC24-bibtex" class="bibtex">
+<pre><code>
+@inproceedings{bouvier2024learning,
+  title = {Learning to Provably Satisfy High Relative Degree Constraints for Black-Box Systems},
+  author = {Jean-Baptiste Bouvier and Kartik Nagpal and Negar Mehr},
+  booktitle = {IEEE Conference on Decision and Control (CDC)},
+  year = {2024},
+  pages = {},
+  doi = {}
+}
+</code></pre>
+</div>
+
+
+
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/POLICEd_pic.png" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+    <em>POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints</em><br>
+    <strong>Jean-Baptiste Bouvier</strong>, Kartik Nagpal, Negar Mehr <br>
+    <a href="https://www.roboticsproceedings.org/rss20/p104.html" target="_blank" rel="noopener noreferrer">Robotics: Science and Systems (RSS)</a>, 2024 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('policed-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('policed-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/POLICEd_RL_ArXiv.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/labicon/POLICEd-RL" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2403.13297" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<a class="button-link" href="https://iconlab.negarmehr.com/POLICEd-RL" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-globe"></i> Website</span>
+		</a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/blog_posts/policed_RL" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fas fa-scroll"></i> Blog</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="policed-abstract" class="abstract">
+   In this paper, we seek to learn a robot policy guaranteed to satisfy state constraints.
+   To encourage constraint satisfaction, existing RL algorithms typically rely on Constrained Markov Decision Processes and discourage constraint violations through reward shaping.
+   However, such <em>soft constraints</em> cannot offer safety guarantees.
+   To address this gap, we propose <strong>POLICEd RL</strong>, a novel RL algorithm explicitly designed to enforce affine <em>hard constraints</em> in closed-loop with a black-box environment.
+   Our key insight is to make the learned policy be affine around the unsafe set and to use this affine region as a repulsive buffer to prevent trajectories from violating the constraint.
+   We prove that such policies exist and guarantee constraint satisfaction.
+   Our proposed framework is applicable to both systems with continuous and discrete state and action spaces and is agnostic to the choice of the RL training algorithm.
+   Our results demonstrate the capacity of POLICEd RL to enforce hard constraints in robotic tasks while significantly outperforming existing methods.    
+</div>
+<div id="policed-bibtex" class="bibtex">
+<pre><code>
+@inproceedings{bouvier2024policed,
+  title = {POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints},
+  author = {Jean-Baptiste Bouvier and Kartik Nagpal and Negar Mehr},
+  booktitle = {Robotics: Science and Systems (RSS)},
+  year = {2024},
+  pages = {},
+  doi = {10.15607/RSS.2024.XX.104}
+}
+</code></pre>
+</div>
 
 
 <div class="row">
@@ -158,58 +390,15 @@ title: Publications
 @article{bouvier2024losing,
   title = {Losing Control of your Linear Network? Try Resilience Theory},
   author = {Jean-Baptiste Bouvier and Sai Pushpak Nandanoori and Melkior Ornik},
-  journal = {accepted to the IEEE Transactions on Control of Network Systems},
+  journal = {IEEE Transactions on Control of Network Systems},
   year = {2024},
-  volume = {},
-  pages = {},
+  pages = {1 - 12},
   doi = {10.1109/TCNS.2024.3431409}
 }
 </pre>        
 
 
 
-<div class="row">
-  <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/delay_pic.jpg" alt="pic from paper" width="200" >
-  </div>
-  <div class="column right">
-	<em>Resilient Trajectory Tracking to Partial Loss of Control Authority over Actuators with Actuation Delay</em> <br>
-	<strong>Jean-Baptiste Bouvier</strong>, Himmat Panag, Robyn Woollands, Melkior Ornik <br>
-	<a href="https://doi.org/10.2514/1.G007652" target="_blank" rel="noopener noreferrer">Journal of Guidance, Control, and Dynamics</a>, 2025 <br>
-	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('delay-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('delay-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
-		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilient_Trajectory_Tracking_to_Partial_Loss_of_Control_Authority_over_Actuators_with_Actuation_Delay_arXiv.pdf" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
-		</a>
-		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Spacecraft-Resilience" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fab fa-github"></i> Code</span>
-		</a>
-		<a class="button-link" href="https://arxiv.org/abs/2303.12877" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
-		</a>	
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Delayed resilient trajectory tracking after partial loss of control authority over actuators' target="_blank" rel="noopener noreferrer">0</a> + <a href='' id='Resilient trajectory tracking to partial loss of control authority over actuators with actuation delay' target="_blank" rel="noopener noreferrer">0</a>
-	</div>
-  </div>
-</div>
-<div id="delay-abstract" class="abstract">
-	After the loss of control authority over thrusters of the Nauka module, the International Space Station lost attitude control for 45 minutes with potentially disastrous consequences.
-	Motivated by a scenario of orbital inspection, we consider a similar malfunction occurring to the inspector satellite and investigate whether its mission can still be safely fulfilled.
-	While a natural approach is to counteract in real-time the uncontrolled and undesirable thrust with the remaining controlled thrusters, vehicles are often subject to actuation delays hindering this approach.
-	Instead, we extend resilience theory to systems suffering from actuation delay and build a resilient trajectory tracking controller with stability guarantees relying on a state predictor.
-	We demonstrate that this controller can track accurately the reference trajectory of the inspection mission despite the actuation delay and the loss of control authority over one of the thrusters.
-</div>
-<pre class="bibtex" id="delay-bibtex">
-@article{bouvier2023resilient,
-  title = {Resilient trajectory tracking to partial loss of control authority over actuators with actuation delay},
-  author = {Jean-Baptiste Bouvier and Himmat Panag and Robyn Woollands and Melkior Ornik},
-  journal = {Journal of Guidance, Control, and Dynamics},
-  year = {2025},
-  volume = {},
-  pages = {},
-  doi = {10.2514/1.G007652}
-}
-</pre>        
 
 
 
@@ -308,9 +497,95 @@ title: Publications
 }
 </pre>
 
-      
-        
-      
+
+
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/ISC_pic.PNG" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+    <em>Assured System-Level Resilience for Guaranteed Disaster Response</em><br>
+    Melkior Ornik, <strong>Jean-Baptiste Bouvier</strong> <br>
+    <a href="https://ieeexplore.ieee.org/document/9922438" target="_blank" rel="noopener noreferrer">8<sup>th</sup> IEEE International Smart Cities Conference</a>, 2022 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('disaster-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('disaster-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/ISC2_Resilience.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Assured system-level resilience for guaranteed disaster response' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="disaster-abstract" class="abstract">
+  Resilience of urban infrastructure to sudden, system-wide, potentially catastrophic events is a critical need across domains.
+  The growing connectivity of infrastructure, including its cyber-physical components which can be controlled in real time, offers an attractive path towards rapid adaptation to adverse events and adjustment of system objectives.
+  However, existing work in the field often offers piecemeal approaches to particular scenarios.
+  On the other hand, abstract work on controlled complex systems focuses on attempting to adapt to the changes in the system dynamics or environment, but without understanding that the system may simply not be able to perform its original task after an adverse event.
+  To address this challenge, this programmatic paper proposes a vision for a new paradigm of infrastructure resilience. Such a framework treats infrastructure across domains through a unified theory of controlled dynamical systems, but remains cognizant of the lack of knowledge about the system following a widespread adverse event and aims to identify the system's fundamental limits.
+  As a result, it will enable the infrastructure operator to assess and assure system performance following an adverse event, even if the exact nature of the event is not yet known.
+  Motivated by ongoing work on some facets of the broader problem of assured resilience, in this paper we identify promising early results, challenges that motivate the development of new theory, and possible paths forward for the proposed effort.
+</div>
+<div id="disaster-bibtex" class="bibtex">
+<pre><code>
+@inproceedings{ornik2022assured,
+  title = {Assured system-level resilience for guaranteed disaster response},
+  author = {Melkior Ornik and Jean-Baptiste Bouvier},
+  booktitle = {2022 IEEE International Smart Cities Conference},
+  year = {2022},
+  pages = {1 -- 4},
+  doi = {10.1109/ISC255366.2022.9922438}
+}
+</code></pre>
+</div>     
+  
+
+
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/AAS_pic.jpg" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+    <em>Resilience of Orbital Inspections to Partial Loss of Control Authority of the Chaser Satellite</em><br>
+    <strong>Jean-Baptiste Bouvier</strong>, Himmat Panag, Robyn Woollands, Melkior Ornik <br>
+    <!--a href="" target="_blank" rel="noopener noreferrer"-->AAS/AIAA Astrodynamics Specialist Conference<!--/a-->, 2022 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('AAS-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('AAS-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilience_of_Orbital_Inspections_to_Partial_Loss_of_Control_Authority_of_the_Chaser_Satellite.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
+		</a>	
+		<a class="button-link" href="{{site.baseurl}}/assets/Slides/AAS Presentation.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><span class="slides_icon"></span> Slides</span>
+		</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Resilience of orbital inspections to partial loss of control authority of the chaser satellite' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="AAS-abstract" class="abstract">
+  The growing demand for orbital inspections can only be met if these missions guarantee not to endanger the target satellite. 
+  To address this issue we study how to make the chaser satellite resistant to a partial loss of control authority over its thrusters. 
+  This malfunction is characterized by some thrusters of the spacecraft firing in an uncontrolled and thus possibly undesirable manner. 
+  Because of actuation delays, these undesirable thrust inputs cannot be canceled in real-time. 
+  Instead, we first use resilience theory to show that a sufficiently overactuated spacecraft can still reach any location even after losing control of a thruster. 
+  We then calculate the safety distance ensuring that the malfunctioning chaser satellite will not breach the keep-out sphere around the target satellite.
+  We employ a convex solver to generate a safe minimal-fuel reference trajectory to perform the inspection mission.
+  Relying on state prediction, adaptive trajectory tracking and PID control the malfunctioning spacecraft is then able to follow the reference trajectory. 
+  We thus demonstrate that an orbital inspection mission can be carried out safely by a spacecraft enduring actuation delay and a loss of control authority over one of its thrusters.
+</div>
+<div id="AAS-bibtex" class="bibtex">
+<pre><code>
+@inproceedings{bouvier2022resilience,
+  title = {Resilience of Orbital Inspections to Partial Loss of Control Authority over the Chaser Satellite},
+  author = {Jean-Baptiste Bouvier and Himmat Panag and Robyn Woollands and Melkior Ornik},
+  booktitle = {2022 AAS/AIAA Astrodynamics Specialist Conference},
+  year = {2022}
+}
+</code></pre>
+</div>
+
+
+   
 <div class="row">
   <div class="column left">
     <img src="{{ site.baseurl }}/assets/paper_pics/Design_pic.png" alt="pic from paper" width="200" >
@@ -359,341 +634,8 @@ title: Publications
 </code></pre>
 </div>
         
-        
-      
-<div class="row">
-  <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/JOTA_pic.PNG" alt="pic from paper" width="200" >
-  </div>
-  <div class="column right">
-    <em>The Maximax Minimax Quotient Theorem</em><br>
-    <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
-    <a href="https://doi.org/10.1007/s10957-022-02008-z" target="_blank" rel="noopener noreferrer">Journal of Optimization Theory and Applications</a>, 2022 <br>
-	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('maximax-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('maximax-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
-		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Maximax_Minimax_Quotient_Theorem__arXiv_.pdf" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
-		</a>
-		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fab fa-github"></i> Code</span>
-		</a>
-		<a class="button-link" href="https://arxiv.org/abs/2104.15025" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
-		</a>	
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='The Maximax Minimax Quotient Theorem' target="_blank" rel="noopener noreferrer">0</a>
-	</div>
-  </div>
-</div>
-<div id="maximax-abstract" class="abstract">
-  We present an optimization problem emerging from optimal control theory and situated at the intersection of fractional programming and linear max-min programming on polytopes.
-  A naive solution would require solving four nested, possibly nonlinear, optimization problems.
-  Instead, relying on numerous geometric arguments we determine an analytical solution to this problem.
-  In the course of proving our main theorem we also establish another optimization result stating that the minimum of a specific minimax optimization is located at a vertex of the constraint set.
-</div>
-<div id="maximax-bibtex" class="bibtex">
-<pre><code>
-@article{bouvier2022maximax,  
-  title = {The maximax minimax quotient theorem},   
-  author = {Jean-Baptiste Bouvier and Melkior Ornik},      
-  journal = {Journal of Optimization Theory and Applications},
-  year = {2022},
-  volume = {192},
-  pages = {1084 -- 1101},
-  publisher = {Springer},
-  doi = {10.1007/s10957-022-02008-z}
-}
-</code></pre>
-</div>
-  
-  
-
-<div class="row">
-  <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/Tiago_pic.PNG" alt="pic from paper" width="200" >
-  </div>
-  <div class="column right">
-    <em>Spacecraft Trajectory Tracking and Parameter Estimation around a Splitting Contact Binary Asteroid</em><br>
-    Tiago Silva, <strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Masatoshi Hirabayashi, Koki Ho <br>
-    <a href="https://www.sciencedirect.com/science/article/pii/S0094576520301259" target="_blank" rel="noopener noreferrer">Acta Astronautica</a>, 2020 <br>
-	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('asteroid-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('asteroid-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>		
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Spacecraft trajectory tracking and parameter estimation around a splitting contact binary asteroid' target="_blank" rel="noopener noreferrer">0</a>
-	</div>
-  </div>
-</div>
-<div id="asteroid-abstract" class="abstract">
-  Increasing interest in asteroid mining and in-situ resource utilization will lead to an increase in asteroid surface operations.
-  The geophysical properties of asteroids are often unknown and play a significant role in the resulting gravitational fields.
-  Surface operations such as mining may significantly alter the asteroid's structure or, in the case of contact binary asteroids, cause the asteroid to split depending on the rotational condition.
-  The coupled problem of estimating unknown parameters of a splitting contact-binary system and controlling a spacecraft's trajectory in the system's vicinity is investigated.
-  An indirect adaptive control scheme is utilized to simultaneously meet both objectives. 
-  The results are compared with the traditional 2-body controller and the improvement enabled by the proposed scheme is demonstrated.
-</div>
-<div id="asteroid-bibtex" class="bibtex">
-<pre><code>
-@article{splitting_asteroid,
-  title = {Spacecraft trajectory tracking and parameter estimation around a splitting contact binary asteroid},
-  author = {Silva, Tiago and Bouvier, Jean-Baptiste and Xu, Kathleen and Hirabayashi, Masatoshi and Ho, Koki},
-  journal = {Acta Astronautica},
-  volume = {171},
-  pages = {280 -- 289},
-  year = {2020},
-  publisher = {Elsevier},
-  doi ={10.1016/j.actaastro.2020.02.052}
-}
-</code></pre>
-</div>
- 
 
 
-<div class="row">
-  <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/Bindu_pic.png" alt="pic from paper" width="200" >
-  </div>
-  <div class="column right">
-    <em>Preliminary Design of Low-Energy, Low-Thrust Transfers to Halo Orbits using Feedback Control</em><br>
-    Bindu Jagannatha, <strong>Jean-Baptiste Bouvier</strong>, Koki Ho <br>
-    <a href="https://arc.aiaa.org/doi/full/10.2514/1.G003759" target="_blank" rel="noopener noreferrer">Journal of Guidance, Control and Dynamics</a>, 2019 <br>
-	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('halo-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('halo-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
-		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Preliminary_Design_of_Low_Energy_Low_Thrust_Transfers_to_Halo_Orbits_using_Feedback_Control__13350576qwkhqypqjjvj_.pdf" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
-		</a>
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Preliminary design of low-energy, low-thrust transfers to halo orbits using feedback control' target="_blank" rel="noopener noreferrer">0</a>
-	</div>
-  </div>
-</div>
-<div id="halo-abstract" class="abstract">
-  Calculating low-thrust trajectories that connect geocentric orbits to Earth-moon halo orbits involves designing the many-revolution thrust arc required to depart Earth vicinity.
-  Existing methods are based on solving the corresponding optimal control problem and hence are computationally expensive, involve providing hard-to-obtain initial guesses, and do not lend themselves well to quick parametric trade studies.
-  In this paper, a stochastic optimization algorithm is coupled with a Lyapunov feedback control law to explore the solution space for designing Earth-to-halo low-energy low-thrust trajectories.
-  While the objective is to minimize the fuel consumed for the transfer, the time of flight is constrained so as to optimally distribute the coast time between the low-thrust escape spiral and the low-energy arc.
-  Engines are assumed to have a constant specific impulse and provide constant thrust throughout the transfer. The results obtained from this method are then compared with other available reference solutions in order to quantify its effectiveness in designing such transfers.
-  Favorable comparisons thus obtained demonstrate the utility of the proposed method in calculating almost-optimal solutions, combined with a large improvement in computation time.
-</div>
-<div id="halo-bibtex" class="bibtex">
-<pre><code>
-@article{bindu2019preliminary,
-  author = {Jagannatha, Bindu B. and Bouvier, Jean-Baptiste and Ho, Koki},
-  title = {Preliminary design of low-energy, low-thrust transfers to halo orbits using feedback control},
-  journal = {Journal of Guidance, Control, and Dynamics},
-  volume = {42},
-  number = {2},
-  pages = {260-271},
-  year = {2019},
-  doi = {10.2514/1.G003759}
- }
-</code></pre>
-</div>
-
-
-  
-  
-  
-<hr style="margin-top:1cm;">
-<h2 id="Peer">Peer-reviewed conference papers</h2>
-
-<div class="row">
-  <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/DDAT25_pic.png" alt="pic from paper" width="200" >
-  </div>
-  <div class="column right">
-    <em>DDAT: Diffusion Policies Enforcing Dynamically Admissible Robot Trajectories</em><br>
-    <strong>Jean-Baptiste Bouvier</strong>, Kanghyun Ryu, Kartik Nagpal, Qiayuan Liao, Koushil Sreenath, Negar Mehr <br>
-    <!--a href="https://" target="_blank" rel="noopener noreferrer"-->Preprint Under Review<!--/a-->, 2025 <br>
-	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('DDAT25-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('DDAT25-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
-		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Dynamics_Enforced_Diffusion_2025.pdf" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
-		</a>
-		<a class="button-link" href="https://github.com/labicon/DDAT" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fab fa-github"></i> Code</span>
-		</a>
-		<a class="button-link" href="https://arxiv.org/abs/2502.15043" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
-		</a>
-		<a class="button-link" href="https://iconlab.negarmehr.com/DDAT/" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fas fa-globe"></i> Website</span>
-		</a>
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='DDAT: Diffusion Policies Enforcing Dynamically Admissible Robot Trajectories' target="_blank" rel="noopener noreferrer">0</a>
-	</div>
-  </div>
-</div>
-<div id="DDAT25-abstract" class="abstract">
-The stochastic nature of diffusion models prevents them from generating trajectories exactly satisfying the equations of motion of robots.
-To alleviate this issue, we introduce <strong>DDAT: Diffusion policies for Dynamically Amissible Trajectories</strong>.
-A trajectory is dynamically admissible if each state belongs to the reachable set of its predecessor by the robot's equations of motion.
-To generate such trajectories, our diffusion policies project their predictions onto a dynamically admissible manifold during both training and inference to align the objective of the denoiser neural network with the dynamical admissibility constraint.
-Due to the auto-regressive nature of such projections as well as the black-box nature of robot dynamics, exact projections are challenging.
-We instead sample a polytopic under-approximation of the reachable set onto which we project the predicted successor, before iterating this process with the projected successor.
-By producing accurate trajectories, this projection eliminates the need for diffusion models to continually replan, enabling one-shot long-horizon trajectory planning.
-We demonstrate our framework through extensive simulations on a quadcopter and various MuJoCo environments, along with real-world experiments on a Unitree GO1 and GO2.
-</div>
-<div id="DDAT25-bibtex" class="bibtex">
-<pre><code>
-@inproceedings{bouvier2025ddat,
-  title = {DDAT: Diffusion Policies Enforcing Dynamically Admissible Robot Trajectories},
-  author = {Jean-Baptiste Bouvier and Kanghyun Ryu and Kartik Nagpal and Qiayuan Liao and Koushil Sreenath and Negar Mehr},
-  booktitle = {Preprint (under review)},
-  year = {2025},
-  pages = {},
-  doi = {}
-}
-</code></pre>
-</div>
-	
-
-<div class="row">
-  <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/CDC24_pic.png" alt="pic from paper" width="200" >
-  </div>
-  <div class="column right">
-    <em>Learning to Provably Satisfy High Relative Degree Constraints for Black-Box Systems</em><br>
-    <strong>Jean-Baptiste Bouvier</strong>, Kartik Nagpal, Negar Mehr <br>
-    <!--a href="https://" target="_blank" rel="noopener noreferrer"-->IEEE Conference on Decision and Control (CDC)<!--/a-->, 2024 <br>
-	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('CDC24-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('CDC24-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
-		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/CDC24.pdf" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
-		</a>
-		<a class="button-link" href="https://github.com/labicon/CDC-POLICEd-RL" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fab fa-github"></i> Code</span>
-		</a>
-		<a class="button-link" href="https://arxiv.org/abs/2407.20456" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
-		</a>
-		<a class="button-link" href="https://iconlab.negarmehr.com/CDC-POLICEd-RL" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fas fa-globe"></i> Website</span>
-		</a>
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Learning to Provably Satisfy High Relative Degree Constraints for Black-Box Systems' target="_blank" rel="noopener noreferrer">0</a>
-	</div>
-  </div>
-</div>
-<div id="CDC24-abstract" class="abstract">
-   In this paper, we develop a method for learning a control policy guaranteed to satisfy an affine state constraint of high relative degree in closed loop with a black-box system.
-   Previous reinforcement learning (RL) approaches to satisfy safety constraints either require access to the system model, or assume control affine dynamics, or only discourage violations with reward shaping.
-   Only recently have these issues been addressed with POLICEd RL, which guarantees constraint satisfaction for black-box systems.
-   However, this previous work can only enforce constraints of relative degree 1.
-   To address this gap, we build a novel RL algorithm explicitly designed to enforce an affine state constraint of high relative degree in closed loop with a black-box control system.
-   Our key insight is to make the learned policy be affine around the unsafe set and to use this affine region to dissipate the inertia of the high relative degree constraint.
-   We prove that such policies guarantee constraint satisfaction for deterministic systems while being agnostic to the choice of the RL training algorithm.
-   Our results demonstrate the capacity of our approach to enforce hard constraints in the Gym inverted pendulum and on a space shuttle landing simulation.    
-</div>
-<div id="CDC24-bibtex" class="bibtex">
-<pre><code>
-@inproceedings{bouvier2024learning,
-  title = {Learning to Provably Satisfy High Relative Degree Constraints for Black-Box Systems},
-  author = {Jean-Baptiste Bouvier and Kartik Nagpal and Negar Mehr},
-  booktitle = {IEEE Conference on Decision and Control (CDC)},
-  year = {2024},
-  pages = {},
-  doi = {}
-}
-</code></pre>
-</div>
-
-
-<div class="row">
-  <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/POLICEd_pic.png" alt="pic from paper" width="200" >
-  </div>
-  <div class="column right">
-    <em>POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints</em><br>
-    <strong>Jean-Baptiste Bouvier</strong>, Kartik Nagpal, Negar Mehr <br>
-    <a href="https://www.roboticsproceedings.org/rss20/p104.html" target="_blank" rel="noopener noreferrer">Robotics: Science and Systems (RSS)</a>, 2024 <br>
-	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('policed-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('policed-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
-		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/POLICEd_RL_ArXiv.pdf" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
-		</a>
-		<a class="button-link" href="https://github.com/labicon/POLICEd-RL" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fab fa-github"></i> Code</span>
-		</a>
-		<a class="button-link" href="https://arxiv.org/abs/2403.13297" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
-		</a>	
-		<a class="button-link" href="https://iconlab.negarmehr.com/POLICEd-RL" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fas fa-globe"></i> Website</span>
-		</a>
-		<a class="button-link" href="{{ site.baseurl }}/assets/blog_posts/policed_RL" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fas fa-scroll"></i> Blog</span>
-		</a>
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints' target="_blank" rel="noopener noreferrer">0</a>
-	</div>
-  </div>
-</div>
-<div id="policed-abstract" class="abstract">
-   In this paper, we seek to learn a robot policy guaranteed to satisfy state constraints.
-   To encourage constraint satisfaction, existing RL algorithms typically rely on Constrained Markov Decision Processes and discourage constraint violations through reward shaping.
-   However, such <em>soft constraints</em> cannot offer safety guarantees.
-   To address this gap, we propose <strong>POLICEd RL</strong>, a novel RL algorithm explicitly designed to enforce affine <em>hard constraints</em> in closed-loop with a black-box environment.
-   Our key insight is to make the learned policy be affine around the unsafe set and to use this affine region as a repulsive buffer to prevent trajectories from violating the constraint.
-   We prove that such policies exist and guarantee constraint satisfaction.
-   Our proposed framework is applicable to both systems with continuous and discrete state and action spaces and is agnostic to the choice of the RL training algorithm.
-   Our results demonstrate the capacity of POLICEd RL to enforce hard constraints in robotic tasks while significantly outperforming existing methods.    
-</div>
-<div id="policed-bibtex" class="bibtex">
-<pre><code>
-@inproceedings{bouvier2024policed,
-  title = {POLICEd RL: Learning Closed-Loop Robot Control Policies with Provable Satisfaction of Hard Constraints},
-  author = {Jean-Baptiste Bouvier and Kartik Nagpal and Negar Mehr},
-  booktitle = {Robotics: Science and Systems (RSS)},
-  year = {2024},
-  pages = {},
-  doi = {10.15607/RSS.2024.XX.104}
-}
-</code></pre>
-</div>
-
-
-<div class="row">
-  <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/ISC_pic.PNG" alt="pic from paper" width="200" >
-  </div>
-  <div class="column right">
-    <em>Assured System-Level Resilience for Guaranteed Disaster Response</em><br>
-    Melkior Ornik, <strong>Jean-Baptiste Bouvier</strong> <br>
-    <a href="https://ieeexplore.ieee.org/document/9922438" target="_blank" rel="noopener noreferrer">8<sup>th</sup> IEEE International Smart Cities Conference</a>, 2022 <br>
-	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('disaster-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('disaster-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
-		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/ISC2_Resilience.pdf" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
-		</a>
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Assured system-level resilience for guaranteed disaster response' target="_blank" rel="noopener noreferrer">0</a>
-	</div>
-  </div>
-</div>
-<div id="disaster-abstract" class="abstract">
-  Resilience of urban infrastructure to sudden, system-wide, potentially catastrophic events is a critical need across domains.
-  The growing connectivity of infrastructure, including its cyber-physical components which can be controlled in real time, offers an attractive path towards rapid adaptation to adverse events and adjustment of system objectives.
-  However, existing work in the field often offers piecemeal approaches to particular scenarios.
-  On the other hand, abstract work on controlled complex systems focuses on attempting to adapt to the changes in the system dynamics or environment, but without understanding that the system may simply not be able to perform its original task after an adverse event.
-  To address this challenge, this programmatic paper proposes a vision for a new paradigm of infrastructure resilience. Such a framework treats infrastructure across domains through a unified theory of controlled dynamical systems, but remains cognizant of the lack of knowledge about the system following a widespread adverse event and aims to identify the system's fundamental limits.
-  As a result, it will enable the infrastructure operator to assess and assure system performance following an adverse event, even if the exact nature of the event is not yet known.
-  Motivated by ongoing work on some facets of the broader problem of assured resilience, in this paper we identify promising early results, challenges that motivate the development of new theory, and possible paths forward for the proposed effort.
-</div>
-<div id="disaster-bibtex" class="bibtex">
-<pre><code>
-@inproceedings{ornik2022assured,
-  title = {Assured system-level resilience for guaranteed disaster response},
-  author = {Melkior Ornik and Jean-Baptiste Bouvier},
-  booktitle = {2022 IEEE International Smart Cities Conference},
-  year = {2022},
-  pages = {1 -- 4},
-  doi = {10.1109/ISC255366.2022.9922438}
-}
-</code></pre>
-</div> 
-      
-  
-  
 <div class="row">
   <div class="column left">
     <img src="{{ site.baseurl }}/assets/paper_pics/ECC_pic.jpg" alt="pic from paper" width="200" >
@@ -739,10 +681,57 @@ We demonstrate our framework through extensive simulations on a quadcopter and v
   doi = {10.23919/ECC55457.2022.9838147}
 }
 </code></pre>
-</div>   
-        
-      
- 
+</div>
+
+
+
+<div class="row">
+  <div class="column left">
+    <img src="{{ site.baseurl }}/assets/paper_pics/JOTA_pic.PNG" alt="pic from paper" width="200" >
+  </div>
+  <div class="column right">
+    <em>The Maximax Minimax Quotient Theorem</em><br>
+    <strong>Jean-Baptiste Bouvier</strong>, Melkior Ornik <br>
+    <a href="https://doi.org/10.1007/s10957-022-02008-z" target="_blank" rel="noopener noreferrer">Journal of Optimization Theory and Applications</a>, 2022 <br>
+	<div class="links">
+		<a class="button-link" onclick="toggleDisplay('maximax-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('maximax-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Maximax_Minimax_Quotient_Theorem__arXiv_.pdf" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
+		</a>
+		<a class="button-link" href="https://github.com/Jean-BaptisteBouvier/Maximax-Minimax" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="fab fa-github"></i> Code</span>
+		</a>
+		<a class="button-link" href="https://arxiv.org/abs/2104.15025" target="_blank" rel="noopener noreferrer">
+			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
+		</a>	
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='The Maximax Minimax Quotient Theorem' target="_blank" rel="noopener noreferrer">0</a>
+	</div>
+  </div>
+</div>
+<div id="maximax-abstract" class="abstract">
+  We present an optimization problem emerging from optimal control theory and situated at the intersection of fractional programming and linear max-min programming on polytopes.
+  A naive solution would require solving four nested, possibly nonlinear, optimization problems.
+  Instead, relying on numerous geometric arguments we determine an analytical solution to this problem.
+  In the course of proving our main theorem we also establish another optimization result stating that the minimum of a specific minimax optimization is located at a vertex of the constraint set.
+</div>
+<div id="maximax-bibtex" class="bibtex">
+<pre><code>
+@article{bouvier2022maximax,  
+  title = {The maximax minimax quotient theorem},   
+  author = {Jean-Baptiste Bouvier and Melkior Ornik},      
+  journal = {Journal of Optimization Theory and Applications},
+  year = {2022},
+  volume = {192},
+  pages = {1084 -- 1101},
+  publisher = {Springer},
+  doi = {10.1007/s10957-022-02008-z}
+}
+</code></pre>
+</div>
+  
+
+
 <div class="row">
   <div class="column left">
     <img src="{{ site.baseurl }}/assets/paper_pics/ACC_pic.JPG" alt="pic from paper" width="200">
@@ -790,6 +779,7 @@ We demonstrate our framework through extensive simulations on a quadcopter and v
 }
 </code></pre>
 </div>
+
 
 
 
@@ -891,101 +881,94 @@ We demonstrate our framework through extensive simulations on a quadcopter and v
 </div>
 
 
-  
-  
-  
-  
-<hr style="margin-top:1cm;">
-<h2 id="Nonpeer">Other conference papers</h2>
+
+
 
 
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/Scitech_pic.png" alt="pic from paper" width="200" >
+    <img src="{{ site.baseurl }}/assets/paper_pics/Tiago_pic.PNG" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
-    <em>Risk-Sensitive Orbital Debris Collision Avoidance using Distributionally Robust Chance Constraints</em><br>
-    Kanghyun Ryu, <strong>Jean-Baptiste Bouvier</strong>, Shaizab Lalani, Siegfried Eggl, Negar Mehr<br>
-    <a href="https://arc.aiaa.org/doi/abs/10.2514/6.2025-0758" target="_blank" rel="noopener noreferrer">AIAA SCITECH Forum</a>, 2025 <br>
+    <em>Spacecraft Trajectory Tracking and Parameter Estimation around a Splitting Contact Binary Asteroid</em><br>
+    Tiago Silva, <strong>Jean-Baptiste Bouvier</strong>, Kathleen Xu, Masatoshi Hirabayashi, Koki Ho <br>
+    <a href="https://www.sciencedirect.com/science/article/pii/S0094576520301259" target="_blank" rel="noopener noreferrer">Acta Astronautica</a>, 2020 <br>
 	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('Scitech-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('Scitech-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
-		<a class="button-link" href="https://arxiv.org/pdf/2412.17358" target="_blank" rel="noopener noreferrer">
-			<span class="button"><i class="ai ai-arxiv"></i> ArXiv</span>
-		</a>	
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Risk-Sensitive Orbital Debris Collision Avoidance using Distributionally Robust Chance Constraints' target="_blank" rel="noopener noreferrer">0</a>
+		<a class="button-link" onclick="toggleDisplay('asteroid-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('asteroid-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>		
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Spacecraft trajectory tracking and parameter estimation around a splitting contact binary asteroid' target="_blank" rel="noopener noreferrer">0</a>
 	</div>
   </div>
 </div>
-<div id="Scitech-abstract" class="abstract">
-   The exponential increase in orbital debris and active satellites will lead to congested orbits, necessitating more frequent collision avoidance maneuvers by satellites.
-   To minimize fuel consumption while ensuring the safety of satellites, enforcing a chance constraint, which poses an upper bound in collision probability with debris, can serve as an intuitive safety measure.
-   However, accurately evaluating collision probability, which is critical for the effective implementation of chance constraints, remains a non-trivial task.
-   This difficulty arises because uncertainty propagation in nonlinear orbit dynamics typically provides only limited information, such as finite samples or moment estimates about the underlying arbitrary non-Gaussian distributions.
-   Furthermore, even if the full distribution were known, it remains unclear how to effectively compute chance constraints with such non-Gaussian distributions.
-    To address these challenges, we propose a distributionally robust chance-constrained collision avoidance algorithm that provides a sufficient condition for collision probabilities under limited information about the underlying non-Gaussian distribution.
-	Our distributionally robust approach satisfies the chance constraint for all debris position distributions sharing a given mean and covariance, thereby enabling the enforcement of chance constraints with limited distributional information.
-	To achieve computational tractability, the chance constraint is approximated using a Conditional Value-at-Risk (CVaR) constraint, which gives a conservative and tractable approximation of the distributionally robust chance constraint.
-	We validate our algorithm on a real-world inspired satellite-debris conjunction scenario with different uncertainty propagation methods and show that our controller can effectively avoid collisions.
+<div id="asteroid-abstract" class="abstract">
+  Increasing interest in asteroid mining and in-situ resource utilization will lead to an increase in asteroid surface operations.
+  The geophysical properties of asteroids are often unknown and play a significant role in the resulting gravitational fields.
+  Surface operations such as mining may significantly alter the asteroid's structure or, in the case of contact binary asteroids, cause the asteroid to split depending on the rotational condition.
+  The coupled problem of estimating unknown parameters of a splitting contact-binary system and controlling a spacecraft's trajectory in the system's vicinity is investigated.
+  An indirect adaptive control scheme is utilized to simultaneously meet both objectives. 
+  The results are compared with the traditional 2-body controller and the improvement enabled by the proposed scheme is demonstrated.
 </div>
-<div id="Scitech-bibtex" class="bibtex">
+<div id="asteroid-bibtex" class="bibtex">
 <pre><code>
-@inproceedings{ryu2025risk,
-  title={Risk-Sensitive Orbital Debris Collision Avoidance using Distributionally Robust Chance Constraints},
-  author={Ryu, Kanghyun and Bouvier, Jean-Baptiste and Lalani, Shazaib and Eggl, Siegfried and Mehr, Negar},
-  booktitle={AIAA SCITECH 2025 Forum},
-  pages={0758},
-  year={2025}
+@article{splitting_asteroid,
+  title = {Spacecraft trajectory tracking and parameter estimation around a splitting contact binary asteroid},
+  author = {Silva, Tiago and Bouvier, Jean-Baptiste and Xu, Kathleen and Hirabayashi, Masatoshi and Ho, Koki},
+  journal = {Acta Astronautica},
+  volume = {171},
+  pages = {280 -- 289},
+  year = {2020},
+  publisher = {Elsevier},
+  doi ={10.1016/j.actaastro.2020.02.052}
 }
 </code></pre>
 </div>
-
-
+ 
 
 
 <div class="row">
   <div class="column left">
-    <img src="{{ site.baseurl }}/assets/paper_pics/AAS_pic.jpg" alt="pic from paper" width="200" >
+    <img src="{{ site.baseurl }}/assets/paper_pics/Bindu_pic.png" alt="pic from paper" width="200" >
   </div>
   <div class="column right">
-    <em>Resilience of Orbital Inspections to Partial Loss of Control Authority of the Chaser Satellite</em><br>
-    <strong>Jean-Baptiste Bouvier</strong>, Himmat Panag, Robyn Woollands, Melkior Ornik <br>
-    <!--a href="" target="_blank" rel="noopener noreferrer"-->AAS/AIAA Astrodynamics Specialist Conference<!--/a-->, 2022 <br>
+    <em>Preliminary Design of Low-Energy, Low-Thrust Transfers to Halo Orbits using Feedback Control</em><br>
+    Bindu Jagannatha, <strong>Jean-Baptiste Bouvier</strong>, Koki Ho <br>
+    <a href="https://arc.aiaa.org/doi/full/10.2514/1.G003759" target="_blank" rel="noopener noreferrer">Journal of Guidance, Control and Dynamics</a>, 2019 <br>
 	<div class="links">
-		<a class="button-link" onclick="toggleDisplay('AAS-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
-		<a class="button-link" onclick="toggleDisplay('AAS-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
-		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Resilience_of_Orbital_Inspections_to_Partial_Loss_of_Control_Authority_of_the_Chaser_Satellite.pdf" target="_blank" rel="noopener noreferrer">
+		<a class="button-link" onclick="toggleDisplay('halo-abstract')"><span class="button"><i class="fas fa-list"></i> Abstract</span></a>
+		<a class="button-link" onclick="toggleDisplay('halo-bibtex')"><span class="button"><i class="fas fa-book"></i> Bibtex</span></a>
+		<a class="button-link" href="{{ site.baseurl }}/assets/PDFs/Preliminary_Design_of_Low_Energy_Low_Thrust_Transfers_to_Halo_Orbits_using_Feedback_Control__13350576qwkhqypqjjvj_.pdf" target="_blank" rel="noopener noreferrer">
 			<span class="button"><i class="fa">&#xf1c1;</i> Pdf</span>
-		</a>	
-		<a class="button-link" href="{{site.baseurl}}/assets/Slides/AAS Presentation.pdf" target="_blank" rel="noopener noreferrer">
-			<span class="button"><span class="slides_icon"></span> Slides</span>
 		</a>
-		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Resilience of orbital inspections to partial loss of control authority of the chaser satellite' target="_blank" rel="noopener noreferrer">0</a>
+		<i class="ai ai-google-scholar"></i> Cited by <a href='' id='Preliminary design of low-energy, low-thrust transfers to halo orbits using feedback control' target="_blank" rel="noopener noreferrer">0</a>
 	</div>
   </div>
 </div>
-<div id="AAS-abstract" class="abstract">
-  The growing demand for orbital inspections can only be met if these missions guarantee not to endanger the target satellite. 
-  To address this issue we study how to make the chaser satellite resistant to a partial loss of control authority over its thrusters. 
-  This malfunction is characterized by some thrusters of the spacecraft firing in an uncontrolled and thus possibly undesirable manner. 
-  Because of actuation delays, these undesirable thrust inputs cannot be canceled in real-time. 
-  Instead, we first use resilience theory to show that a sufficiently overactuated spacecraft can still reach any location even after losing control of a thruster. 
-  We then calculate the safety distance ensuring that the malfunctioning chaser satellite will not breach the keep-out sphere around the target satellite.
-  We employ a convex solver to generate a safe minimal-fuel reference trajectory to perform the inspection mission.
-  Relying on state prediction, adaptive trajectory tracking and PID control the malfunctioning spacecraft is then able to follow the reference trajectory. 
-  We thus demonstrate that an orbital inspection mission can be carried out safely by a spacecraft enduring actuation delay and a loss of control authority over one of its thrusters.
+<div id="halo-abstract" class="abstract">
+  Calculating low-thrust trajectories that connect geocentric orbits to Earth-moon halo orbits involves designing the many-revolution thrust arc required to depart Earth vicinity.
+  Existing methods are based on solving the corresponding optimal control problem and hence are computationally expensive, involve providing hard-to-obtain initial guesses, and do not lend themselves well to quick parametric trade studies.
+  In this paper, a stochastic optimization algorithm is coupled with a Lyapunov feedback control law to explore the solution space for designing Earth-to-halo low-energy low-thrust trajectories.
+  While the objective is to minimize the fuel consumed for the transfer, the time of flight is constrained so as to optimally distribute the coast time between the low-thrust escape spiral and the low-energy arc.
+  Engines are assumed to have a constant specific impulse and provide constant thrust throughout the transfer. The results obtained from this method are then compared with other available reference solutions in order to quantify its effectiveness in designing such transfers.
+  Favorable comparisons thus obtained demonstrate the utility of the proposed method in calculating almost-optimal solutions, combined with a large improvement in computation time.
 </div>
-<div id="AAS-bibtex" class="bibtex">
+<div id="halo-bibtex" class="bibtex">
 <pre><code>
-@inproceedings{bouvier2022resilience,
-  title = {Resilience of Orbital Inspections to Partial Loss of Control Authority over the Chaser Satellite},
-  author = {Jean-Baptiste Bouvier and Himmat Panag and Robyn Woollands and Melkior Ornik},
-  booktitle = {2022 AAS/AIAA Astrodynamics Specialist Conference},
-  year = {2022}
-}
+@article{bindu2019preliminary,
+  author = {Jagannatha, Bindu B. and Bouvier, Jean-Baptiste and Ho, Koki},
+  title = {Preliminary design of low-energy, low-thrust transfers to halo orbits using feedback control},
+  journal = {Journal of Guidance, Control, and Dynamics},
+  volume = {42},
+  number = {2},
+  pages = {260-271},
+  year = {2019},
+  doi = {10.2514/1.G003759}
+ }
 </code></pre>
 </div>
+
+
+
 
 
 <div class="row">
@@ -1011,6 +994,8 @@ We demonstrate our framework through extensive simulations on a quadcopter and v
   More precisely, the core study of this research tackles the construction of a DRO, and the rendezvous itself.
   Then further work has been conducted including safety analysis during the rendezvous operations and optimization of DRO computation.
 </div>
+
+
 
 
 
