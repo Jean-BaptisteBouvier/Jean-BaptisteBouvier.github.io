@@ -63,7 +63,7 @@ const hist = new Chart(ctx, {
 });
   
 /* Adjusting column width of the histogram with amount of data*/
-const col_width = 40
+const col_width = 30
 document.getElementById('histogram').style.width = (hist.data.labels.length + 1)*col_width + "px"
 
 
