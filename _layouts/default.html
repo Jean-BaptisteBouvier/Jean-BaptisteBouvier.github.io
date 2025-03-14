@@ -2,12 +2,50 @@
 <html lang="en-us">
 
   {% include head.html %}
+  
+  <head>
+    <style>
+      .logo {
+        position: absolute; 
+        top: 0;
+      }
 
+      @media screen and (max-width: 700px) {
+        .masthead-link {
+          padding-right: -10px;
+          margin-right: -10px;
+          font-size: 0.8rem;
+          margin-left: -10px;
+          padding-left: -10px;
+        }
+      }
+      /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+      @media screen and (max-width: 500px) {
+        .masthead-link {
+          float: none;
+          display: block;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  
   <body class="theme-base-{{site.color-scheme}}">
 
     <!--Wrapping all the content.-->
     <div class="wrap">
       <header class="masthead">
+        <div class="logo" style="left: 0;">
+          <a href="https://bair.berkeley.edu/" target="_blank">
+          <img src="{{ site.baseurl }}/assets/logos/BAIR_logo.png" alt="BAIR" height="60"/>
+          </a>
+        </div>
+        <div class="logo" style="right: 0; top: 15px;">
+          <a href="https://iconlab.negarmehr.com/" target="_blank">
+          <img src="{{ site.baseurl }}/assets/logos/ICON_Lab_Clear.png" alt="ICON Lab" width="160"/>
+          </a>
+        </div>
+        
         <div class="container">
           <h3 class="masthead-title">
             <a href="{{ site.baseurl }}/" class="masthead-link">About</a>
